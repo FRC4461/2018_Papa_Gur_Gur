@@ -44,7 +44,7 @@ public class DriveBase extends Subsystem {
     	drive = new RobotDrive(frontLeft.getDeviceID(),frontRight.getDeviceID(), backLeft.getDeviceID(), backRight.getDeviceID()); //4 motor drive
     }
 
-    public void Run(double lSpeed, double rSpeed){
+    public void drive(double lSpeed, double rSpeed){
     	drive.tankDrive(OI.lJoyGetY(), OI.rJoyGetY());
     }
 

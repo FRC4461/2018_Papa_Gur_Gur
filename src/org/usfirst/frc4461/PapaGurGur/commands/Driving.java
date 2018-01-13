@@ -45,6 +45,7 @@ public class Driving extends Command {
     protected void execute() {
     	double lSpeed = OI.lJoyGetY();
     	double rSpeed = OI.rJoyGetY();
+    	Robot.driveBase.drive(lSpeed, rSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()

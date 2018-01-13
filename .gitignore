@@ -48,5 +48,5 @@ Temporary Items
 .apdisk
 
 #Ignore built files
-bin
+bin/
 *.class

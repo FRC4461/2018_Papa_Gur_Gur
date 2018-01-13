@@ -46,6 +46,12 @@ public class Driving extends Command {
     	double lSpeed = OI.lJoyGetY();
     	double rSpeed = OI.rJoyGetY();
     	Robot.driveBase.drive(lSpeed, rSpeed);
+    	if(lSpeed + rSpeed > 0){
+    		Robot.display.showMushroom();
+    	}
+    	else {
+    		Robot.display.showFace();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

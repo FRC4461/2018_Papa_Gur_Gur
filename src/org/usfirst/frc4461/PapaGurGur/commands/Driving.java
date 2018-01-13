@@ -11,6 +11,8 @@
 
 package org.usfirst.frc4461.PapaGurGur.commands;
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc4461.PapaGurGur.OI;
 import org.usfirst.frc4461.PapaGurGur.Robot;
 
 /**
@@ -41,6 +43,8 @@ public class Driving extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double lSpeed = OI.lJoyGetY();
+    	double rSpeed = OI.rJoyGetY();
     }
 
     // Make this return true when this Command no longer needs to run execute()

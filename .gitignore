@@ -50,3 +50,10 @@ Temporary Items
 #Ignore built files
 bin/
 *.class
+/target/
+
+
+#Ignore <dot> files except ones we want
+.*
+!.project
+!.gitignore

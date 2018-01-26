@@ -1,25 +1,52 @@
 package org.usfirst.frc4461.PapaGurGur.commands;
+import org.usfirst.frc4461.PapaGurGur.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 public class AutonomousCommand extends Command {
+	double distance = 0;
+	double distanceInTicks = 0;
 	
-    public AutonomousCommand() {
-    	
-    }
+	/**
+	 * @param timeRunArg how long it will run in milliseconds
+	 */
+	public void AutonomousMove(double distanceArg){
+		requires(Robot.driveBase);
+		distance = distanceArg;
+	}
 
-    protected void initialize() {
-    }
+	@Override
+	protected void initialize() {
+		distanceInTicks = distance / .00306641;
+		//Robot.driveBase.encoderMove(distanceInTicks);
+	}
 
-    protected void execute() {
-    }
+	@Override
+	protected void execute() {
+	}
 
-    protected boolean isFinished() {
-        return false;
-    }
+	//@Override
+	//protected boolean isFinished(){
+		//double ticksToTarget = distanceInTicks - Robot.driveBase.leftEncoderGet();
+		//if(Math.abs(ticksToTarget) < 50){
+		//return true;
+		//}
+		//else return false;
+	//}
 
-    protected void end() {
-    }
+	@Override
+	protected void end() {
+		//Robot.driveBase.Stop();
+	}
 
-    protected void interrupted() {
-    }
+	@Override
+	protected void interrupted() {
+		end();
+	}
+
+	@Override
+	protected boolean isFinished() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

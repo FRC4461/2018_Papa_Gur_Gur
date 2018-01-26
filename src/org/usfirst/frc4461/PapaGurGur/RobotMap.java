@@ -16,5 +16,5 @@ public class RobotMap {
         
         right1 = new WPI_TalonSRX(3);
         right2 = new WPI_TalonSRX(4);
-    }
+          }
 }

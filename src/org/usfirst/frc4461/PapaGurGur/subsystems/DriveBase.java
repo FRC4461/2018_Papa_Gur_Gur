@@ -20,6 +20,9 @@ public class DriveBase extends Subsystem {
 		SpeedControllerGroup left = new SpeedControllerGroup(RobotMap.left1, RobotMap.left2);
 		SpeedControllerGroup right = new SpeedControllerGroup(RobotMap.right1, RobotMap.right2);
     	drive = new DifferentialDrive(left,right); //4 motor drive
+    	left.pidWrite(2);
+    	right.pidWrite(2);
+    	
     }
 
     public void drive(double lSpeed, double rSpeed){

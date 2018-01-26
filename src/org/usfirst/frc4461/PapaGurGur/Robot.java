@@ -1,5 +1,6 @@
 package org.usfirst.frc4461.PapaGurGur;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -13,6 +14,8 @@ public class Robot extends IterativeRobot {
     public static Display display;
     
     public void robotInit() {
+    	
+	CameraServer.getInstance().startAutomaticCapture(0);
     RobotMap.init();
         driveBase = new DriveBase();
         oi = new OI();

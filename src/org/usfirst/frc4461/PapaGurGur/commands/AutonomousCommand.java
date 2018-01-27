@@ -1,4 +1,6 @@
 package org.usfirst.frc4461.PapaGurGur.commands;
+import org.usfirst.frc4461.PapaGurGur.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 public class AutonomousCommand extends Command {
@@ -11,6 +13,8 @@ public class AutonomousCommand extends Command {
     }
 
     protected void execute() {
+    	double currentAngle = Robot.gyro.getAngle();
+    	System.out.println(currentAngle);
     }
 
     protected boolean isFinished() {

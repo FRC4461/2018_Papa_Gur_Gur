@@ -1,14 +1,15 @@
 package org.usfirst.frc4461.PapaGurGur;
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc4461.PapaGurGur.commands.*;
+import org.usfirst.frc4461.PapaGurGur.commands.LeftScale;
+import org.usfirst.frc4461.PapaGurGur.commands.LeftSwitch;
 import org.usfirst.frc4461.PapaGurGur.subsystems.*;
 
 public class Robot extends IterativeRobot {
@@ -18,21 +19,17 @@ public class Robot extends IterativeRobot {
     public static Display display;
     public static Gyro gyro;
     public static SPI.Port gyroAnalogInput = SPI.Port.kOnboardCS0;
+    SendableChooser <Command> autoChooser;
     
     public void robotInit() {
     	RobotMap.init();
         driveBase = new DriveBase();
-        
+        display = new Display();
         oi = new OI();
-
-        display = new Display();    
-        
-        gyro = new ADXRS450_Gyro(gyroAnalogInput);      
-	
-        autonomousCommand = new AutonomousCommand();
-
-
-    	CameraServer.getInstance().startAutomaticCapture(0);
+        autoChooser = new SendableChooser<Command>();
+        autoChooser.addObject("Left Switch", new LeftSwitch());
+        autoChooser.addObject("Left Scale", new LeftScale());
+        SmartDashboard.putData("Auto Routine", autoChooser);
     }
 
     public void disabledInit(){
@@ -45,7 +42,9 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousInit() {
-        if (autonomousCommand != null) autonomousCommand.start();
+    	autonomousCommand = (Command) autoChooser.getSelected();
+        if (autonomousCommand != null) 
+        	autonomousCommand.start();
     }
 
     public void autonomousPeriodic() {

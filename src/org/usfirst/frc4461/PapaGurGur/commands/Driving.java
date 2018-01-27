@@ -28,15 +28,13 @@ public class Driving extends Command {
     }
 
     protected void initialize() {
-		turn = new GyroTurn();
+//		turn = new GyroTurn();
     }
 
     protected void execute() {
     	double lSpeed = OI.lJoyGetY();
     	double rSpeed = OI.rJoyGetY();
     	Robot.driveBase.drive(lSpeed, rSpeed);
-
-		System.out.println("Gyro angle returns: " + Robot.gyro.getAngle());
 		
     	if(lSpeed + rSpeed > 0){
     		Robot.display.showMushroom();

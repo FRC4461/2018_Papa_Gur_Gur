@@ -1,60 +1,64 @@
 package org.usfirst.frc4461.PapaGurGur.commands;
 
-import org.usfirst.frc4461.PapaGurGur.Robot;
 import org.usfirst.frc4461.PapaGurGur.RobotMap;
 
-public class GyroTurn {
+import edu.wpi.first.wpilibj.command.Command;
+
+public class GyroTurn extends Command {
 	double currentAngle;
 	boolean isDone;
 	double kAngleSetpoint = 0.0;
+	double degree;
+	double facing;
+	boolean done = false;
+	double deadzone = 1;
+	double speed = .25;
 	
-	public GyroTurn(){
-	}
+    public GyroTurn(double input){
+    	degree = input;
+    }
 
-	public void turn(double turnAngle){
-		currentAngle = Robot.gyro.getAngle();
-		double turnGoal = currentAngle + turnAngle;
+    protected void initialize() {
+    	RobotMap.gyro.reset();
+    	System.out.println("Yes its working");
+    }
 
-		isDone = false;
+    protected void execute() {
+    	facing = RobotMap.gyro.getAngle();    	
+    	if(facing > (degree - deadzone) && facing < (degree + deadzone)) {
+    		RobotMap.frontLeft.set(0);
+    		RobotMap.backLeft.set(0);	
+    		RobotMap.frontRight.set(0);
+    		RobotMap.backRight.set(0);
+    		done = true;
+    	}
+    	else if(facing < (degree) + deadzone){
+			RobotMap.frontLeft.set(speed);
+			RobotMap.backLeft.set(speed);	
+			RobotMap.frontRight.set(speed);
+			RobotMap.backRight.set(speed);
+			System.out.println("Facing " + facing);
+			System.out.println("we are going to the RIGHT");
+    	}
+    	else if(facing > (degree) - deadzone){
+			RobotMap.frontLeft.set(-speed);
+			RobotMap.backLeft.set(-speed);	
+			RobotMap.frontRight.set(-speed);
+			RobotMap.backRight.set(-speed);
+			System.out.println("Facing " + facing);
+			System.out.println("we are going to the left");
+    	}
+    }
 
-		if (currentAngle < turnGoal){
-			rightTurn(turnGoal);
-		} else if( currentAngle > turnGoal){
-			leftTurn(turnGoal);
-		} else{
-			System.out.println("we're already there, you dink");
-		}
-	}
+    protected boolean isFinished() {
+    	return done;
+    }
 
-	public void rightTurn(double turnGoal){
-		while(!isDone){
-			currentAngle = Robot.gyro.getAngle();
-			System.out.println(currentAngle);
-			if(currentAngle < turnGoal * (3/5)){
-				RobotMap.frontLeft.set(.01);
-				RobotMap.backLeft.set(.01);	
-				RobotMap.frontRight.set(.01);
-				RobotMap.backRight.set(.01);
-			}
-			else if(currentAngle < turnGoal * (4/5)){
-				RobotMap.frontLeft.set(.01);
-				RobotMap.backLeft.set(.01);
-				RobotMap.frontRight.set(.01);
-				RobotMap.backRight.set(.01);
-			}
-			else if(currentAngle >= turnGoal){
-				RobotMap.frontLeft.set(0);
-				RobotMap.backLeft.set(0);	
-				RobotMap.frontRight.set(0);
-				RobotMap.backRight.set(0);				
-				isDone = true;
-			}
-		}
-	}
-
-	public void leftTurn(double turnGoal){
-		while(!isDone){
-			// do the opposite of turn right ya feel
-		}
-	}
+    protected void end() {
+		RobotMap.frontLeft.set(0);
+		RobotMap.backLeft.set(0);	
+		RobotMap.frontRight.set(0);
+		RobotMap.backRight.set(0);
+    	end();
+    }
 }

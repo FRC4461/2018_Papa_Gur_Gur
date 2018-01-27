@@ -1,45 +1,25 @@
 package org.usfirst.frc4461.PapaGurGur.commands;
 
+import org.usfirst.frc4461.PapaGurGur.Robot;
 import org.usfirst.frc4461.PapaGurGur.RobotMap;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
-
 public class GyroTurning {
 	double currentAngle;
-	Gyro gyro;
 	boolean isDone;
 	double kAngleSetpoint = 0.0;
 	
-	
 	public GyroTurning(){
-		gyro = new AnalogGyro(1);
-	}
-
-	
-	public void nintit(){
-		gyro.reset();
-		double angle = gyro.getAngle();
-		double turningValue = (kAngleSetpoint - gyro.getAngle()) * .003;
-		System.out.println(turningValue);
-
-		double time = System.currentTimeMillis();
-		
-		
-		RobotMap.frontLeft.set(.1);
-		RobotMap.backLeft.set(.1);	
-		RobotMap.frontRight.set(-.1);
-		RobotMap.backRight.set(-.1);
-
 	}
 
 	public void turn(double turnAngle){
-		currentAngle = gyro.getAngle();
+		currentAngle = Robot.gyro.getAngle();
 		double turnGoal = currentAngle + turnAngle;
 
 		isDone = false;
-		
+
 		if (currentAngle < turnGoal){
 			rightTurn(turnGoal);
 		} else if( currentAngle > turnGoal){
@@ -51,7 +31,7 @@ public class GyroTurning {
 
 	public void rightTurn(double turnGoal){
 		while(!isDone){
-			currentAngle = gyro.getAngle();
+			currentAngle = Robot.gyro.getAngle();
 			System.out.println(currentAngle);
 			if(currentAngle < turnGoal * (3/5)){
 				RobotMap.frontLeft.set(.01);

@@ -1,13 +1,6 @@
 package org.usfirst.frc4461.PapaGurGur;
 
-import edu.wpi.cscore.UsbCamera;
-<<<<<<< HEAD
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.AnalogInput;
-=======
-
->>>>>>> c25bb8a96cbb123cd2d883489d55d4a1222cee9c
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.SPI;

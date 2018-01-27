@@ -23,6 +23,6 @@ public class DriveBase extends Subsystem {
     }
 
     public void drive(double lSpeed, double rSpeed){
-    	drive.tankDrive(OI.lJoyGetY(), OI.rJoyGetY());
+    	drive.tankDrive(lSpeed,rSpeed);
     }
 }

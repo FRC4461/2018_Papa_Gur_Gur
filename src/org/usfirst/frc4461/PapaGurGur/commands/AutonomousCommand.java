@@ -7,6 +7,8 @@ public class AutonomousCommand extends Command {
 	double distance = 0;
 	double distanceInTicks = 0;
 	
+	GyroTurning gyroTurning;
+	
 	/**
 	 * @param timeRunArg how long it will run in milliseconds
 	 */
@@ -23,6 +25,7 @@ public class AutonomousCommand extends Command {
 
 	@Override
 	protected void execute() {
+		gyroTurning.nintit();
 	}
 
 	//@Override

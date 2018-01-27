@@ -14,15 +14,17 @@ public class OI {
 
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
     }
+    
+    public static boolean lJoyTriggerDown(){
+    	return lJoy.getTopPressed();
+    }
 
     public static double lJoyGetY(){
-    	double lSpeed = lJoy.getY();
-    	return lSpeed;
+    	return lJoy.getY();
     }
 
     public static double rJoyGetY() {
-        double rSpeed = rJoy.getY();
-        return rSpeed;
+        return rJoy.getY();
     }
 
 }

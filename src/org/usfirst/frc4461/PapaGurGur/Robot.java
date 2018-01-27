@@ -1,9 +1,7 @@
 package org.usfirst.frc4461.PapaGurGur;
 
-<<<<<<< HEAD
 import edu.wpi.cscore.UsbCamera;
-=======
->>>>>>> origin/master
+
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -18,19 +16,16 @@ public class Robot extends IterativeRobot {
     public static Display display;
     
     public void robotInit() {
-    	
-	CameraServer.getInstance().startAutomaticCapture(0);
-    RobotMap.init();
+    	RobotMap.init();
         driveBase = new DriveBase();
         oi = new OI();
 
         display = new Display();
 
         autonomousCommand = new AutonomousCommand();
-        
-        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-        CameraServer.getInstance().startAutomaticCapture(0);
-        camera.setResolution(800, 600);
+
+
+    	CameraServer.getInstance().startAutomaticCapture(0);
     }
 
     public void disabledInit(){

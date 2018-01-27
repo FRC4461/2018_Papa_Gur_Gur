@@ -8,7 +8,7 @@ public class AutonomousCommand extends Command {
 	double distance = 0;
 	double distanceInTicks = 0;
 	
-	GyroTurning gyroTurning;
+	GyroTurn gyroTurning;
 	
 	/**
 	 * @param timeRunArg how long it will run in milliseconds

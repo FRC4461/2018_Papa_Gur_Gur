@@ -12,7 +12,7 @@
 package org.usfirst.frc4461.PapaGurGur.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
-import org.usfirst.frc4461.PapaGurGur.commands.GyroTurning;
+import org.usfirst.frc4461.PapaGurGur.commands.GyroTurn;
 import org.usfirst.frc4461.PapaGurGur.OI;
 import org.usfirst.frc4461.PapaGurGur.Robot;
 
@@ -21,14 +21,14 @@ import org.usfirst.frc4461.PapaGurGur.Robot;
  */
 public class Driving extends Command {
 
-	GyroTurning turn;
+	GyroTurn turn;
 	
     public Driving() {
         requires(Robot.driveBase);
     }
 
     protected void initialize() {
-		turn = new GyroTurning();
+		turn = new GyroTurn();
     }
 
     protected void execute() {

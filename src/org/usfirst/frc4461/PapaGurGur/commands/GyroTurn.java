@@ -3,15 +3,12 @@ package org.usfirst.frc4461.PapaGurGur.commands;
 import org.usfirst.frc4461.PapaGurGur.Robot;
 import org.usfirst.frc4461.PapaGurGur.RobotMap;
 
-import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
-
-public class GyroTurning {
+public class GyroTurn {
 	double currentAngle;
 	boolean isDone;
 	double kAngleSetpoint = 0.0;
 	
-	public GyroTurning(){
+	public GyroTurn(){
 	}
 
 	public void turn(double turnAngle){

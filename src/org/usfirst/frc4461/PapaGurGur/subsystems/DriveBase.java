@@ -17,8 +17,8 @@ public class DriveBase extends Subsystem {
     }
 	
     public DriveBase(){
-		SpeedControllerGroup left = new SpeedControllerGroup(RobotMap.left1, RobotMap.left2);
-		SpeedControllerGroup right = new SpeedControllerGroup(RobotMap.right1, RobotMap.right2);
+		SpeedControllerGroup left = new SpeedControllerGroup(RobotMap.frontLeft, RobotMap.backLeft);
+		SpeedControllerGroup right = new SpeedControllerGroup(RobotMap.frontRight, RobotMap.backRight);
     	drive = new DifferentialDrive(left,right); //4 motor drive
     }
 

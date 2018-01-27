@@ -4,7 +4,6 @@ import org.usfirst.frc4461.PapaGurGur.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
 
-
 public class OI {
     public static Joystick lJoy;
     public static Joystick rJoy;
@@ -15,15 +14,17 @@ public class OI {
 
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
     }
+    
+    public static boolean lJoyTriggerDown(){
+    	return lJoy.getTopPressed();
+    }
 
     public static double lJoyGetY(){
-    	double lSpeed = lJoy.getY();
-    	return lSpeed;
+    	return lJoy.getY();
     }
 
     public static double rJoyGetY() {
-        double rSpeed = rJoy.getY();
-        return rSpeed;
+        return rJoy.getY();
     }
 
 }

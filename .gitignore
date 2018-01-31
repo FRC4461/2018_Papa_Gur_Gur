@@ -57,3 +57,5 @@ bin/
 .*
 !.project
 !.gitignore
+*.jar
+.classpath

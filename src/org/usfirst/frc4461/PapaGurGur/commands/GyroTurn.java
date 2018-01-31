@@ -1,21 +1,18 @@
 package org.usfirst.frc4461.PapaGurGur.commands;
 
+import org.usfirst.frc4461.PapaGurGur.Robot;
 import org.usfirst.frc4461.PapaGurGur.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 public class GyroTurn extends Command {
-	double currentAngle;
-	boolean isDone;
-	double kAngleSetpoint = 0.0;
-	double degree;
-	double facing;
-	boolean done = false;
-	double deadzone = 1;
-	double speed = .25;
+	private double degreesToTurn;
+	private boolean done = false;
+	private static final double DEAD_ZONE = 1;
+	private static final double SPEED = .25;
 	
-    public GyroTurn(double input){
-    	degree = input;
+    public GyroTurn(double numberOfDegreesToTurn){
+    	degreesToTurn = numberOfDegreesToTurn;
     }
 
     protected void initialize() {
@@ -24,27 +21,27 @@ public class GyroTurn extends Command {
     }
 
     protected void execute() {
-    	facing = RobotMap.gyro.getAngle();    	
-    	if(facing > (degree - deadzone) && facing < (degree + deadzone)) {
+    	double facing = RobotMap.gyro.getAngle();    	
+    	if(facing > (degreesToTurn - DEAD_ZONE) && facing < (degree + DEAD_ZONE)) {
     		RobotMap.frontLeft.set(0);
     		RobotMap.backLeft.set(0);	
     		RobotMap.frontRight.set(0);
     		RobotMap.backRight.set(0);
     		done = true;
     	}
-    	else if(facing < (degree) + deadzone){
-			RobotMap.frontLeft.set(speed);
-			RobotMap.backLeft.set(speed);	
-			RobotMap.frontRight.set(speed);
-			RobotMap.backRight.set(speed);
+    	else if(facing < degreesToTurn){
+			RobotMap.frontLeft.set(SPEED);
+			RobotMap.backLeft.set(SPEED);	
+			RobotMap.frontRight.set(SPEED);
+			RobotMap.backRight.set(SPEED);
 			System.out.println("Facing " + facing);
 			System.out.println("we are going to the RIGHT");
     	}
-    	else if(facing > (degree) - deadzone){
-			RobotMap.frontLeft.set(-speed);
-			RobotMap.backLeft.set(-speed);	
-			RobotMap.frontRight.set(-speed);
-			RobotMap.backRight.set(-speed);
+    	else if(facing > degreesToTurn){
+			RobotMap.frontLeft.set(-SPEED);
+			RobotMap.backLeft.set(-SPEED);	
+			RobotMap.frontRight.set(-SPEED);
+			RobotMap.backRight.set(-SPEED);
 			System.out.println("Facing " + facing);
 			System.out.println("we are going to the left");
     	}

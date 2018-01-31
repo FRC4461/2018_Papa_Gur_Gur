@@ -20,11 +20,14 @@ public class RobotMap {
     	backLeft = new WPI_TalonSRX(2);
     	frontRight = new WPI_TalonSRX(3);
     	backRight = new WPI_TalonSRX(4);
-
+    	
     	//Gyro
         gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
+<<<<<<< HEAD
         
         //Encoder
     	RobotMap.backLeft.set(ControlMode.Position, 1);
+=======
+>>>>>>> origin/master
     }
 }

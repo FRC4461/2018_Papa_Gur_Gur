@@ -8,8 +8,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class GyroTurn extends Command {
 	private double degreesToTurn;
 	private boolean done = false;
-	private static final double DEAD_ZONE = 1;
-	private static final double SPEED = .25;
+	private static double DEAD_ZONE = 1;
+	private static double SPEED = .25;
 	
     public GyroTurn(double numberOfDegreesToTurn){
     	degreesToTurn = numberOfDegreesToTurn;
@@ -22,7 +22,7 @@ public class GyroTurn extends Command {
 
     protected void execute() {
     	double facing = RobotMap.gyro.getAngle();    	
-    	if(facing > (degreesToTurn - DEAD_ZONE) && facing < (degree + DEAD_ZONE)) {
+    	if(facing > (degreesToTurn - DEAD_ZONE) && facing < (degreesToTurn + DEAD_ZONE)) {
     		RobotMap.frontLeft.set(0);
     		RobotMap.backLeft.set(0);	
     		RobotMap.frontRight.set(0);

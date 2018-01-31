@@ -5,6 +5,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class EncoderForward extends CommandGroup {
 
     public EncoderForward() {
-    	addSequential(new EncoderDriveForward(3));
+    	addSequential(new EncoderDriveForward(4 * Math.PI));
     }  
 }

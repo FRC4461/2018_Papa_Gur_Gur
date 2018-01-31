@@ -23,11 +23,8 @@ public class RobotMap {
     	
     	//Gyro
         gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
-<<<<<<< HEAD
         
         //Encoder
     	RobotMap.backLeft.set(ControlMode.Position, 1);
-=======
->>>>>>> origin/master
     }
 }

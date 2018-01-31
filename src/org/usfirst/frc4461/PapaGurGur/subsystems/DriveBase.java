@@ -1,7 +1,6 @@
 
 package org.usfirst.frc4461.PapaGurGur.subsystems;
 
-import org.usfirst.frc4461.PapaGurGur.OI;
 import org.usfirst.frc4461.PapaGurGur.RobotMap;
 import org.usfirst.frc4461.PapaGurGur.commands.*;
 
@@ -24,5 +23,10 @@ public class DriveBase extends Subsystem {
 
     public void drive(double lSpeed, double rSpeed){
     	drive.tankDrive(lSpeed,rSpeed);
+    }
+    
+    public void moveEncoder(int autoMove){
+    	RobotMap.backLeft.setSelectedSensorPosition(0, 0, 0);
+    	RobotMap.backLeft.setSelectedSensorPosition(autoMove, 0, 1);
     }
 }

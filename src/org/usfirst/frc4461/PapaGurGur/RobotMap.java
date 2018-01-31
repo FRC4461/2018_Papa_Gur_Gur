@@ -21,11 +21,8 @@ public class RobotMap {
     	backLeft = new WPI_TalonSRX(2);
     	frontRight = new WPI_TalonSRX(3);
     	backRight = new WPI_TalonSRX(4);
-
+    	
     	//Gyro
         gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
-        
-        //Encoder
-        encoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-          }
+    }
 }

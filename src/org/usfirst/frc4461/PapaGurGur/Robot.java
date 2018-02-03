@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc4461.PapaGurGur.commands.EncoderForward;
 import org.usfirst.frc4461.PapaGurGur.commands.LeftScale;
 import org.usfirst.frc4461.PapaGurGur.commands.LeftSwitch;
+import org.usfirst.frc4461.PapaGurGur.commands.RightScale;
+import org.usfirst.frc4461.PapaGurGur.commands.RightSwitch;
 import org.usfirst.frc4461.PapaGurGur.subsystems.*;
 
 public class Robot extends IterativeRobot {
@@ -22,19 +24,31 @@ public class Robot extends IterativeRobot {
     public static Encoder encoder;
     public static Gyro gyro;
     public static SPI.Port gyroAnalogInput = SPI.Port.kOnboardCS0;
-    SendableChooser <Command> autoChooser;
+    public static SendableChooser<Command> middle;
+    public static SendableChooser<Command> leftSide;
+    public static SendableChooser<Command> rightSide;
+    
+    public void listChoosers(SendableChooser<Command> sendableChooser ) {
+    	sendableChooser.addObject("Left Scale", new LeftScale());
+        sendableChooser.addObject("Left Switch", new LeftSwitch());
+        sendableChooser.addObject("Right Scale", new RightScale());
+        sendableChooser.addObject("Right Switch", new RightSwitch());
+    }
     
     public void robotInit() {
     	RobotMap.init();
         driveBase = new DriveBase();
         display = new Display();
         oi = new OI();
-        autoChooser = new SendableChooser<Command>();
-        autoChooser.addObject("Left Switch", new LeftSwitch());
-        autoChooser.addObject("Left Scale", new LeftScale());
-        autoChooser.addObject("EncoderForward", new EncoderForward());
-        SmartDashboard.putData("Auto Routine", autoChooser);
-        
+        leftSide = new SendableChooser<Command>();
+        middle = new SendableChooser<Command>();
+        rightSide = new SendableChooser<Command>();
+        SmartDashboard.putData("Left Routine", leftSide);
+        SmartDashboard.putData("Middle Routine", middle);
+        SmartDashboard.putData("Right Routine", rightSide);
+        listChoosers(leftSide);
+        listChoosers(middle);
+        listChoosers(rightSide);
     }
 
     public void disabledInit(){
@@ -47,7 +61,7 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousInit() {
-    	autonomousCommand = (Command) autoChooser.getSelected();
+    	autonomousCommand = (Command) leftSide.getSelected();
         if (autonomousCommand != null) 
         	autonomousCommand.start();
     }

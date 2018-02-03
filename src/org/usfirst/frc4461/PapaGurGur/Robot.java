@@ -32,7 +32,7 @@ public class Robot extends IterativeRobot {
         autoChooser = new SendableChooser<Command>();
         autoChooser.addObject("Left Switch", new LeftSwitch());
         autoChooser.addObject("Left Scale", new LeftScale());
-        autoChooser.addObject("EncoderDriveFoward", new EncoderForward());
+        autoChooser.addObject("EncoderForward", new EncoderForward());
         SmartDashboard.putData("Auto Routine", autoChooser);
         
     }

@@ -12,12 +12,12 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 public class DriveBase extends Subsystem {
 	DifferentialDrive drive;
 	
-    public void initDefaultCommand() {
-        setDefaultCommand(new Driving());
-    }
-	
     public DriveBase(){
     	
+    }
+    
+    public void initDefaultCommand() {
+        setDefaultCommand(new Driving());
     }
 
     public void drive(double lSpeed, double rSpeed){

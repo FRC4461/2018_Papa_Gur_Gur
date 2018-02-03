@@ -22,7 +22,7 @@ public class GyroTurn extends Command {
 
     protected void execute() {
     	double facing = RobotMap.gyro.getAngle();    	
-    	if(facing > (degreesToTurn - DEAD_ZONE) && facing < (degreesToTurn + DEAD_ZONE)) {
+    	if(Math.abs(facing) > (Math.abs(degreesToTurn) - DEAD_ZONE) && Math.abs(facing) < (Math.abs(degreesToTurn) + DEAD_ZONE)) {
     		RobotMap.frontLeft.set(0);
     		RobotMap.backLeft.set(0);	
     		RobotMap.frontRight.set(0);

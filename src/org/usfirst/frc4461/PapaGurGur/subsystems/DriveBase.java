@@ -25,7 +25,6 @@ public class DriveBase extends Subsystem {
     	RobotMap.backLeft.set(ControlMode.PercentOutput, lSpeed);
     	RobotMap.frontRight.set(ControlMode.PercentOutput, rSpeed);
     	RobotMap.backRight.set(ControlMode.PercentOutput, rSpeed);
-
     }
     
     public void moveEncoder(int autoMove){

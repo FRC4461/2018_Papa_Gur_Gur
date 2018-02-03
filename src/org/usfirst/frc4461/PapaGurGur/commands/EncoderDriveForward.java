@@ -10,13 +10,12 @@ import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class EncoderDriveForward extends Command {
-	boolean done = false;
 	private static final int COUNTS_PER_REVOLUTION = 4096;
 	private static final double WHEEL_CIRCUMFERENCE = 4 * Math.PI;
 	private static final double GEAR_REDUCTION = 1 / 1;
 	private static final double COUNTS_PER_INCH = 	COUNTS_PER_REVOLUTION * GEAR_REDUCTION /
 													WHEEL_CIRCUMFERENCE;
-
+	private static final int DEAD_ZONE = (int)COUNTS_PER_INCH * 3;
 	private double countsToMove;
 	private int backLeftId = RobotMap.backLeft.getDeviceID();
 
@@ -60,7 +59,11 @@ public class EncoderDriveForward extends Command {
     }
 
     protected boolean isFinished() {
-        return done;
+    	if (RobotMap.backLeft.getSelectedSensorPosition(0) > countsToMove - DEAD_ZONE &&
+			RobotMap.backLeft.getSelectedSensorPosition(0) < countsToMove + DEAD_ZONE) {
+    		return true;
+    	}
+        return false;
     }
 
     protected void end() {

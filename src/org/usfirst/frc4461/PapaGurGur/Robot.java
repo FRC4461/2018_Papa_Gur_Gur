@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc4461.PapaGurGur.commands.EncoderForward;
 import org.usfirst.frc4461.PapaGurGur.commands.LeftScale;
 import org.usfirst.frc4461.PapaGurGur.commands.LeftSwitch;
 import org.usfirst.frc4461.PapaGurGur.commands.RightScale;
@@ -49,6 +48,7 @@ public class Robot extends IterativeRobot {
         listChoosers(leftSide);
         listChoosers(middle);
         listChoosers(rightSide);
+    	RobotMap.compressor.setClosedLoopControl(true);
     }
 
     public void disabledInit(){

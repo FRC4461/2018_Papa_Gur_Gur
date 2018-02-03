@@ -3,14 +3,17 @@ package org.usfirst.frc4461.PapaGurGur;
 import org.usfirst.frc4461.PapaGurGur.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class OI {
-    public static Joystick lJoy;
-    public static Joystick rJoy;
+    public static Joystick lJoy = new Joystick(0);
+    public static Joystick rJoy = new Joystick(1);
+    
+    Button button1 = new JoystickButton(lJoy, 1);
 
-    public OI() {
-        rJoy = new Joystick(1);
-        lJoy = new Joystick(0);
+    public OI() {        
+        button1.whileHeld(new ActivatePneumatics());
 
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
     }
@@ -26,5 +29,4 @@ public class OI {
     public static double rJoyGetY() {
         return rJoy.getY();
     }
-
 }

@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.SPI;
 
 public class RobotMap {
@@ -13,6 +14,8 @@ public class RobotMap {
     public static WPI_TalonSRX backRight;
 
 	public static ADXRS450_Gyro gyro;
+	
+	public static Compressor compressor;
 
     public static void init() {
     	//Drivebase Motors
@@ -26,5 +29,9 @@ public class RobotMap {
         
         //Encoder
     	RobotMap.backLeft.set(ControlMode.Position, 1);
+    	
+    	//Pneumatics Compressor
+    	compressor = new Compressor(0);
+    	
     }
 }

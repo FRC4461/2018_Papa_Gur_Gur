@@ -5,6 +5,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.SPI;
 
 public class RobotMap {
@@ -16,6 +17,8 @@ public class RobotMap {
 	public static ADXRS450_Gyro gyro;
 	
 	public static Compressor compressor;
+	
+	public static DoubleSolenoid doubleSolenoid;
 
     public static void init() {
     	//Drivebase Motors
@@ -32,6 +35,7 @@ public class RobotMap {
     	
     	//Pneumatics Compressor
     	compressor = new Compressor(0);
-    	
+    	//Solenoid
+    	doubleSolenoid = new DoubleSolenoid(0,1);    	
     }
 }

@@ -23,9 +23,10 @@ public class Robot extends IterativeRobot {
     public static Encoder encoder;
     public static Gyro gyro;
     public static SPI.Port gyroAnalogInput = SPI.Port.kOnboardCS0;
-    public static SendableChooser<Command> middle;
-    public static SendableChooser<Command> leftSide;
-    public static SendableChooser<Command> rightSide;
+    public static SendableChooser<Command> LL;
+    public static SendableChooser<Command> LR;
+    public static SendableChooser<Command> RR;
+    public static SendableChooser<Command> RL;
     
     public void listChoosers(SendableChooser<Command> sendableChooser ) {
     	sendableChooser.addObject("Left Scale", new LeftScale());
@@ -39,16 +40,19 @@ public class Robot extends IterativeRobot {
         driveBase = new DriveBase();
         display = new Display();
         oi = new OI();
-        leftSide = new SendableChooser<Command>();
-        middle = new SendableChooser<Command>();
-        rightSide = new SendableChooser<Command>();
-        SmartDashboard.putData("Left Routine", leftSide);
-        SmartDashboard.putData("Middle Routine", middle);
-        SmartDashboard.putData("Right Routine", rightSide);
-        listChoosers(leftSide);
-        listChoosers(middle);
-        listChoosers(rightSide);
-    	RobotMap.compressor.setClosedLoopControl(true);
+        LL = new SendableChooser<Command>();
+        LR = new SendableChooser<Command>();
+        RR = new SendableChooser<Command>();
+        RL = new SendableChooser<Command>();
+        SmartDashboard.putData("LL", LL);
+        SmartDashboard.putData("LR", LR);
+        SmartDashboard.putData("RR", RR);
+        SmartDashboard.putData("RL", RL);
+        listChoosers(LL);
+        listChoosers(LR);
+        listChoosers(RR);
+        listChoosers(RL);
+    	RobotMap.compressor.setClosedLoopControl(true);    	
     }
 
     public void disabledInit(){
@@ -61,7 +65,6 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousInit() {
-    	autonomousCommand = (Command) leftSide.getSelected();
         if (autonomousCommand != null) 
         	autonomousCommand.start();
     }

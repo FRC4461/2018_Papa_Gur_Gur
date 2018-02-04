@@ -12,21 +12,24 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 public class ScheduleCommands extends Command {
 
 	String gameData;
-	SendableChooser<Command> autoChooser = new SendableChooser<Command>();
 	
-    public ScheduleCommands(SendableChooser<Command> sendableChooser) {
-    	autoChooser = sendableChooser;
+    public ScheduleCommands() {
     }
 
     protected void initialize() {
     	gameData = DriverStation.getInstance().getGameSpecificMessage();
     	if (gameData.charAt(0) == 'L') {
     		if(gameData.charAt(1) == 'L') {
-        		autoChooser.getSelected().start();
-    		} else {
+        		Robot.LL.getSelected().start();
+    		} else if(gameData.charAt(1) == 'R') {
+    			Robot.LR.getSelected().start();
     		}
-    	} else {
-    		
+    	} else if(gameData.charAt(0) == 'R'){
+    		if(gameData.charAt(1) == 'R'){
+    			Robot.RR.getSelected().start();
+    		} else if (gameData.charAt(1) == 'R'){
+    			Robot.RL.getSelected().start();
+    		}
     	}
     }
 

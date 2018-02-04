@@ -3,6 +3,7 @@ package org.usfirst.frc4461.PapaGurGur.commands;
 import org.usfirst.frc4461.PapaGurGur.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 /**
  *
@@ -16,7 +17,7 @@ public class ActivatePneumatics extends Command {
     }
 
     protected void execute() {
-    	RobotMap.compressor.setClosedLoopControl(true);
+    	RobotMap.doubleSolenoid.set(DoubleSolenoid.Value.kForward);
     	System.out.println("It's running");
     }
 
@@ -25,7 +26,7 @@ public class ActivatePneumatics extends Command {
     }
 
     protected void end() {
-    	RobotMap.compressor.setClosedLoopControl(false);
+    	RobotMap.doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
     }
 
     protected void interrupted() {

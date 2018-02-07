@@ -52,7 +52,7 @@ public class Robot extends IterativeRobot {
         listChoosers(LR);
         listChoosers(RR);
         listChoosers(RL);
-    	RobotMap.compressor.setClosedLoopControl(true);    	
+    	RobotMap.compressor.setClosedLoopControl(false);
     }
 
     public void disabledInit(){

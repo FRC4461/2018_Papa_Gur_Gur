@@ -11,9 +11,12 @@ public class OI {
     public static Joystick rJoy = new Joystick(1);
     
     Button button1 = new JoystickButton(lJoy, 1);
+    Button button2 = new JoystickButton(lJoy, 2);
 
     public OI() {        
-        button1.whileHeld(new ActivatePneumatics());
+        button1.whileHeld(new ActivateSolenoid());
+        button2.whileHeld(new ActivateCompressor());
+        
 
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
     }

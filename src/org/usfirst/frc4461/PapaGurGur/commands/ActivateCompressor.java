@@ -2,15 +2,17 @@ package org.usfirst.frc4461.PapaGurGur.commands;
 
 import org.usfirst.frc4461.PapaGurGur.RobotMap;
 
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ActivatePneumatics extends Command {
+public class ActivateCompressor extends Command {
 
-    public ActivatePneumatics() {
+    public ActivateCompressor() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
 
     protected void initialize() {
@@ -29,13 +31,11 @@ public class ActivatePneumatics extends Command {
     protected void end() {
     	RobotMap.compressor.setClosedLoopControl(false);
     	System.out.println("ending. going into reverse.");
-    	RobotMap.doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
     	
     }
     // TODO: read solenoid to see if it is actually going to go into reverse
     protected void interrupted() {
     	RobotMap.compressor.setClosedLoopControl(false);
     	System.out.println("ending. going into reverse.");
-    	RobotMap.doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
     }
 }

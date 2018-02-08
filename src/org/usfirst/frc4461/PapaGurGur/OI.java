@@ -15,7 +15,6 @@ public class OI {
 
     public OI() {        
         button1.whileHeld(new ActivateSolenoid());
-        button2.whileHeld(new ActivateCompressor());
         
 
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());

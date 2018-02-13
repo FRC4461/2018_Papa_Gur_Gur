@@ -8,8 +8,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class GyroTurn extends Command {
 	private double degreesToTurn;
 	private boolean done = false;
-	private static final double DEAD_ZONE = 1;
-	private static final double SPEED = .25;
+	private static final double DEAD_ZONE = 1.5;
+	private static final double SPEED = .3;
 	
     public GyroTurn(double numberOfDegreesToTurn){
     	degreesToTurn = numberOfDegreesToTurn;
@@ -56,6 +56,5 @@ public class GyroTurn extends Command {
 		RobotMap.backLeft.set(0);	
 		RobotMap.frontRight.set(0);
 		RobotMap.backRight.set(0);
-    	end();
     }
 }

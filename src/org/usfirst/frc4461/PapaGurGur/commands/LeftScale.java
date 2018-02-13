@@ -5,6 +5,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LeftScale extends CommandGroup {
 
     public LeftScale() {
-        addSequential(new GyroTurn(90));
+    	addSequential(new GyroTurn(90));
     }
 }

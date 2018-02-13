@@ -21,8 +21,8 @@ public class DriveBase extends Subsystem {
     }
 
     public void drive(double lSpeed, double rSpeed){
-    	RobotMap.frontLeft.set(ControlMode.PercentOutput, lSpeed);
-    	RobotMap.backLeft.set(ControlMode.PercentOutput, lSpeed);
+    	RobotMap.frontLeft.set(ControlMode.PercentOutput, -lSpeed);
+    	RobotMap.backLeft.set(ControlMode.PercentOutput, -lSpeed);
     	RobotMap.frontRight.set(ControlMode.PercentOutput, rSpeed);
     	RobotMap.backRight.set(ControlMode.PercentOutput, rSpeed);
     }

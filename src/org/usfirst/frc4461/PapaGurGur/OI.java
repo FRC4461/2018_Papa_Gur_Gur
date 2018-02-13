@@ -14,8 +14,7 @@ public class OI {
     Button button2 = new JoystickButton(lJoy, 2);
 
     public OI() {        
-        button1.whileHeld(new ActivateSolenoid());
-        
+        button1.whileHeld(new ActivateSolenoid());        
 
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
     }

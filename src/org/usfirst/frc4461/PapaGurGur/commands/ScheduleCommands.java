@@ -4,7 +4,6 @@ import org.usfirst.frc4461.PapaGurGur.Robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 /**
  *
@@ -17,6 +16,7 @@ public class ScheduleCommands extends Command {
     }
 
     protected void initialize() {
+    	System.out.println("Call Scheduler");
     	gameData = DriverStation.getInstance().getGameSpecificMessage();
     	if (gameData.charAt(0) == 'L') {
     		if(gameData.charAt(1) == 'L') {

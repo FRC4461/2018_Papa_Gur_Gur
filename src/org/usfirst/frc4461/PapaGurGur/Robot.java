@@ -13,6 +13,7 @@ import org.usfirst.frc4461.PapaGurGur.commands.LeftScale;
 import org.usfirst.frc4461.PapaGurGur.commands.LeftSwitch;
 import org.usfirst.frc4461.PapaGurGur.commands.RightScale;
 import org.usfirst.frc4461.PapaGurGur.commands.RightSwitch;
+import org.usfirst.frc4461.PapaGurGur.commands.ScheduleCommands;
 import org.usfirst.frc4461.PapaGurGur.subsystems.*;
 
 public class Robot extends IterativeRobot {
@@ -53,6 +54,7 @@ public class Robot extends IterativeRobot {
         listChoosers(RR);
         listChoosers(RL);
     	RobotMap.compressor.setClosedLoopControl(true);
+    	autonomousCommand = new ScheduleCommands();
     }
 
     public void disabledInit(){

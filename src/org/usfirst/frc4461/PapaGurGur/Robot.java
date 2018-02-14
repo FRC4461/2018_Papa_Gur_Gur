@@ -35,7 +35,7 @@ public class Robot extends IterativeRobot {
         sendableChooser.addObject("Right Scale", new RightScale());
         sendableChooser.addObject("Right Switch", new RightSwitch());
     }
-    
+                                            
     public void robotInit() {
     	RobotMap.init();
         driveBase = new DriveBase();

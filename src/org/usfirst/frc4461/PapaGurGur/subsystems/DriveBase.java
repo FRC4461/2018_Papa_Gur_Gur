@@ -27,8 +27,13 @@ public class DriveBase extends Subsystem {
     	RobotMap.backRight.set(ControlMode.PercentOutput, rSpeed);
     }
     
-    public void moveEncoder(int autoMove){
-    	RobotMap.backLeft.setSelectedSensorPosition(0, 0, 0);
-    	RobotMap.backLeft.setSelectedSensorPosition(autoMove, 0, 1);
+    public void moveEncoder(double countsToMove){
+    	RobotMap.backRight.setInverted(true);
+    	RobotMap.frontRight.setInverted(true);
+    	
+    	RobotMap.backLeft.set(ControlMode.Position, countsToMove);
+    	RobotMap.frontLeft.set(ControlMode.Follower, RobotMap.backLeft.getDeviceID());
+    	RobotMap.frontRight.set(ControlMode.Follower, RobotMap.backLeft.getDeviceID());
+    	RobotMap.backRight.set(ControlMode.Follower, RobotMap.backLeft.getDeviceID());
     }
 }

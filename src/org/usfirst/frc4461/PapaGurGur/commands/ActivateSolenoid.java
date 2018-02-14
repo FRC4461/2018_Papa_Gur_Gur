@@ -27,13 +27,11 @@ public class ActivateSolenoid extends Command {
     // end() never actually gets called because when the button is released it cancels the command
     // that means that interrupted() gets called instead. it does not end "naturally"
     protected void end() {
-    	System.out.println("ending. going into reverse.");
     	RobotMap.doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
     	
     }
     // TODO: read solenoid to see if it is actually going to go into reverse
     protected void interrupted() {
-    	System.out.println("ending. going into reverse.");
     	RobotMap.doubleSolenoid.set(DoubleSolenoid.Value.kForward);
     }
 }

@@ -12,7 +12,6 @@
 package org.usfirst.frc4461.PapaGurGur.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
-import org.usfirst.frc4461.PapaGurGur.commands.GyroTurn;
 import org.usfirst.frc4461.PapaGurGur.OI;
 import org.usfirst.frc4461.PapaGurGur.Robot;
 
@@ -21,14 +20,12 @@ import org.usfirst.frc4461.PapaGurGur.Robot;
  */
 public class Driving extends Command {
 
-	GyroTurn turn;
 	
     public Driving() {
         requires(Robot.driveBase);
     }
 
     protected void initialize() {
-//		turn = new GyroTurn();
     }
 
     protected void execute() {
@@ -42,23 +39,15 @@ public class Driving extends Command {
     	else {
     		Robot.display.showFace();
     	}
-    	
-    	if(OI.lJoyTriggerDown()){
-    		//turn.turn(90);
-    	}
     }
 
-    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;
     }
 
-    // Called once after isFinished returns true
     protected void end() {
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
     protected void interrupted() {
     }
 }

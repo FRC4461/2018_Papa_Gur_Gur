@@ -27,7 +27,7 @@ public class ScheduleCommands extends Command {
     	} else if(gameData.charAt(0) == 'R'){
     		if(gameData.charAt(1) == 'R'){
     			Robot.RR.getSelected().start();
-    		} else if (gameData.charAt(1) == 'R'){
+    		} else if (gameData.charAt(1) == 'L'){
     			Robot.RL.getSelected().start();
     		}
     	}

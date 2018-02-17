@@ -5,6 +5,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LeftSwitch extends CommandGroup {
 
     public LeftSwitch() {
-        addSequential(new GyroTurn(90));
+        addSequential(GyroTurn.turnLeft(90));
     }
 }

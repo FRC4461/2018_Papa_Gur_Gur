@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -22,9 +21,9 @@ public class Robot extends IterativeRobot {
     public static DriveBase driveBase;
     public static Display display;
     public static Encoder encoder;
-    public static Gyro gyro;
     public static Elevator elevator;
     public static Gripper gripper;
+    public static Gyro gyro;
     public static SPI.Port gyroAnalogInput = SPI.Port.kOnboardCS0;
     public static SendableChooser<Command> LL;
     public static SendableChooser<Command> LR;
@@ -45,6 +44,7 @@ public class Robot extends IterativeRobot {
         oi = new OI();
         elevator = new Elevator();
         gripper = new Gripper();
+        gyro = new Gyro();
         LL = new SendableChooser<Command>();
         LR = new SendableChooser<Command>();
         RR = new SendableChooser<Command>();

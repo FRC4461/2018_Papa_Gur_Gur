@@ -1,5 +1,6 @@
 package org.usfirst.frc4461.PapaGurGur.commands;
 
+import org.usfirst.frc4461.PapaGurGur.Robot;
 import org.usfirst.frc4461.PapaGurGur.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -10,17 +11,25 @@ public class GyroTurn extends Command {
 	private static final double DEAD_ZONE = 1.5;
 	private static final double SPEED = .175;
 	
-    public GyroTurn(double numberOfDegreesToTurn){
+    private GyroTurn(double numberOfDegreesToTurn){
     	degreesToTurn = numberOfDegreesToTurn;
+    }
+    
+    public static GyroTurn turnLeft(double degreesToTurn) {
+    	  return new GyroTurn(-degreesToTurn);
+    	}
+    
+    public static GyroTurn turnRight(double degreesToTurn){
+    	return new GyroTurn(degreesToTurn);
     }
 
     protected void initialize() {
-    	RobotMap.gyro.reset();
+    	Robot.gyro.resetGyro();
     	System.out.println("Yes its working");
     }
 
     protected void execute() {
-    	double facing = RobotMap.gyro.getAngle();    	
+    	double facing = Robot.gyro.getAngle();  	
     	if(Math.abs(facing) > (Math.abs(degreesToTurn) - DEAD_ZONE) && Math.abs(facing) < (Math.abs(degreesToTurn) + DEAD_ZONE)) {
     		RobotMap.frontLeft.set(0);
     		RobotMap.backLeft.set(0);	

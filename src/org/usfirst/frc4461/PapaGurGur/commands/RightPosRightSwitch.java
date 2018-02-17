@@ -11,7 +11,7 @@ public class RightPosRightSwitch extends CommandGroup {
     	addSequential(new EncoderDriveForward(100));
     	//DROP CUBE CODE HERE
     	addSequential(new EncoderDriveForward(-10));
-    	addSequential(new GyroTurn(90));
+    	addSequential(GyroTurn.turnRight(90));
     	addSequential(new EncoderDriveForward(40));
     	addSequential(new EncoderDriveForward(100));
     }

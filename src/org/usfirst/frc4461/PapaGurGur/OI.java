@@ -10,11 +10,16 @@ public class OI {
     public static Joystick lJoy = new Joystick(0);
     public static Joystick rJoy = new Joystick(1);
     
-    Button button1 = new JoystickButton(lJoy, 1);
-    Button button2 = new JoystickButton(lJoy, 2);
+    Button lButton1 = new JoystickButton(lJoy, 1);
+    Button lButton2 = new JoystickButton(lJoy, 2);
+    Button rButton1 = new JoystickButton(rJoy, 1);
+    Button rButton2 = new JoystickButton(rJoy, 2);
 
     public OI() {        
-        button1.whileHeld(new ActivateSolenoid());        
+        lButton1.whileHeld(new ElevatorMove(ElevatorMove.Direction.UP));
+        rButton1.whileHeld(new ElevatorMove(ElevatorMove.Direction.DOWN));
+        rButton2.whileHeld(new PrepareToGrabCube());
+        rButton2.whenReleased(new GrabCube());
 
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
     }

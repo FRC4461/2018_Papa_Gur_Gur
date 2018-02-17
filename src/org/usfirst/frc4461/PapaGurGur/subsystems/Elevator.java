@@ -1,5 +1,7 @@
 package org.usfirst.frc4461.PapaGurGur.subsystems;
 
+import org.usfirst.frc4461.PapaGurGur.RobotMap;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -7,23 +9,34 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Elevator extends Subsystem {
 
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+	private double upSpeed = .3;
+	private double downSpeed = .3;
+	private final static double STALL_CURRENT = 130;
+	
 	public Elevator() {
 		
 	}
 	
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+    	
     }
     
-    public void setElevatorPosition() {
-    	
+    public boolean isStalled(){
+    	double current;
+    	current = RobotMap.elevatorMotor.getOutputCurrent();
+    	return current > STALL_CURRENT;
+    }
+    
+    public void stopMotor(){
+    	RobotMap.elevatorMotor.set(0);
+    }
+    
+    public void setElevatorPositionUp() {
+    	RobotMap.elevatorMotor.set(upSpeed);
 	}
     
-    public enum elevatorPositions {
-    	SWITCH, LOSING, NEUTRAL, WINNING
+    public void setElevatorPositionDown(){
+    	RobotMap.elevatorMotor.set(downSpeed);
     }
 }
 

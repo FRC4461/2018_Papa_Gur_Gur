@@ -23,6 +23,8 @@ public class Robot extends IterativeRobot {
     public static Display display;
     public static Encoder encoder;
     public static Gyro gyro;
+    public static Elevator elevator;
+    public static Gripper gripper;
     public static SPI.Port gyroAnalogInput = SPI.Port.kOnboardCS0;
     public static SendableChooser<Command> LL;
     public static SendableChooser<Command> LR;
@@ -41,6 +43,8 @@ public class Robot extends IterativeRobot {
         driveBase = new DriveBase();
         display = new Display();
         oi = new OI();
+        elevator = new Elevator();
+        gripper = new Gripper();
         LL = new SendableChooser<Command>();
         LR = new SendableChooser<Command>();
         RR = new SendableChooser<Command>();

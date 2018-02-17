@@ -13,6 +13,9 @@ public class RobotMap {
     public static WPI_TalonSRX backLeft;
     public static WPI_TalonSRX frontRight;
     public static WPI_TalonSRX backRight;
+    public static WPI_TalonSRX elevatorMotor;
+    public static WPI_TalonSRX gripMotor1;
+    public static WPI_TalonSRX gripMotor2;
 
 	public static ADXRS450_Gyro gyro;
 	
@@ -27,6 +30,12 @@ public class RobotMap {
     	frontRight = new WPI_TalonSRX(3);
     	backRight = new WPI_TalonSRX(4);
     	
+    	//Elevator Motors
+    	elevatorMotor = new WPI_TalonSRX(5);
+    	
+    	//Gripper Motors
+    	gripMotor1 = new WPI_TalonSRX(6);
+    	gripMotor2 = new WPI_TalonSRX(7);
     	//Gyro
         gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
         
@@ -35,6 +44,7 @@ public class RobotMap {
     	
     	//Pneumatics Compressor
     	compressor = new Compressor(0);
+    	
     	//Solenoid
     	doubleSolenoid = new DoubleSolenoid(0,1);    	
     }

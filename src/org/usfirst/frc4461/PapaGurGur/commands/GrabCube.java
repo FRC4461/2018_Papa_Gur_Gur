@@ -24,8 +24,10 @@ public class GrabCube extends Command {
     }
 
     protected void end() {
+    	Robot.gripper.stopMotors();
     }
 
     protected void interrupted() {
+    	Robot.gripper.stopMotors();
     }
 }

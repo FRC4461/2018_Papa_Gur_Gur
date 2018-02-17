@@ -13,6 +13,7 @@ public class PlaceCube extends Command {
     }
 
     protected void initialize() {
+    	setTimeout(1);
     }
 
     protected void execute() {
@@ -20,7 +21,7 @@ public class PlaceCube extends Command {
     }
 
     protected boolean isFinished() {
-        return false;
+        return isTimedOut();
     }
 
     protected void end() {

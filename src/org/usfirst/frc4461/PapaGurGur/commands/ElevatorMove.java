@@ -1,5 +1,6 @@
 package org.usfirst.frc4461.PapaGurGur.commands;
 
+import org.usfirst.frc4461.PapaGurGur.OI;
 import org.usfirst.frc4461.PapaGurGur.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -8,25 +9,22 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ElevatorMove extends Command {
 
-	Direction direction;
 	
-	public enum Direction{
-		UP, DOWN
-	};
 	
-    public ElevatorMove(Direction direction) {
-    	this.direction = direction;
+    public ElevatorMove() {
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-    	if(direction == Direction.UP){
-    		Robot.elevator.setElevatorPositionUp();
-    	}
-    	if(direction == Direction.DOWN){
-    		Robot.elevator.setElevatorPositionDown();
+    	double leftTriggerAxis = OI.getLeftXboxTriggerAxis();
+    	double rightTriggerAxis = OI.getRightXboxTriggerAxis();
+    	double differenceOfAxis = rightTriggerAxis - leftTriggerAxis;
+    	if(differenceOfAxis > 0.1){
+    		Robot.elevator.setElevatorUpSpeed(differenceOfAxis);
+    	} else if(differenceOfAxis < 0.1 ){
+    		Robot.elevator.setElevatorDownSpeed(-differenceOfAxis);
     	}
     }
 

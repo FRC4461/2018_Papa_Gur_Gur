@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc4461.PapaGurGur.commands.ElevatorMove;
 import org.usfirst.frc4461.PapaGurGur.commands.LeftScale;
 import org.usfirst.frc4461.PapaGurGur.commands.LeftSwitch;
 import org.usfirst.frc4461.PapaGurGur.commands.RightScale;
@@ -59,6 +60,7 @@ public class Robot extends IterativeRobot {
         listChoosers(RL);
     	RobotMap.compressor.setClosedLoopControl(true);
     	autonomousCommand = new ScheduleCommands();
+    	elevator.setDefaultCommand(new ElevatorMove());
     }
 
     public void disabledInit(){

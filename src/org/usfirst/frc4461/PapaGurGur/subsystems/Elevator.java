@@ -9,8 +9,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Elevator extends Subsystem {
 
-	private double upSpeed = .3;
-	private double downSpeed = .3;
 	private final static double STALL_CURRENT = 130;
 	
 	public Elevator() {
@@ -31,12 +29,12 @@ public class Elevator extends Subsystem {
     	RobotMap.elevatorMotor.set(0);
     }
     
-    public void setElevatorPositionUp() {
-    	RobotMap.elevatorMotor.set(upSpeed);
+    public void setElevatorUpSpeed(double Speed) {
+    	RobotMap.elevatorMotor.set(Speed);
 	}
     
-    public void setElevatorPositionDown(){
-    	RobotMap.elevatorMotor.set(downSpeed);
+    public void setElevatorDownSpeed(double Speed){
+    	RobotMap.elevatorMotor.set(-Speed);
     }
 }
 

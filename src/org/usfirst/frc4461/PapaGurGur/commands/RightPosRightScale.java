@@ -8,9 +8,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RightPosRightScale extends CommandGroup {
 
     public RightPosRightScale() {
-    	addSequential(new EncoderDriveForward(324));
+    	addSequential(EncoderDrive.goForwardInches(324));
     	addSequential(GyroTurn.turnRight(90));
-    	addSequential(new EncoderDriveForward(5));
-    	//ADD DROP CUBE CODE HERE
+    	addSequential(EncoderDrive.goForwardInches(5));
+    	addSequential(AutonomousElevator.goUp(55));
+    	addSequential(EncoderDrive.goBackwardInches(5));
+    	addSequential(GyroTurn.turnRight(90));
+    	addSequential(AutonomousElevator.goDown(55));
     }
 }

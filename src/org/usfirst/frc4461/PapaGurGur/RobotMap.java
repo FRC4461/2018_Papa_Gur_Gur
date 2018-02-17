@@ -16,7 +16,7 @@ public class RobotMap {
     public static WPI_TalonSRX elevatorMotor;
     public static WPI_TalonSRX gripMotor1;
     public static WPI_TalonSRX gripMotor2;
-
+    
 	public static ADXRS450_Gyro gyro;
 	
 	public static Compressor compressor;
@@ -38,10 +38,7 @@ public class RobotMap {
     	gripMotor2 = new WPI_TalonSRX(7);
     	//Gyro
         gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
-        
-        //Encoder
-    	RobotMap.backLeft.set(ControlMode.Position, 1);
-    	
+            	
     	//Pneumatics Compressor
     	compressor = new Compressor(0);
     	

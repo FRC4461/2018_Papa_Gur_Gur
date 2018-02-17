@@ -9,18 +9,18 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class MiddlePosLeftSwitch extends CommandGroup {
 
     public MiddlePosLeftSwitch() {
-    	addSequential(new EncoderDriveForward(60));
+    	addSequential(EncoderDrive.goForwardInches(60));
     	addSequential(GyroTurn.turnLeft(90));
-    	addSequential(new EncoderDriveForward(40));
+    	addSequential(EncoderDrive.goForwardInches(40));
     	addSequential(GyroTurn.turnRight(90));
-    	addSequential(new EncoderDriveForward(80));
+    	addSequential(EncoderDrive.goForwardInches(40));
     	// add sequential elevator
     	// add sequential drop
     	addSequential(GyroTurn.turnLeft(90));
     	// Double check this will be enough/overboard to pass switch
-    	addSequential(new EncoderDriveForward(40));
+    	addSequential(EncoderDrive.goForwardInches(40));
     	addSequential(GyroTurn.turnRight(90));
     	// Double check this will be enough/overboard to pass line
-    	addSequential(new EncoderDriveForward(50));
+    	addSequential(EncoderDrive.goForwardInches(40));
     }
 }

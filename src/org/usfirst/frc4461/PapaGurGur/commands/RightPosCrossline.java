@@ -8,6 +8,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RightPosCrossline extends CommandGroup {
 
     public RightPosCrossline() {
-    	addSequential(new EncoderDriveForward(200));
+    	addSequential(EncoderDrive.goForwardInches(200));
     }
 }

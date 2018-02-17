@@ -9,14 +9,14 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class MiddlePosLeftScale extends CommandGroup {
 
     public MiddlePosLeftScale() {
-    	addSequential(new EncoderDriveForward(50));
+    	addSequential(EncoderDrive.goForwardInches(50));
     	addSequential(GyroTurn.turnLeft(90));
-    	addSequential(new EncoderDriveForward(132));
+    	addSequential(EncoderDrive.goForwardInches(132));
     	addSequential(GyroTurn.turnLeft(90));
-    	addSequential(new EncoderDriveForward(274));
+    	addSequential(EncoderDrive.goForwardInches(132));
     	addSequential(GyroTurn.turnRight(90));
-    	addSequential(new EncoderDriveForward(15));
-    	//add sequential elevator
-    	//add sequential drop
+    	addSequential(EncoderDrive.goForwardInches(15));
+    	addSequential(AutonomousElevator.goUp(55));
+    	addSequential(new PlaceCube());
     }
 }

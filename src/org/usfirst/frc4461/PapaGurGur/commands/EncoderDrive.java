@@ -8,19 +8,25 @@ import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class EncoderDriveForward extends Command {
+public class EncoderDrive extends Command {
 	private static final int COUNTS_PER_REVOLUTION = 4096;
 	private static final double WHEEL_CIRCUMFERENCE = 6 * Math.PI;
 	private static final double GEAR_REDUCTION = (45/19)*(50 / 14);
-	private static final double COUNTS_PER_INCH = 	COUNTS_PER_REVOLUTION * GEAR_REDUCTION /
-													WHEEL_CIRCUMFERENCE;
+	private static final double COUNTS_PER_INCH = 	COUNTS_PER_REVOLUTION * GEAR_REDUCTION / WHEEL_CIRCUMFERENCE;
 	private static final int DEAD_ZONE = (int)COUNTS_PER_INCH * 3;
 	private double countsToMove;
 
-    public EncoderDriveForward(double inchesToMove){
+    private EncoderDrive(double inchesToMove){
     	countsToMove = inchesToMove * COUNTS_PER_INCH;
     }
-
+    
+    public static EncoderDrive goForwardInches(double inchesToMove){
+    	return new EncoderDrive(inchesToMove);
+    }
+    
+    public static EncoderDrive goBackwardInches(double inchesToMove){
+    	return new EncoderDrive(-inchesToMove);
+    }
     
     protected void initialize() {
     	// We need to change the period for how often we send the feedback

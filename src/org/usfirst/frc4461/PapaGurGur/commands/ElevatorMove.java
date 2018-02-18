@@ -2,8 +2,6 @@ package org.usfirst.frc4461.PapaGurGur.commands;
 
 import org.usfirst.frc4461.PapaGurGur.OI;
 import org.usfirst.frc4461.PapaGurGur.Robot;
-import org.usfirst.frc4461.PapaGurGur.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -14,6 +12,7 @@ public class ElevatorMove extends Command {
 	
 	
     public ElevatorMove() {
+    	requires(Robot.elevator);
     }
 
     protected void initialize() {

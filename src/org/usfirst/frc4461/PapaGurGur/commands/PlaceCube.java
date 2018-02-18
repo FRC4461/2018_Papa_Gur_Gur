@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class PlaceCube extends Command {
 
     public PlaceCube() {
+    	requires(Robot.gripper);
     }
 
     protected void initialize() {

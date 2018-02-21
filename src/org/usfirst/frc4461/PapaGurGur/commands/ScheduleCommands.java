@@ -15,6 +15,12 @@ public class ScheduleCommands extends Command {
     public ScheduleCommands() {
     }
 
+    
+    /**
+     * Gets the game data from the FMS.
+     * We only care about the 2 values to
+     * determine our autonomous routine
+     */
     protected void initialize() {
     	System.out.println("Call Scheduler");
     	gameData = DriverStation.getInstance().getGameSpecificMessage();

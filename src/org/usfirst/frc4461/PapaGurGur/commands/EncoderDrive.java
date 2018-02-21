@@ -31,9 +31,11 @@ public class EncoderDrive extends Command {
 		Robot.driveBase.moveEncoder(countsToMove);
 	}
 
-	// The set functions MUST be in execute because motor safety is off
-	// Motor safety requires that speed be set constantly
-	// Also, PID is set through the website, not in code
+	/** 
+	 * The set functions MUST be in execute because motor safety is off
+	 *  Motor safety requires that speed be set constantly
+	 * Also, PID is set through the website, not in code
+	 */
 	protected void execute() {
 		System.out.println("");
 		System.out.println("sensorPos: " + RobotMap.backLeft.getSelectedSensorPosition(0));
@@ -50,6 +52,7 @@ public class EncoderDrive extends Command {
 
 	protected void end() {
 		Robot.driveBase.resetMotors();
+		Robot.driveBase.stopMotors();
 	}
 
 	protected void interrupted() {

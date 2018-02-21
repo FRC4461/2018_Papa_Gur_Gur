@@ -21,6 +21,9 @@ public class Elevator extends Subsystem {
     	setDefaultCommand(new Driving());
     }
     
+    /**
+     * Configuration for the elevator encoder
+     */
     public void configEncoder(){
     	RobotMap.elevatorMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, 1);
     	RobotMap.elevatorMotor.setSelectedSensorPosition(0, 0, 1);
@@ -29,6 +32,11 @@ public class Elevator extends Subsystem {
     	System.out.println("Elevator Encoder Initialized");
     }
     
+    /**
+     * The motors stall at 134 amps
+     * Set to 130 for some leeway
+     * @return
+     */
     public boolean isStalled(){
     	double current;    
     	current = RobotMap.elevatorMotor.getOutputCurrent();

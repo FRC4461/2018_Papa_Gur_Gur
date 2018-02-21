@@ -9,12 +9,14 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class PlaceCube extends Command {
 
+	private static double TIMEOUT = 1;
+	
     public PlaceCube() {
     	requires(Robot.gripper);
     }
 
     protected void initialize() {
-    	setTimeout(1);
+    	setTimeout(TIMEOUT);
     }
 
     protected void execute() {
@@ -26,10 +28,10 @@ public class PlaceCube extends Command {
     }
 
     protected void end() {
-    	Robot.gripper.stopMotors();
+    	Robot.gripper.stopGripMotors();
     }
 
     protected void interrupted() {
-    	Robot.gripper.stopMotors();
+    	end();
     }
 }

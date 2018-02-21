@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ElevatorMove extends Command {
 
 	
+	private static double DEAD_ZONE = 0.1;
 	
     public ElevatorMove() {
     	requires(Robot.elevator);
@@ -22,9 +23,9 @@ public class ElevatorMove extends Command {
     	double leftTriggerAxis = OI.getLeftXboxTriggerAxis();
     	double rightTriggerAxis = OI.getRightXboxTriggerAxis();
     	double differenceOfAxis = rightTriggerAxis - leftTriggerAxis;
-    	if(differenceOfAxis > 0.1){
+    	if(differenceOfAxis > DEAD_ZONE){
     		Robot.elevator.setElevatorUpSpeed(differenceOfAxis);
-    	} else if(differenceOfAxis < 0.1 ){
+    	} else if(differenceOfAxis < DEAD_ZONE ){
     		Robot.elevator.setElevatorDownSpeed(-differenceOfAxis);
     	}
     }
@@ -38,6 +39,6 @@ public class ElevatorMove extends Command {
     }
 
     protected void interrupted() {
-    	Robot.elevator.stopMotor();
+    	end();
     }
 }

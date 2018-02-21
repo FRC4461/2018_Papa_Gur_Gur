@@ -25,7 +25,7 @@ public class PrepareToGrabCube extends Command {
     }
 
     protected void end(){
-    	Robot.gripper.stopMotors();
+    	Robot.gripper.stopGripMotors();
     }
 
     protected void interrupted() {

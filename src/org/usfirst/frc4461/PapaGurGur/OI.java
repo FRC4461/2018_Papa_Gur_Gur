@@ -13,11 +13,11 @@ public class OI {
 	public static XboxController xBox = new XboxController(2);
 
 	Button lButton1 = new JoystickButton(lJoy, 1);
-	Button lButton2 = new JoystickButton(lJoy, 2);
 	Button rButton1 = new JoystickButton(rJoy, 1);
 	Button rButton2 = new JoystickButton(rJoy, 2);
 
 	public OI() {
+		lButton1.whenPressed(new PlaceCube());
 		rButton2.whileHeld(new PrepareToGrabCube());
 		rButton2.whenReleased(new GrabCube());
 	}

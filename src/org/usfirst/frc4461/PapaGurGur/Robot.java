@@ -1,5 +1,17 @@
 package org.usfirst.frc4461.PapaGurGur;
 
+import org.usfirst.frc4461.PapaGurGur.commands.ElevatorMove;
+import org.usfirst.frc4461.PapaGurGur.commands.MiddlePosLeftSwitch;
+import org.usfirst.frc4461.PapaGurGur.commands.RightPosCrossline;
+import org.usfirst.frc4461.PapaGurGur.commands.RightPosRightScale;
+import org.usfirst.frc4461.PapaGurGur.commands.RightPosRightSwitch;
+import org.usfirst.frc4461.PapaGurGur.commands.ScheduleCommands;
+import org.usfirst.frc4461.PapaGurGur.subsystems.Display;
+import org.usfirst.frc4461.PapaGurGur.subsystems.DriveBase;
+import org.usfirst.frc4461.PapaGurGur.subsystems.Elevator;
+import org.usfirst.frc4461.PapaGurGur.subsystems.Gripper;
+import org.usfirst.frc4461.PapaGurGur.subsystems.Gyro;
+
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.SPI;
@@ -7,14 +19,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import org.usfirst.frc4461.PapaGurGur.commands.ElevatorMove;
-import org.usfirst.frc4461.PapaGurGur.commands.LeftScale;
-import org.usfirst.frc4461.PapaGurGur.commands.LeftSwitch;
-import org.usfirst.frc4461.PapaGurGur.commands.RightScale;
-import org.usfirst.frc4461.PapaGurGur.commands.RightSwitch;
-import org.usfirst.frc4461.PapaGurGur.commands.ScheduleCommands;
-import org.usfirst.frc4461.PapaGurGur.subsystems.*;
 
 public class Robot extends IterativeRobot {
 	Command autonomousCommand;
@@ -32,17 +36,17 @@ public class Robot extends IterativeRobot {
 	public static SendableChooser<Command> RL;
 
 	public void listChoosers(SendableChooser<Command> sendableChooser) {
-		sendableChooser.addObject("Left Scale", new LeftScale());
-		sendableChooser.addObject("Left Switch", new LeftSwitch());
-		sendableChooser.addObject("Right Scale", new RightScale());
-		sendableChooser.addObject("Right Switch", new RightSwitch());
+		sendableChooser.addObject("RightPosRightScale", new RightPosRightScale());
+		sendableChooser.addObject("RightPosRightSwitch", new RightPosRightSwitch());
+		sendableChooser.addObject("RightPosCrossline", new RightPosCrossline());
+		sendableChooser.addObject("MiddlePosLeftSclae", new MiddlePosLeftSwitch());
+		sendableChooser.addObject("MiddlePosLeftSwitch", new MiddlePosLeftSwitch());
 	}
 
 	public void robotInit() {
 		RobotMap.init();
 		driveBase = new DriveBase();
 		display = new Display();
-		oi = new OI();
 		elevator = new Elevator();
 		gripper = new Gripper();
 		gyro = new Gyro();
@@ -61,6 +65,7 @@ public class Robot extends IterativeRobot {
 		RobotMap.compressor.setClosedLoopControl(true);
 		autonomousCommand = new ScheduleCommands();
 		elevator.setDefaultCommand(new ElevatorMove());
+		oi = new OI();
 	}
 
 	public void disabledInit() {

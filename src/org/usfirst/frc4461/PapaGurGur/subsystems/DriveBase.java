@@ -55,6 +55,8 @@ public class DriveBase extends Subsystem {
 		RobotMap.backLeft.setSafetyEnabled(true);
 		RobotMap.backRight.setInverted(false);
 		RobotMap.frontRight.setInverted(false);
+		RobotMap.backLeft.setInverted(false);
+		RobotMap.frontLeft.setInverted(false);
 		System.out.println(RobotMap.backLeft.getSelectedSensorPosition(0));
 	}
 
@@ -66,9 +68,11 @@ public class DriveBase extends Subsystem {
 	}
 
 	public void moveEncoder(double countsToMove) {
-		RobotMap.backRight.setInverted(true);
-		RobotMap.frontRight.setInverted(true);
-
+		RobotMap.backRight.setInverted(false);
+		RobotMap.frontRight.setInverted(false);
+		RobotMap.backLeft.setInverted(true);
+		RobotMap.frontLeft.setInverted(true);
+		
 		RobotMap.backLeft.set(ControlMode.Position, countsToMove);
 		RobotMap.frontLeft.set(ControlMode.Follower, RobotMap.backLeft.getDeviceID());
 		RobotMap.frontRight.set(ControlMode.Follower, RobotMap.backLeft.getDeviceID());

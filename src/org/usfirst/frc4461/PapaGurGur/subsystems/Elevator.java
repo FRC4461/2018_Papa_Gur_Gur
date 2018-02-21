@@ -1,6 +1,7 @@
 package org.usfirst.frc4461.PapaGurGur.subsystems;
 
 import org.usfirst.frc4461.PapaGurGur.RobotMap;
+import org.usfirst.frc4461.PapaGurGur.commands.Driving;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
@@ -14,10 +15,10 @@ public class Elevator extends Subsystem {
 	private final static double STALL_CURRENT = 130;
 	
 	public Elevator() {
-		
 	}
 	
     public void initDefaultCommand() {
+    	setDefaultCommand(new Driving());
     }
     
     public void configEncoder(){

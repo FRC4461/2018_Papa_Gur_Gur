@@ -15,6 +15,7 @@ public class OI {
 	Button lButton1 = new JoystickButton(lJoy, 1);
 	Button rButton1 = new JoystickButton(rJoy, 1);
 	Button rButton2 = new JoystickButton(rJoy, 2);
+	
 
 	public OI() {
 		lButton1.whileHeld(new OpenGripper());

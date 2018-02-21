@@ -1,7 +1,7 @@
 package org.usfirst.frc4461.PapaGurGur.subsystems;
 
 import org.usfirst.frc4461.PapaGurGur.RobotMap;
-import org.usfirst.frc4461.PapaGurGur.commands.Driving;
+import org.usfirst.frc4461.PapaGurGur.commands.ElevatorMove;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
@@ -18,7 +18,7 @@ public class Elevator extends Subsystem {
 	}
 	
     public void initDefaultCommand() {
-    	setDefaultCommand(new Driving());
+    	setDefaultCommand(new ElevatorMove());
     }
     
     /**

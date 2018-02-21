@@ -17,9 +17,10 @@ public class OI {
 	Button rButton2 = new JoystickButton(rJoy, 2);
 
 	public OI() {
-		lButton1.whenPressed(new PlaceCube());
-		rButton2.whileHeld(new PrepareToGrabCube());
-		rButton2.whenReleased(new GrabCube());
+		lButton1.whileHeld(new OpenGripper());
+		lButton1.whenReleased(new CloseGripper());
+		rButton1.whileHeld(new RunIntake());
+		rButton2.whileHeld(new PlaceCube());
 	}
 
 	public static double getRightXboxTriggerAxis() {

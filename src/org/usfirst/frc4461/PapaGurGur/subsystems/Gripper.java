@@ -31,6 +31,7 @@ public class Gripper extends Subsystem {
 	
 	public void RunOuttakeMotors(){
 		RobotMap.gripMotor1.set(OUTTAKE_SPEED);
+		RobotMap.gripMotor2.set(OUTTAKE_SPEED);
 	}
 	
 	public void stopGripMotors(){

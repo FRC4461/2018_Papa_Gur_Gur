@@ -7,20 +7,17 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class PlaceCube extends Command {
+public class OpenGripper extends Command {
 
-	private static double TIMEOUT = 1;
-	
-    public PlaceCube() {
+    public OpenGripper() {
     	requires(Robot.gripper);
     }
 
     protected void initialize() {
-    	setTimeout(TIMEOUT);
     }
 
     protected void execute() {
-    	Robot.gripper.RunOuttakeMotors();
+    	Robot.gripper.OpenGripper();
     }
 
     protected boolean isFinished() {
@@ -28,10 +25,8 @@ public class PlaceCube extends Command {
     }
 
     protected void end() {
-    	Robot.gripper.stopGripMotors();
     }
 
     protected void interrupted() {
-    	end();
     }
 }

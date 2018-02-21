@@ -17,6 +17,5 @@ public class MiddlePosLeftScale extends CommandGroup {
     	addSequential(GyroTurn.turnRight(90));
     	addSequential(EncoderDrive.goForwardInches(15));
     	addSequential(AutonomousElevator.goUp(55));
-    	addSequential(new PlaceCube());
     }
 }

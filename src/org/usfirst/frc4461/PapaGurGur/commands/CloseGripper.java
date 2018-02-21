@@ -7,25 +7,24 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class PrepareToGrabCube extends Command {
+public class CloseGripper extends Command {
 
-    public PrepareToGrabCube() {
+    public CloseGripper() {
+    	requires(Robot.gripper);
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-    	Robot.gripper.RunIntakeMotors();
-    	Robot.gripper.OpenGripper();
+    	Robot.gripper.CloseGripper();
     }
 
     protected boolean isFinished() {
         return false;
     }
 
-    protected void end(){
-    	Robot.gripper.stopGripMotors();
+    protected void end() {
     }
 
     protected void interrupted() {

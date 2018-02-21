@@ -52,10 +52,8 @@ public class Elevator extends Subsystem {
     }
     
     public void resetMotor(){
-    	RobotMap.backLeft.setSafetyEnabled(true);
-    	RobotMap.backRight.setInverted(false);
-    	RobotMap.frontRight.setInverted(false);
-    	System.out.println(RobotMap.backLeft.getSelectedSensorPosition(0));
+    	RobotMap.elevatorMotor.setSafetyEnabled(true);
+    	System.out.println(RobotMap.elevatorMotor.getSelectedSensorPosition(0));
     }
     
     public void setElevatorTarget(double targetPos){

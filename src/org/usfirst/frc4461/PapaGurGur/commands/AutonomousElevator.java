@@ -13,7 +13,7 @@ public class AutonomousElevator extends Command {
 	private static final double GEAR_REDUCTION = 1/63;
 	/** Number of encoder ticks per inch */
 	private static final double COUNTS_PER_INCH = COUNTS_PER_REVOLUTION * GEAR_REDUCTION / WHEEL_CIRCUMFERENCE;
-	private static final int DEAD_ZONE = (int) COUNTS_PER_INCH * 3;
+	private static final int DEAD_ZONE = (int) COUNTS_PER_INCH * 1;
 	private double countsToMove;
 
 	private AutonomousElevator(double inchesToMove) {

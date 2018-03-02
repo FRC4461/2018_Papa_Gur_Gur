@@ -1,18 +1,16 @@
 package org.usfirst.frc4461.PapaGurGur.commands;
 
-import org.usfirst.frc4461.PapaGurGur.subsystems.Gripper;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class RightPosRightScale extends CommandGroup {
+public class LeftPosLeftScale extends CommandGroup {
 
-    public RightPosRightScale() {
+    public LeftPosLeftScale() {
     	addSequential(EncoderDrive.goForwardInches(302));
     	addSequential(new Delay(0));
-    	addSequential(GyroTurn.turnLeft(90));
+    	addSequential(GyroTurn.turnRight(90));
     	addSequential(new Delay(0));
     	addSequential(AutonomousElevator.goUp(55));
     	addSequential(new Delay(0));

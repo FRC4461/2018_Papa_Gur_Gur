@@ -3,18 +3,17 @@ package org.usfirst.frc4461.PapaGurGur.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- * Drops power cube on the wide side of the scale
  *
  */
-public class MiddlePosLeftScale extends CommandGroup {
+public class MiddlePosRightScale extends CommandGroup {
 
-    public MiddlePosLeftScale() {
+    public MiddlePosRightScale() {
     	addSequential(EncoderDrive.goForwardInches(28));
-    	addSequential(GyroTurn.turnLeft(90));
+    	addSequential(GyroTurn.turnRight(90));
     	addSequential(EncoderDrive.goForwardInches(132));
-    	addSequential(GyroTurn.turnRight(90));
+    	addSequential(GyroTurn.turnLeft(90));
     	addSequential(EncoderDrive.goForwardInches(274));
-    	addSequential(GyroTurn.turnRight(90));
+    	addSequential(GyroTurn.turnLeft(90));
     	addSequential(EncoderDrive.goForwardInches(15));
     	addSequential(AutonomousElevator.goUp(55));
     	addSequential(new PlaceCube());

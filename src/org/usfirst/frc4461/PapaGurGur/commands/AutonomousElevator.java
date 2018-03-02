@@ -21,12 +21,12 @@ public class AutonomousElevator extends Command {
 		countsToMove = inchesToMove * COUNTS_PER_INCH;
 	}
 
-	public static AutonomousElevator goDown(double countsToMove) {
-		return new AutonomousElevator(-countsToMove);
+	public static AutonomousElevator goDown(double inchesToMove) {
+		return new AutonomousElevator(-inchesToMove);
 	}
 
-	public static AutonomousElevator goUp(double countsToMove) {
-		return new AutonomousElevator(countsToMove);
+	public static AutonomousElevator goUp(double inchesToMove) {
+		return new AutonomousElevator(inchesToMove);
 	}
 
 	protected void initialize() {

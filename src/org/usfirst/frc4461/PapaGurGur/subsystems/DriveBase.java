@@ -68,6 +68,18 @@ public class DriveBase extends Subsystem {
 		RobotMap.backLeft.setSelectedSensorPosition(0, 0, 1);
 		RobotMap.backLeft.setSensorPhase(true);
 		RobotMap.backLeft.setSafetyEnabled(false);
+		RobotMap.frontLeft.setInverted(true);
+		RobotMap.backLeft.setInverted(true);
+		
+		RobotMap.frontRight.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 1);
+		RobotMap.frontRight.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 1);
+		RobotMap.frontRight.setSelectedSensorPosition(0, 0, 1);
+		RobotMap.frontRight.setSensorPhase(true);
+		RobotMap.frontRight.setSafetyEnabled(false);
+		
+		RobotMap.frontLeft.setSafetyEnabled(false);
+		RobotMap.backLeft.setSafetyEnabled(false);
+
 		System.out.println("encoder initialize");
 	}
 
@@ -76,10 +88,15 @@ public class DriveBase extends Subsystem {
 	 * configuration back to normal for driving
 	 */
 	public void resetMotors() {
+		RobotMap.frontLeft.setSafetyEnabled(true);
 		RobotMap.backLeft.setSafetyEnabled(true);
-		RobotMap.backRight.setInverted(false);
+		RobotMap.frontRight.setSafetyEnabled(true);
+		RobotMap.backLeft.setSafetyEnabled(true);
+		
 		RobotMap.frontRight.setInverted(false);
+		RobotMap.backRight.setInverted(false);
 		RobotMap.frontLeft.setInverted(false);
+		RobotMap.backLeft.setInverted(false);
 		System.out.println(RobotMap.backLeft.getSelectedSensorPosition(0));
 	}
 
@@ -103,14 +120,9 @@ public class DriveBase extends Subsystem {
 	 * @param countsToMove
 	 */
 	public void moveEncoder(double countsToMove) {
-		RobotMap.backRight.setInverted(false);
-		RobotMap.frontRight.setInverted(false);
-		RobotMap.backLeft.setInverted(true);
-		RobotMap.frontLeft.setInverted(true);
-		
 		RobotMap.backLeft.set(ControlMode.Position, countsToMove);
 		RobotMap.frontLeft.set(ControlMode.Follower, RobotMap.backLeft.getDeviceID());
-		RobotMap.frontRight.set(ControlMode.Follower, RobotMap.backLeft.getDeviceID());
-		RobotMap.backRight.set(ControlMode.Follower, RobotMap.backLeft.getDeviceID());
+		RobotMap.frontRight.set(ControlMode.Position, countsToMove);
+		RobotMap.backRight.set(ControlMode.Follower, RobotMap.frontRight.getDeviceID());
 	}
 }

@@ -1,11 +1,12 @@
 package org.usfirst.frc4461.PapaGurGur.commands;
 
+import org.usfirst.frc4461.PapaGurGur.OI;
 import org.usfirst.frc4461.PapaGurGur.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *	
  */
 public class Elevator extends Command {
 
@@ -17,6 +18,12 @@ public class Elevator extends Command {
 	}
 
 	protected void execute() {
+		double elevateSpeed = 0.5;
+
+		if (OI.isAButtonPressed())
+			Robot.LMSystem.ElevatorGoUp(elevateSpeed);
+		if (OI.isBButtonPressedd())
+			Robot.LMSystem.ElevatorGoDown(elevateSpeed);
 	}
 
 	protected boolean isFinished() {
@@ -24,8 +31,10 @@ public class Elevator extends Command {
 	}
 
 	protected void end() {
+		Robot.LMSystem.StopElevator();
 	}
 
 	protected void interrupted() {
+		end();
 	}
 }

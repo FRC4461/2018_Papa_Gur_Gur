@@ -34,4 +34,12 @@ public class OI {
 	public static double rJoyGetY() {
 		return m_RJoy.getY();
 	}
+	
+	public static boolean isAButtonPressed(){
+		return m_Xbox.getAButtonPressed();
+	}
+	
+	public static boolean isBButtonPressedd(){
+		return m_Xbox.getBButtonPressed();
+	}
 }

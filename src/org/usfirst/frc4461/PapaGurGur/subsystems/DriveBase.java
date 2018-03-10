@@ -60,20 +60,20 @@ public class DriveBase extends Subsystem {
 	 * This is the configuration to make the encoders work
 	 */
 	public void ConfigEncoder() {
-		RobotMap.frontLeft.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 1);
-		RobotMap.frontLeft.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, 1);
-		RobotMap.frontLeft.setSelectedSensorPosition(0, 0, 1);
+		RobotMap.frontLeft.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
+		RobotMap.frontLeft.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		RobotMap.frontLeft.setSelectedSensorPosition(0, 0, 10);
 		RobotMap.frontLeft.setSensorPhase(true);
-		RobotMap.frontLeft.setSafetyEnabled(false);
+		RobotMap.frontLeft.setSafetyEnabled(true);
 
-		RobotMap.frontRight.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 1);
-		RobotMap.frontRight.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, 1);
-		RobotMap.frontRight.setSelectedSensorPosition(0, 0, 1);
+		RobotMap.frontRight.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
+		RobotMap.frontRight.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		RobotMap.frontRight.setSelectedSensorPosition(0, 0, 10);
 		RobotMap.frontRight.setSensorPhase(true);
-		RobotMap.frontRight.setSafetyEnabled(false);
+		RobotMap.frontRight.setSafetyEnabled(true);
 
-		RobotMap.backLeft.setSafetyEnabled(false);
-		RobotMap.backRight.setSafetyEnabled(false);
+		RobotMap.backLeft.setSafetyEnabled(true);
+		RobotMap.backRight.setSafetyEnabled(true);
 
 		System.out.println("encoder initialize");
 	}
@@ -92,7 +92,10 @@ public class DriveBase extends Subsystem {
 		RobotMap.backRight.setInverted(false);
 		RobotMap.frontLeft.setInverted(false);
 		RobotMap.backLeft.setInverted(false);
-		System.out.println(RobotMap.backLeft.getSelectedSensorPosition(0));
+		
+		RobotMap.frontRight.setSelectedSensorPosition(0, 0, 10);
+		RobotMap.frontLeft.setSelectedSensorPosition(0, 0, 10);
+
 	}
 
 	/**

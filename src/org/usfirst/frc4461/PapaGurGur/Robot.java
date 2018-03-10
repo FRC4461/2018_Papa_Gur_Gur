@@ -1,12 +1,13 @@
 package org.usfirst.frc4461.PapaGurGur;
 
+import org.usfirst.frc4461.PapaGurGur.commandGroups.CrossLine;
 import org.usfirst.frc4461.PapaGurGur.commandGroups.RightPosRightScale;
 import org.usfirst.frc4461.PapaGurGur.commandGroups.RightPosRightSwitch;
 import org.usfirst.frc4461.PapaGurGur.commands.ScheduleCommands;
 import org.usfirst.frc4461.PapaGurGur.subsystems.Display;
 import org.usfirst.frc4461.PapaGurGur.subsystems.DriveBase;
-import org.usfirst.frc4461.PapaGurGur.subsystems.LMSystem;
-import org.usfirst.frc4461.PapaGurGur.subsystems.ThirdStage;
+import org.usfirst.frc4461.PapaGurGur.subsystems.Elevator;
+import org.usfirst.frc4461.PapaGurGur.subsystems.Gripper;
 import org.usfirst.frc4461.PapaGurGur.subsystems.Gyro;
 
 import edu.wpi.first.wpilibj.Encoder;
@@ -23,8 +24,8 @@ public class Robot extends IterativeRobot {
 	public static DriveBase driveBase;
 	public static Display display;
 	public static Encoder encoder;
-	public static LMSystem LMSystem;
-	public static ThirdStage gripper;
+	public static Elevator LMSystem;
+	public static Gripper gripper;
 	public static Gyro gyro;
 	public static SPI.Port gyroAnalogInput = SPI.Port.kOnboardCS0;
 	public static SendableChooser<Command> LL;
@@ -35,14 +36,15 @@ public class Robot extends IterativeRobot {
 	public void listChoosers(SendableChooser<Command> sendableChooser) {
 		sendableChooser.addObject("RightPosRightScale", new RightPosRightScale());
 		sendableChooser.addObject("RightPosRightSwitch", new RightPosRightSwitch());
+		sendableChooser.addObject("CrossLine", new CrossLine());
 	}
 
 	public void robotInit() {
 		RobotMap.init();
 		driveBase = new DriveBase();
 		display = new Display();
-		LMSystem = new LMSystem();
-		gripper = new ThirdStage();
+		LMSystem = new Elevator();
+		gripper = new Gripper();
 		gyro = new Gyro();
 		oi = new OI();
 		LL = new SendableChooser<Command>();

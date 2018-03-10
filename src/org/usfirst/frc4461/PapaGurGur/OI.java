@@ -12,20 +12,19 @@ public class OI {
 	private static XboxController m_Xbox;
 
 	// Left Joystick Buttons
-	Button lButton1 = new JoystickButton(m_LJoy, 1);
-	Button lButton2 = new JoystickButton(m_LJoy, 2);
-	Button lButton3 = new JoystickButton(m_LJoy, 3);
+	public static Button lButton1 = new JoystickButton(m_LJoy, 1);
+	public static Button lButton2 = new JoystickButton(m_LJoy, 2);
+	public static Button lButton3 = new JoystickButton(m_LJoy, 3);
 
 	// Right Joystick Buttons
-	Button rButton1 = new JoystickButton(m_RJoy, 1);
-	Button rButton2 = new JoystickButton(m_RJoy, 2);
-	Button rButton3 = new JoystickButton(m_RJoy, 3);
+	public static Button rButton1 = new JoystickButton(m_RJoy, 1);
+	public static Button rButton2 = new JoystickButton(m_RJoy, 2);
+	public static Button rButton3 = new JoystickButton(m_RJoy, 3);
 
 	public OI() {
 		m_LJoy = new Joystick(0);
 		m_RJoy = new Joystick(1);
 		m_Xbox = new XboxController(2);
-
 	}
 
 	public static double lJoyGetY() {
@@ -40,7 +39,7 @@ public class OI {
 		return m_Xbox.getAButtonPressed();
 	}
 
-	public static boolean isBButtonPressedd() {
+	public static boolean isBButtonPressed() {
 		return m_Xbox.getBButtonPressed();
 	}
 }

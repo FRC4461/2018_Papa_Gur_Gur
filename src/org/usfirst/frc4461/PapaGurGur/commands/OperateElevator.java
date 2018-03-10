@@ -6,11 +6,13 @@ import org.usfirst.frc4461.PapaGurGur.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *	
+ *
  */
-public class Elevator extends Command {
+public class OperateElevator extends Command {
 
-	public Elevator() {
+	private double elevateSpeed;
+
+	public OperateElevator() {
 		requires(Robot.LMSystem);
 	}
 
@@ -18,7 +20,7 @@ public class Elevator extends Command {
 	}
 
 	protected void execute() {
-		double elevateSpeed = 0.5;
+		elevateSpeed = 0.2;
 
 		if (OI.isAButtonPressed())
 			Robot.LMSystem.ElevatorGoUp(elevateSpeed);

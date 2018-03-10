@@ -25,6 +25,7 @@ public class OI {
 		m_LJoy = new Joystick(0);
 		m_RJoy = new Joystick(1);
 		m_Xbox = new XboxController(2);
+
 	}
 
 	public static double lJoyGetY() {
@@ -34,12 +35,12 @@ public class OI {
 	public static double rJoyGetY() {
 		return m_RJoy.getY();
 	}
-	
-	public static boolean isAButtonPressed(){
+
+	public static boolean isAButtonPressed() {
 		return m_Xbox.getAButtonPressed();
 	}
-	
-	public static boolean isBButtonPressedd(){
+
+	public static boolean isBButtonPressedd() {
 		return m_Xbox.getBButtonPressed();
 	}
 }

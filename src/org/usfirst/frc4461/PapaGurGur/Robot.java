@@ -1,15 +1,12 @@
 package org.usfirst.frc4461.PapaGurGur;
 
-import org.usfirst.frc4461.PapaGurGur.commands.ElevatorMove;
-import org.usfirst.frc4461.PapaGurGur.commands.MiddlePosLeftSwitch;
-import org.usfirst.frc4461.PapaGurGur.commands.RightPosCrossline;
-import org.usfirst.frc4461.PapaGurGur.commands.RightPosRightScale;
-import org.usfirst.frc4461.PapaGurGur.commands.RightPosRightSwitch;
+import org.usfirst.frc4461.PapaGurGur.commandGroups.RightPosRightScale;
+import org.usfirst.frc4461.PapaGurGur.commandGroups.RightPosRightSwitch;
 import org.usfirst.frc4461.PapaGurGur.commands.ScheduleCommands;
 import org.usfirst.frc4461.PapaGurGur.subsystems.Display;
 import org.usfirst.frc4461.PapaGurGur.subsystems.DriveBase;
-import org.usfirst.frc4461.PapaGurGur.subsystems.Elevator;
-import org.usfirst.frc4461.PapaGurGur.subsystems.Gripper;
+import org.usfirst.frc4461.PapaGurGur.subsystems.LMSystem;
+import org.usfirst.frc4461.PapaGurGur.subsystems.ThirdStage;
 import org.usfirst.frc4461.PapaGurGur.subsystems.Gyro;
 
 import edu.wpi.first.wpilibj.Encoder;
@@ -26,8 +23,8 @@ public class Robot extends IterativeRobot {
 	public static DriveBase driveBase;
 	public static Display display;
 	public static Encoder encoder;
-	public static Elevator elevator;
-	public static Gripper gripper;
+	public static LMSystem LMSystem;
+	public static ThirdStage gripper;
 	public static Gyro gyro;
 	public static SPI.Port gyroAnalogInput = SPI.Port.kOnboardCS0;
 	public static SendableChooser<Command> LL;
@@ -38,18 +35,16 @@ public class Robot extends IterativeRobot {
 	public void listChoosers(SendableChooser<Command> sendableChooser) {
 		sendableChooser.addObject("RightPosRightScale", new RightPosRightScale());
 		sendableChooser.addObject("RightPosRightSwitch", new RightPosRightSwitch());
-		sendableChooser.addObject("RightPosCrossline", new RightPosCrossline());
-		sendableChooser.addObject("MiddlePosLeftSclae", new MiddlePosLeftSwitch());
-		sendableChooser.addObject("MiddlePosLeftSwitch", new MiddlePosLeftSwitch());
 	}
 
 	public void robotInit() {
 		RobotMap.init();
 		driveBase = new DriveBase();
 		display = new Display();
-		elevator = new Elevator();
-		gripper = new Gripper();
+		LMSystem = new LMSystem();
+		gripper = new ThirdStage();
 		gyro = new Gyro();
+		oi = new OI();
 		LL = new SendableChooser<Command>();
 		LR = new SendableChooser<Command>();
 		RR = new SendableChooser<Command>();
@@ -64,8 +59,6 @@ public class Robot extends IterativeRobot {
 		listChoosers(RL);
 		RobotMap.compressor.setClosedLoopControl(true);
 		autonomousCommand = new ScheduleCommands();
-		elevator.setDefaultCommand(new ElevatorMove());
-		oi = new OI();
 	}
 
 	public void disabledInit() {

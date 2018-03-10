@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.SPI;
 
 public class RobotMap {
+	// CANTalons
 	public static WPI_TalonSRX frontLeft;
 	public static WPI_TalonSRX backLeft;
 	public static WPI_TalonSRX frontRight;
@@ -16,18 +17,21 @@ public class RobotMap {
 	public static WPI_TalonSRX gripMotor1;
 	public static WPI_TalonSRX gripMotor2;
 
+	// Gyro
 	public static ADXRS450_Gyro gyro;
 
+	// Compressor
 	public static Compressor compressor;
 
+	// Solenoid
 	public static DoubleSolenoid doubleSolenoid;
 
 	public static void init() {
 		// Drivebase Motors
-		frontRight = new WPI_TalonSRX(3);
-		frontLeft = new WPI_TalonSRX(4);
 		backRight = new WPI_TalonSRX(1);
 		backLeft = new WPI_TalonSRX(2);
+		frontRight = new WPI_TalonSRX(3);
+		frontLeft = new WPI_TalonSRX(4);
 
 		// Elevator Motors
 		elevatorMotor = new WPI_TalonSRX(5);

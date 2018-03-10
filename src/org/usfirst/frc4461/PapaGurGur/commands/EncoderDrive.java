@@ -6,47 +6,35 @@ import org.usfirst.frc4461.PapaGurGur.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class EncoderDrive extends Command {
-	private static final int COUNTS_PER_REVOLUTION = 1024;
-	private static final double WHEEL_CIRCUMFERENCE = 6 * Math.PI;
-	private static final double GEAR_REDUCTION = ((45.0 / 19.0) * (50.0 / 14.0));
-	private static final double COUNTS_PER_INCH = COUNTS_PER_REVOLUTION * GEAR_REDUCTION / WHEEL_CIRCUMFERENCE;
-//	private static final int DEAD_ZONE = (int) COUNTS_PER_INCH * 1;
-	private double countsToMove;
-
-	private EncoderDrive(double inchesToMove) {
+	double countsToMove;
+	double leftEncoder;
+	double rightEncoder;
+	boolean done = false;
+		
+	public EncoderDrive(double inchesToMove) {
 		requires(Robot.driveBase);
-		countsToMove = inchesToMove * COUNTS_PER_INCH;
-	}
-
-	public static EncoderDrive goForwardInches(double inchesToMove) {
-		return new EncoderDrive(-inchesToMove);
-	}
-
-	public static EncoderDrive goBackwardInches(double inchesToMove) {
-		return new EncoderDrive(inchesToMove);
+		countsToMove = inchesToMove;
 	}
 
 	protected void initialize() {
 		Robot.driveBase.ConfigEncoder();
-		Robot.driveBase.moveEncoder(countsToMove);
 	}
-
-	/** 
-	 * The set functions MUST be in execute because motor safety is off
-	 *  Motor safety requires that speed be set constantly
-	 * Also, PID is set through the website, not in code
-	 */
 	protected void execute() {
-		System.out.println("");
-		System.out.println("sensorPos: " + RobotMap.backLeft.getSelectedSensorPosition(0) + " , " + RobotMap.frontRight.getSelectedSensorPosition(0));
+		leftEncoder = RobotMap.frontLeft.getSelectedSensorPosition(0);
+		rightEncoder = RobotMap.frontRight.getSelectedSensorPosition(0);
+		System.out.println("left sensor: " + leftEncoder);
+		System.out.println("right sensor: " + rightEncoder);
+		
+		Robot.driveBase.drive(0.3, 0.3);
+		
+		if(leftEncoder > countsToMove && rightEncoder > countsToMove){
+			Robot.driveBase.stopMotors();
+			done = true;
+		}
 	}
 
 	protected boolean isFinished() {
-//		if (Math.abs(RobotMap.backLeft.getSelectedSensorPosition(0)) > Math.abs(countsToMove)){
-//			System.out.println("Done");
-//			return true;
-//		}
-		return false;
+		return done;
 	}
 
 	protected void end() {

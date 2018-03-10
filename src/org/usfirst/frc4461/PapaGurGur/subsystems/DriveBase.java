@@ -21,9 +21,8 @@ public class DriveBase extends Subsystem {
 	}
 
 	/**
-	 * Stops all drivebase motors
-	 * This is useful for encapsulation and you don't have to
-	 * set Every motor to 0 in commands
+	 * Stops all drivebase motors This is useful for encapsulation and you don't
+	 * have to set Every motor to 0 in commands
 	 */
 	public void stopMotors() {
 		RobotMap.frontLeft.set(0);
@@ -33,66 +32,62 @@ public class DriveBase extends Subsystem {
 	}
 
 	/**
-	 * Turns right
-	 * The speeds are set the same because 2 of the motors
-	 * are backwards
+	 * Turns right The speeds are set the same because 2 of the motors are
+	 * backwards
+	 * 
 	 * @param SPEED
 	 */
-	public void turnRight(double SPEED) {
-		RobotMap.frontLeft.set(SPEED);
-		RobotMap.backLeft.set(SPEED);
-		RobotMap.frontRight.set(SPEED);
-		RobotMap.backRight.set(SPEED);
+	public void turnRight(double speed) {
+		RobotMap.frontLeft.set(speed);
+		RobotMap.backLeft.set(speed);
+		RobotMap.frontRight.set(speed);
+		RobotMap.backRight.set(speed);
 	}
 
 	/**
-	 * Turns left
-	 * Speeds are set the same because
-	 * 2 motors are backwards
+	 * Turns left Speeds are set the same because 2 motors are backwards
+	 * 
 	 * @param SPEED
 	 */
-	public void turnLeft(double SPEED) {
-		RobotMap.frontLeft.set(-SPEED);
-		RobotMap.backLeft.set(-SPEED);
-		RobotMap.frontRight.set(-SPEED);
-		RobotMap.backRight.set(-SPEED);
+	public void turnLeft(double speed) {
+		RobotMap.frontLeft.set(-speed);
+		RobotMap.backLeft.set(-speed);
+		RobotMap.frontRight.set(-speed);
+		RobotMap.backRight.set(-speed);
 	}
 
 	/**
-	 * This is the configuration to make the 
-	 * encoders work
+	 * This is the configuration to make the encoders work
 	 */
 	public void ConfigEncoder() {
-		RobotMap.backLeft.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 1);
-		RobotMap.backLeft.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 1);
-		RobotMap.backLeft.setSelectedSensorPosition(0, 0, 1);
-		RobotMap.backLeft.setSensorPhase(true);
-		RobotMap.backLeft.setSafetyEnabled(false);
-		RobotMap.frontLeft.setInverted(true);
-		RobotMap.backLeft.setInverted(true);
-		
+		RobotMap.frontLeft.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 1);
+		RobotMap.frontLeft.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, 1);
+		RobotMap.frontLeft.setSelectedSensorPosition(0, 0, 1);
+		RobotMap.frontLeft.setSensorPhase(true);
+		RobotMap.frontLeft.setSafetyEnabled(false);
+
 		RobotMap.frontRight.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 1);
-		RobotMap.frontRight.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 1);
+		RobotMap.frontRight.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, 1);
 		RobotMap.frontRight.setSelectedSensorPosition(0, 0, 1);
 		RobotMap.frontRight.setSensorPhase(true);
 		RobotMap.frontRight.setSafetyEnabled(false);
-		
-		RobotMap.frontLeft.setSafetyEnabled(false);
+
 		RobotMap.backLeft.setSafetyEnabled(false);
+		RobotMap.backRight.setSafetyEnabled(false);
 
 		System.out.println("encoder initialize");
 	}
 
 	/**
-	 * After autonomous routines, set the 
-	 * configuration back to normal for driving
+	 * After autonomous routines, set the configuration back to normal for
+	 * driving
 	 */
 	public void resetMotors() {
 		RobotMap.frontLeft.setSafetyEnabled(true);
 		RobotMap.backLeft.setSafetyEnabled(true);
 		RobotMap.frontRight.setSafetyEnabled(true);
 		RobotMap.backLeft.setSafetyEnabled(true);
-		
+
 		RobotMap.frontRight.setInverted(false);
 		RobotMap.backRight.setInverted(false);
 		RobotMap.frontLeft.setInverted(false);
@@ -101,8 +96,9 @@ public class DriveBase extends Subsystem {
 	}
 
 	/**
-	 * The command takes in the joystick axis value
-	 * and then sets the motor speed
+	 * The command takes in the joystick axis value and then sets the motor
+	 * speed
+	 * 
 	 * @param lSpeed
 	 * @param rSpeed
 	 */
@@ -114,15 +110,18 @@ public class DriveBase extends Subsystem {
 	}
 
 	/**
-	 * Use encoder ticks to move the robot
-	 * autonomously. Set inverted because 
-	 * of the way the motors are setup
+	 * Use encoder ticks to move the robot autonomously. Set inverted because of
+	 * the way the motors are setup
+	 * 
 	 * @param countsToMove
 	 */
-	public void moveEncoder(double countsToMove) {
-		RobotMap.backLeft.set(ControlMode.Position, countsToMove);
-		RobotMap.frontLeft.set(ControlMode.Follower, RobotMap.backLeft.getDeviceID());
+	public void rightEncoder(double countsToMove) {
 		RobotMap.frontRight.set(ControlMode.Position, countsToMove);
-		RobotMap.backRight.set(ControlMode.Follower, RobotMap.frontRight.getDeviceID());
+		RobotMap.backRight.set(ControlMode.Follower, 3);
+	}
+
+	public void leftEncoder(double countsToMove) {
+		RobotMap.frontLeft.set(ControlMode.Position, -countsToMove);
+		RobotMap.backLeft.set(ControlMode.Follower, RobotMap.frontLeft.getDeviceID());
 	}
 }

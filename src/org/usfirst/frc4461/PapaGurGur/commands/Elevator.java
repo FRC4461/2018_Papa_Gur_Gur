@@ -1,24 +1,26 @@
 package org.usfirst.frc4461.PapaGurGur.commands;
 
+import org.usfirst.frc4461.PapaGurGur.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Delay extends Command {
+/**
+ *
+ */
+public class Elevator extends Command {
 
-	double timeToDelay;
-
-	public Delay(double delayTime) {
-		timeToDelay = delayTime;
+	public Elevator() {
+		requires(Robot.LMSystem);
 	}
 
 	protected void initialize() {
-		setTimeout(timeToDelay);
 	}
 
 	protected void execute() {
 	}
 
 	protected boolean isFinished() {
-		return isTimedOut();
+		return false;
 	}
 
 	protected void end() {

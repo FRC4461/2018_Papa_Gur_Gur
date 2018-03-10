@@ -1,46 +1,37 @@
 package org.usfirst.frc4461.PapaGurGur;
 
-import org.usfirst.frc4461.PapaGurGur.commands.*;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class OI {
-	public static Joystick lJoy = new Joystick(0);
-	public static Joystick rJoy = new Joystick(1);
-	public static XboxController xBox = new XboxController(2);
+	// Controllers
+	private static Joystick m_LJoy;
+	private static Joystick m_RJoy;
+	private static XboxController m_Xbox;
 
-	Button lButton1 = new JoystickButton(lJoy, 1);
-	Button rButton1 = new JoystickButton(rJoy, 1);
-	Button rButton2 = new JoystickButton(rJoy, 2);
-	
+	// Left Joystick Buttons
+	Button lButton1 = new JoystickButton(m_LJoy, 1);
+	Button lButton2 = new JoystickButton(m_LJoy, 2);
+	Button lButton3 = new JoystickButton(m_LJoy, 3);
+
+	// Right Joystick Buttons
+	Button rButton1 = new JoystickButton(m_RJoy, 1);
+	Button rButton2 = new JoystickButton(m_RJoy, 2);
+	Button rButton3 = new JoystickButton(m_RJoy, 3);
 
 	public OI() {
-		lButton1.whileHeld(new OpenGripper());
-		lButton1.whenReleased(new CloseGripper());
-		rButton1.whileHeld(new RunIntake());
-		rButton2.whileHeld(new PlaceCube());
-	}
-
-	public static double getRightXboxTriggerAxis() {
-		return xBox.getTriggerAxis(Hand.kRight);
-	}
-
-	public static double getLeftXboxTriggerAxis() {
-		return xBox.getTriggerAxis(Hand.kLeft);
-	}
-
-	public static boolean lJoyTriggerDown() {
-		return lJoy.getTopPressed();
+		m_LJoy = new Joystick(0);
+		m_RJoy = new Joystick(1);
+		m_Xbox = new XboxController(2);
 	}
 
 	public static double lJoyGetY() {
-		return lJoy.getY();
+		return m_LJoy.getY();
 	}
 
 	public static double rJoyGetY() {
-		return rJoy.getY();
+		return m_RJoy.getY();
 	}
 }

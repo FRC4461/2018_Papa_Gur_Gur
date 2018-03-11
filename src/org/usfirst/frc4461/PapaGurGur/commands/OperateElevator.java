@@ -24,7 +24,7 @@ public class OperateElevator extends Command {
 
 		if (OI.isAButtonPressed())
 			Robot.LMSystem.ElevatorGoUp(elevateSpeed);
-		if (OI.isBButtonPressedd())
+		if (OI.isBButtonPressed())
 			Robot.LMSystem.ElevatorGoDown(elevateSpeed);
 	}
 

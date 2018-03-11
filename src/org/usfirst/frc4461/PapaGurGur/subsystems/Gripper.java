@@ -1,6 +1,5 @@
 package org.usfirst.frc4461.PapaGurGur.subsystems;
 
-import org.usfirst.frc4461.PapaGurGur.Robot;
 import org.usfirst.frc4461.PapaGurGur.RobotMap;
 import org.usfirst.frc4461.PapaGurGur.commands.GripperPneumatics;
 
@@ -9,8 +8,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class ThirdStage extends Subsystem {
-	public ThirdStage() {
+public class Gripper extends Subsystem {
+	public Gripper() {
 	}
 
 	protected void initDefaultCommand() {

@@ -9,9 +9,9 @@ import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class LMSystem extends Subsystem {
+public class Elevator extends Subsystem {
 
-	public LMSystem() {
+	public Elevator() {
 	}
 
 	@Override

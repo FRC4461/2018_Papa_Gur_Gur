@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc4461.PapaGurGur.OI;
 import org.usfirst.frc4461.PapaGurGur.Robot;
+import org.usfirst.frc4461.PapaGurGur.RobotMap;
 
 /**
  *
@@ -21,6 +22,9 @@ public class Driving extends Command {
 		double lSpeed = OI.lJoyGetY();
 		double rSpeed = OI.rJoyGetY();
 		Robot.driveBase.drive(lSpeed, rSpeed);
+		
+		System.out.println("Left: " + RobotMap.frontLeft.getSelectedSensorPosition(0));
+		System.out.println("Right: " + RobotMap.frontRight.getSelectedSensorPosition(0));
 	}
 
 	protected boolean isFinished() {

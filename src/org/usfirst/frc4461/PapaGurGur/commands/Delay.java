@@ -3,26 +3,31 @@ package org.usfirst.frc4461.PapaGurGur.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class Delay extends Command {
-	private double timeToDelay;
+    private double timeToDelay;
 
-	public Delay(double delayTime) {
-		timeToDelay = delayTime;
-	}
+    public Delay(double delayTime) {
+	timeToDelay = delayTime;
+    }
 
-	protected void initialize() {
-		setTimeout(timeToDelay);
-	}
+    @Override
+    protected void initialize() {
+	setTimeout(timeToDelay);
+    }
 
-	protected void execute() {
-	}
+    @Override
+    protected void execute() {
+    }
 
-	protected boolean isFinished() {
-		return isTimedOut();
-	}
+    @Override
+    protected boolean isFinished() {
+	return isTimedOut();
+    }
 
-	protected void end() {
-	}
+    @Override
+    protected void end() {
+    }
 
-	protected void interrupted() {
-	}
+    @Override
+    protected void interrupted() {
+    }
 }

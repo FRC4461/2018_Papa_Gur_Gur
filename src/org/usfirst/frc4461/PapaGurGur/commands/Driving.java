@@ -1,39 +1,44 @@
 package org.usfirst.frc4461.PapaGurGur.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-
 import org.usfirst.frc4461.PapaGurGur.OI;
 import org.usfirst.frc4461.PapaGurGur.Robot;
 import org.usfirst.frc4461.PapaGurGur.RobotMap;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class Driving extends Command {
 
-	public Driving() {
-		requires(Robot.driveBase);
-	}
+    public Driving() {
+	requires(Robot.driveBase);
+    }
 
-	protected void initialize() {
-	}
+    @Override
+    protected void initialize() {
+    }
 
-	protected void execute() {
-		double lSpeed = OI.lJoyGetY();
-		double rSpeed = OI.rJoyGetY();
-		Robot.driveBase.drive(lSpeed, rSpeed);
-		
-		System.out.println("Left: " + RobotMap.frontLeft.getSelectedSensorPosition(0));
-		System.out.println("Right: " + RobotMap.frontRight.getSelectedSensorPosition(0));
-	}
+    @Override
+    protected void execute() {
+	double lSpeed = OI.lJoyGetY();
+	double rSpeed = OI.rJoyGetY();
+	Robot.driveBase.drive(lSpeed, rSpeed);
 
-	protected boolean isFinished() {
-		return false;
-	}
+	System.out.println("Left: " + RobotMap.frontLeft.getSelectedSensorPosition(0));
+	System.out.println("Right: " + RobotMap.frontRight.getSelectedSensorPosition(0));
+    }
 
-	protected void end() {
-	}
+    @Override
+    protected boolean isFinished() {
+	return false;
+    }
 
-	protected void interrupted() {
-	}
+    @Override
+    protected void end() {
+    }
+
+    @Override
+    protected void interrupted() {
+    }
 }

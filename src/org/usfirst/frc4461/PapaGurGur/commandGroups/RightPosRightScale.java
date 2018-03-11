@@ -9,6 +9,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RightPosRightScale extends CommandGroup {
 
     public RightPosRightScale() {
-    	
+
     }
 }

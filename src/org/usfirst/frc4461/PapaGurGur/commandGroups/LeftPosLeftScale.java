@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class LeftPosLeftScale extends CommandGroup {
 
-	public LeftPosLeftScale() {
+    public LeftPosLeftScale() {
 
-	}
+    }
 }

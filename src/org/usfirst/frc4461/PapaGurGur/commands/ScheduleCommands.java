@@ -9,42 +9,47 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ScheduleCommands extends Command {
-	/**
-	 * Gets the game data from the FMS. We only care about the 2 values to
-	 * determine our autonomous routine
-	 */
-	public ScheduleCommands() {
-	}
+    /**
+     * Gets the game data from the FMS. We only care about the 2 values to
+     * determine our autonomous routine
+     */
+    public ScheduleCommands() {
+    }
 
-	protected void initialize() {
-		System.out.println("Call Scheduler");
-		String gameData = DriverStation.getInstance().getGameSpecificMessage();
-		
-		if (gameData.charAt(0) == 'L') {
-			if (gameData.charAt(1) == 'L') {
-				Robot.LL.getSelected().start();
-			} else if (gameData.charAt(1) == 'R') {
-				Robot.LR.getSelected().start();
-			}
-		} else if (gameData.charAt(0) == 'R') {
-			if (gameData.charAt(1) == 'R') {
-				Robot.RR.getSelected().start();
-			} else if (gameData.charAt(1) == 'L') {
-				Robot.RL.getSelected().start();
-			}
-		}
-	}
+    @Override
+    protected void initialize() {
+	System.out.println("Call Scheduler");
+	String gameData = DriverStation.getInstance().getGameSpecificMessage();
 
-	protected void execute() {
+	if (gameData.charAt(0) == 'L') {
+	    if (gameData.charAt(1) == 'L') {
+		Robot.LL.getSelected().start();
+	    } else if (gameData.charAt(1) == 'R') {
+		Robot.LR.getSelected().start();
+	    }
+	} else if (gameData.charAt(0) == 'R') {
+	    if (gameData.charAt(1) == 'R') {
+		Robot.RR.getSelected().start();
+	    } else if (gameData.charAt(1) == 'L') {
+		Robot.RL.getSelected().start();
+	    }
 	}
+    }
 
-	protected boolean isFinished() {
-		return false;
-	}
+    @Override
+    protected void execute() {
+    }
 
-	protected void end() {
-	}
+    @Override
+    protected boolean isFinished() {
+	return false;
+    }
 
-	protected void interrupted() {
-	}
+    @Override
+    protected void end() {
+    }
+
+    @Override
+    protected void interrupted() {
+    }
 }

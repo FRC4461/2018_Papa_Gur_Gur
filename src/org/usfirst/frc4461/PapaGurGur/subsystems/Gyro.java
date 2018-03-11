@@ -9,15 +9,15 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Gyro extends Subsystem {
 
+    @Override
     public void initDefaultCommand() {
     }
-    
-    public double getAngle(){
-    	return RobotMap.gyro.getAngle();
+
+    public double getAngle() {
+	return RobotMap.gyro.getAngle();
     }
-    
-    public void resetGyro(){
-    	RobotMap.gyro.reset();
+
+    public void resetGyro() {
+	RobotMap.gyro.reset();
     }
 }
-

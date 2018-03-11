@@ -9,38 +9,43 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class OperateElevator extends Command {
-	/**
-	 * Command for operating the elevator. The A button brings the elevator up,
-	 * the B button brings the elevator down.
-	 */
-	public OperateElevator() {
-		requires(Robot.elevator);
+    /**
+     * Command for operating the elevator. The A button brings the elevator up,
+     * the B button brings the elevator down.
+     */
+    public OperateElevator() {
+	requires(Robot.elevator);
+    }
+
+    @Override
+    protected void initialize() {
+    }
+
+    @Override
+    protected void execute() {
+	double elevateSpeed = 0.2;
+
+	if (OI.isAButtonPressed()) {
+	    Robot.elevator.elevatorGoUp(elevateSpeed);
 	}
 
-	protected void initialize() {
+	if (OI.isBButtonPressed()) {
+	    Robot.elevator.elevatorGoDown(elevateSpeed);
 	}
+    }
 
-	protected void execute() {
-		double elevateSpeed = 0.2;
+    @Override
+    protected boolean isFinished() {
+	return false;
+    }
 
-		if (OI.isAButtonPressed()) {
-			Robot.elevator.elevatorGoUp(elevateSpeed);
-		}
+    @Override
+    protected void end() {
+	Robot.elevator.stopElevator();
+    }
 
-		if (OI.isBButtonPressed()) {
-			Robot.elevator.elevatorGoDown(elevateSpeed);
-		}
-	}
-
-	protected boolean isFinished() {
-		return false;
-	}
-
-	protected void end() {
-		Robot.elevator.stopElevator();
-	}
-
-	protected void interrupted() {
-		end();
-	}
+    @Override
+    protected void interrupted() {
+	end();
+    }
 }

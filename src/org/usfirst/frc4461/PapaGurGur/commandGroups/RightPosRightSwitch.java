@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class RightPosRightSwitch extends CommandGroup {
 
-	public RightPosRightSwitch() {
+    public RightPosRightSwitch() {
 
-	}
+    }
 }

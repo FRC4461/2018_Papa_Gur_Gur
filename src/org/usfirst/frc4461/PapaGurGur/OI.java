@@ -23,10 +23,10 @@ public class OI {
 	public static Button rButton2 = new JoystickButton(m_RJoy, 2);
 	public static Button rButton3 = new JoystickButton(m_RJoy, 3);
 
-	public OI() {	
+	public OI() {
 		lButton1.whileActive(new RunIntake());
 
-		rButton1.whileActive(new RunOuttake());		
+		rButton1.whileActive(new RunOuttake());
 	}
 
 	public static double lJoyGetY() {

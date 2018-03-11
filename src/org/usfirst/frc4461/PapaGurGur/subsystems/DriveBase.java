@@ -35,7 +35,7 @@ public class DriveBase extends Subsystem {
 	 * Turns right The speeds are set the same because 2 of the motors are
 	 * backwards
 	 * 
-	 * @param SPEED
+	 * @param speed Percent speed to set the motors.
 	 */
 	public void turnRight(double speed) {
 		RobotMap.frontLeft.set(speed);
@@ -47,7 +47,7 @@ public class DriveBase extends Subsystem {
 	/**
 	 * Turns left Speeds are set the same because 2 motors are backwards
 	 * 
-	 * @param SPEED
+	 * @param speed Percent speed to set the motors.
 	 */
 	public void turnLeft(double speed) {
 		RobotMap.frontLeft.set(-speed);
@@ -59,7 +59,7 @@ public class DriveBase extends Subsystem {
 	/**
 	 * This is the configuration to make the encoders work
 	 */
-	public void ConfigEncoder() {
+	public void configEncoder() {
 		RobotMap.frontLeft.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
 		RobotMap.frontLeft.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 		RobotMap.frontLeft.setSelectedSensorPosition(0, 0, 10);
@@ -92,7 +92,7 @@ public class DriveBase extends Subsystem {
 		RobotMap.backRight.setInverted(false);
 		RobotMap.frontLeft.setInverted(false);
 		RobotMap.backLeft.setInverted(false);
-		
+
 		RobotMap.frontRight.setSelectedSensorPosition(0, 0, 10);
 		RobotMap.frontLeft.setSelectedSensorPosition(0, 0, 10);
 

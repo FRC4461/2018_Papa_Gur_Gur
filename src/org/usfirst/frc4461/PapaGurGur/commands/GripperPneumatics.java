@@ -5,13 +5,13 @@ import org.usfirst.frc4461.PapaGurGur.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Opens and closes the gripper.
  */
 public class GripperPneumatics extends Command {
 
 	private boolean isOpen = false;
 
-	/*
+	/**
 	 * Changes the state of the gripper
 	 */
 	public GripperPneumatics() {
@@ -19,7 +19,7 @@ public class GripperPneumatics extends Command {
 		isOpen = !isOpen;
 	}
 
-	/*
+	/**
 	 * Specify directly what state to put the gripper in.
 	 * 
 	 * @param open Set True to open the gripper. Set False to close the gripper.

@@ -10,38 +10,41 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutonomousElevator extends Command {
 	private static final double COUNTS_PER_REVOLUTION = 610;
-	double countsToMove;
+	private double countsToMove;
 
-	double elevatorEncoder;
-	double elevateSpeed = 0.2;
-	double deadZone = 1;
-	boolean done = false;
+	private double elevateSpeed = 0.2;
+	
+	private boolean isDone = false;
 
 	public AutonomousElevator(double inchesToMove) {
 		countsToMove = inchesToMove;
-		requires(Robot.LMSystem);
+		requires(Robot.elevator);
+	}
+	
+	public enum ElevatorPositions{
+		DOWN, SWITCH, SCALE_LOW, SCALE_MIDDLE, SCALE_HIGH
 	}
 
 	protected void initialize() {
-		Robot.LMSystem.ConfigElevatorEncoder();
+		Robot.elevator.configElevatorEncoder();
 	}
 
 	protected void execute() {
-
-		elevatorEncoder = RobotMap.elevatorMotor.getSelectedSensorPosition(0);
+		int elevatorEncoder = RobotMap.elevatorMotor.getSelectedSensorPosition(0);
 		RobotMap.elevatorMotor.set(elevateSpeed);
+		
 		if (elevatorEncoder >= countsToMove) {
-			Robot.LMSystem.StopElevator();
-			done = true;
+			Robot.elevator.stopElevator();
+			isDone = true;
 		}
 	}
 
 	protected boolean isFinished() {
-		return done;
+		return isDone;
 	}
 
 	protected void end() {
-		Robot.LMSystem.StopElevator();
+		Robot.elevator.stopElevator();
 	}
 
 	protected void interrupted() {

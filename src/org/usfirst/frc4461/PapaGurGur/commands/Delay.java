@@ -3,8 +3,7 @@ package org.usfirst.frc4461.PapaGurGur.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class Delay extends Command {
-
-	double timeToDelay;
+	private double timeToDelay;
 
 	public Delay(double delayTime) {
 		timeToDelay = delayTime;

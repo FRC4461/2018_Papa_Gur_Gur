@@ -8,12 +8,16 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.SPI;
 
 public class RobotMap {
-	// CANTalons
+	// Drivebase
 	public static WPI_TalonSRX frontLeft;
 	public static WPI_TalonSRX backLeft;
 	public static WPI_TalonSRX frontRight;
 	public static WPI_TalonSRX backRight;
+
+	// Elevator
 	public static WPI_TalonSRX elevatorMotor;
+
+	// Gripper
 	public static WPI_TalonSRX gripMotor1;
 	public static WPI_TalonSRX gripMotor2;
 

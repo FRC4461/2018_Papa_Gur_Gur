@@ -17,7 +17,7 @@ public class Display extends Subsystem {
 			
 		}
 	}
-	
+
 	enum LastVar {
 		NONE, MUSHROOM, FACE
 	}

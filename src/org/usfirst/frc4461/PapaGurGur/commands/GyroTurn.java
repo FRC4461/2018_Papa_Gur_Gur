@@ -3,21 +3,34 @@ package org.usfirst.frc4461.PapaGurGur.commands;
 import org.usfirst.frc4461.PapaGurGur.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
+/**
+ * Turns the robot based on gyro readings.
+ */
 public class GyroTurn extends Command {
 	private double degreesToTurn;
-	private boolean done = false;
+	private boolean isDone = false;
 	private static final double DEAD_ZONE = 1.5;
 	private static final double SPEED = .175;
 
-	private GyroTurn(double numberOfDegreesToTurn) {
+	private GyroTurn(double degreesToTurn) {
 		requires(Robot.gyro);
-		degreesToTurn = numberOfDegreesToTurn;
+		this.degreesToTurn = degreesToTurn;
 	}
 
+	/**
+	 * Turns the robot to the left by the specified degrees
+	 * 
+	 * @param degreesToTurn Number of degrees to turn by
+	 */
 	public static GyroTurn turnLeft(double degreesToTurn) {
 		return new GyroTurn(-degreesToTurn);
 	}
 
+	/**
+	 * Turns the robot to the right by the specified degrees
+	 * 
+	 * @param degreesToTurn Number of degrees to turn by
+	 */
 	public static GyroTurn turnRight(double degreesToTurn) {
 		return new GyroTurn(degreesToTurn);
 	}
@@ -29,10 +42,11 @@ public class GyroTurn extends Command {
 
 	protected void execute() {
 		double facing = Robot.gyro.getAngle();
+		
 		if (Math.abs(facing) > (Math.abs(degreesToTurn) - DEAD_ZONE)
 				&& Math.abs(facing) < (Math.abs(degreesToTurn) + DEAD_ZONE)) {
 			Robot.driveBase.stopMotors();
-			done = true;
+			isDone = true;
 		} else if (facing < degreesToTurn) {
 			Robot.driveBase.turnRight(SPEED);
 			System.out.println("Facing " + facing);
@@ -45,7 +59,7 @@ public class GyroTurn extends Command {
 	}
 
 	protected boolean isFinished() {
-		return done;
+		return isDone;
 	}
 
 	protected void end() {

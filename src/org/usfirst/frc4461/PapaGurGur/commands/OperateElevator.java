@@ -9,23 +9,27 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class OperateElevator extends Command {
-
-	private double elevateSpeed;
-
+	/**
+	 * Command for operating the elevator. The A button brings the elevator up,
+	 * the B button brings the elevator down.
+	 */
 	public OperateElevator() {
-		requires(Robot.LMSystem);
+		requires(Robot.elevator);
 	}
 
 	protected void initialize() {
 	}
 
 	protected void execute() {
-		elevateSpeed = 0.2;
+		double elevateSpeed = 0.2;
 
-		if (OI.isAButtonPressed())
-			Robot.LMSystem.ElevatorGoUp(elevateSpeed);
-		if (OI.isBButtonPressed())
-			Robot.LMSystem.ElevatorGoDown(elevateSpeed);
+		if (OI.isAButtonPressed()) {
+			Robot.elevator.elevatorGoUp(elevateSpeed);
+		}
+
+		if (OI.isBButtonPressed()) {
+			Robot.elevator.elevatorGoDown(elevateSpeed);
+		}
 	}
 
 	protected boolean isFinished() {
@@ -33,7 +37,7 @@ public class OperateElevator extends Command {
 	}
 
 	protected void end() {
-		Robot.LMSystem.StopElevator();
+		Robot.elevator.stopElevator();
 	}
 
 	protected void interrupted() {

@@ -23,14 +23,14 @@ public class OperateElevator extends Command {
 
     @Override
     protected void execute() {
-	double elevateSpeed = 0.2;
+	double elevateSpeed = 0.6;
 
 	if (OI.isAButtonPressed()) {
-	    Robot.elevator.elevatorGoUp(elevateSpeed);
-	}
-
-	if (OI.isBButtonPressed()) {
-	    Robot.elevator.elevatorGoDown(elevateSpeed);
+	    Robot.elevator.elevatorGoUp(.6);
+	} else if (OI.isBButtonPressed()) {
+	    Robot.elevator.elevatorGoDown(.2);
+	} else {
+	    Robot.elevator.stopElevator();
 	}
     }
 

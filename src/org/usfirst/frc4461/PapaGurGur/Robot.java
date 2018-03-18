@@ -1,6 +1,7 @@
 package org.usfirst.frc4461.PapaGurGur;
 
 import org.usfirst.frc4461.PapaGurGur.commandGroups.CrossLine;
+import org.usfirst.frc4461.PapaGurGur.commandGroups.DoNothing;
 import org.usfirst.frc4461.PapaGurGur.commandGroups.RightPosRightScale;
 import org.usfirst.frc4461.PapaGurGur.commandGroups.RightPosRightSwitch;
 import org.usfirst.frc4461.PapaGurGur.commands.ScheduleCommands;
@@ -34,11 +35,14 @@ public class Robot extends IterativeRobot {
     public static SendableChooser<Command> LR;
     public static SendableChooser<Command> RR;
     public static SendableChooser<Command> RL;
+    public static SendableChooser<Command> Nothing;
 
     public void listChoosers(SendableChooser<Command> sendableChooser) {
 	sendableChooser.addObject("RightPosRightScale", new RightPosRightScale());
 	sendableChooser.addObject("RightPosRightSwitch", new RightPosRightSwitch());
 	sendableChooser.addObject("CrossLine", new CrossLine());
+	sendableChooser.addObject("None", new DoNothing());
+	sendableChooser.addDefault("None", new DoNothing());
     }
 
     @Override
@@ -54,10 +58,12 @@ public class Robot extends IterativeRobot {
 	LR = new SendableChooser<Command>();
 	RR = new SendableChooser<Command>();
 	RL = new SendableChooser<Command>();
+	Nothing = new SendableChooser<Command>();
 	SmartDashboard.putData("LL", LL);
 	SmartDashboard.putData("LR", LR);
 	SmartDashboard.putData("RR", RR);
 	SmartDashboard.putData("RL", RL);
+	SmartDashboard.putData("None", Nothing);
 	listChoosers(LL);
 	listChoosers(LR);
 	listChoosers(RR);

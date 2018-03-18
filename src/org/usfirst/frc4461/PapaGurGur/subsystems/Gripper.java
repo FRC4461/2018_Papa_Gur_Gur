@@ -6,13 +6,14 @@ import org.usfirst.frc4461.PapaGurGur.commands.GripperPneumatics;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
 public class Gripper extends Subsystem {
-    private static final double MOTOR_SPEED = 0.3;
+    private static final double MOTOR_SPEED = 0.6;
 
     public Gripper() {
     }
@@ -24,12 +25,20 @@ public class Gripper extends Subsystem {
 
     public void runIntake() {
 	RobotMap.gripMotor1.set(-MOTOR_SPEED);
-	RobotMap.gripMotor2.set(MOTOR_SPEED);
+	RobotMap.gripMotor2.set(-MOTOR_SPEED);
     }
 
     public void runOuttake() {
 	RobotMap.gripMotor1.set(MOTOR_SPEED);
-	RobotMap.gripMotor2.set(-MOTOR_SPEED);
+	RobotMap.gripMotor2.set(MOTOR_SPEED);
+    }
+    
+    public void openGripper(){
+	RobotMap.doubleSolenoid.set(Value.kReverse);
+    }
+    
+    public void closeGripper(){
+	RobotMap.doubleSolenoid.set(Value.kForward);
     }
 
     public void stopMotors() {

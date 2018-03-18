@@ -10,6 +10,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class CrossLine extends CommandGroup {
 
     public CrossLine() {
-	addSequential(new EncoderDrive(Math.PI * 6 * 2));
+	addSequential(new EncoderDrive(100));
     }
 }

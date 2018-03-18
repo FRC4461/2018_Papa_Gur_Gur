@@ -24,6 +24,7 @@ public class GripperMotors extends Command {
      * Sets the motors to INTAKE, OUTTAKE, or STOP.
      * 
      * @param motorState
+     *          
      *            Use GripperMotorState.INTAKE, GripperMotorState.OUTTAKE, or
      *            GripperMotorState.STOP
      */

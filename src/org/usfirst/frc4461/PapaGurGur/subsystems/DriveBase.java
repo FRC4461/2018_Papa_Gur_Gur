@@ -86,10 +86,10 @@ public class DriveBase extends Subsystem {
      * driving
      */
     public void resetMotors() {
-	RobotMap.frontLeft.setSafetyEnabled(true);
-	RobotMap.backLeft.setSafetyEnabled(true);
-	RobotMap.frontRight.setSafetyEnabled(true);
-	RobotMap.backLeft.setSafetyEnabled(true);
+	RobotMap.frontLeft.setSafetyEnabled(false);
+	RobotMap.backLeft.setSafetyEnabled(false);
+	RobotMap.frontRight.setSafetyEnabled(false);
+	RobotMap.backLeft.setSafetyEnabled(false);
 
 	RobotMap.frontRight.setInverted(false);
 	RobotMap.backRight.setInverted(false);

@@ -1,5 +1,7 @@
 package org.usfirst.frc4461.PapaGurGur;
 
+import org.usfirst.frc4461.PapaGurGur.commands.CloseGripper;
+import org.usfirst.frc4461.PapaGurGur.commands.OpenGripper;
 import org.usfirst.frc4461.PapaGurGur.commands.RunIntake;
 import org.usfirst.frc4461.PapaGurGur.commands.RunOuttake;
 
@@ -25,9 +27,11 @@ public class OI {
     public static Button rButton3 = new JoystickButton(m_RJoy, 3);
 
     public OI() {
-	lButton1.whileActive(new RunIntake());
-
-	rButton1.whileActive(new RunOuttake());
+	lButton1.toggleWhenPressed(new CloseGripper());
+	rButton1.toggleWhenPressed(new OpenGripper());
+	
+	lButton2.toggleWhenPressed(new RunIntake());
+	rButton2.toggleWhenPressed(new RunOuttake());
     }
 
     public static double lJoyGetY() {
@@ -39,10 +43,10 @@ public class OI {
     }
 
     public static boolean isAButtonPressed() {
-	return m_Xbox.getAButtonPressed();
+	return m_Xbox.getAButton();
     }
 
     public static boolean isBButtonPressed() {
-	return m_Xbox.getBButtonPressed();
+	return m_Xbox.getBButton();
     }
 }

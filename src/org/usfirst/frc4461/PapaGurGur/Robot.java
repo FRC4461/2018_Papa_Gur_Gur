@@ -8,7 +8,8 @@ import org.usfirst.frc4461.PapaGurGur.commands.ScheduleCommands;
 import org.usfirst.frc4461.PapaGurGur.subsystems.Display;
 import org.usfirst.frc4461.PapaGurGur.subsystems.DriveBase;
 import org.usfirst.frc4461.PapaGurGur.subsystems.Elevator;
-import org.usfirst.frc4461.PapaGurGur.subsystems.Gripper;
+import org.usfirst.frc4461.PapaGurGur.subsystems.GripMotors;
+import org.usfirst.frc4461.PapaGurGur.subsystems.GripperPneumatics;
 import org.usfirst.frc4461.PapaGurGur.subsystems.Gyro;
 
 import edu.wpi.first.wpilibj.Encoder;
@@ -20,14 +21,17 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
+
     Command autonomousCommand;
+
     public static OI oi;
     public static DriveBase driveBase;
     public static Display display;
     public static Encoder encoder;
     public static Elevator elevator;
-    public static Gripper gripper;
+    public static GripperPneumatics gripper;
     public static Gyro gyro;
+    public static GripMotors gripMotors;
 
     public static SPI.Port gyroAnalogInput = SPI.Port.kOnboardCS0;
 
@@ -48,10 +52,11 @@ public class Robot extends IterativeRobot {
     @Override
     public void robotInit() {
 	RobotMap.init();
+	gripMotors = new GripMotors();
 	driveBase = new DriveBase();
 	display = new Display();
 	elevator = new Elevator();
-	gripper = new Gripper();
+	gripper = new GripperPneumatics();
 	gyro = new Gyro();
 	oi = new OI();
 	LL = new SendableChooser<Command>();
@@ -74,7 +79,6 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void disabledInit() {
-
     }
 
     @Override
@@ -106,6 +110,5 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void testPeriodic() {
-
     }
 }

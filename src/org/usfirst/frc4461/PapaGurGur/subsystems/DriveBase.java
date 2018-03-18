@@ -130,4 +130,11 @@ public class DriveBase extends Subsystem {
 	RobotMap.frontLeft.set(ControlMode.Position, -countsToMove);
 	RobotMap.backLeft.set(ControlMode.Follower, RobotMap.frontLeft.getDeviceID());
     }
+
+    public void EncoderMove(double countsToMove) {
+	RobotMap.frontLeft.set(ControlMode.Position, -countsToMove);
+	RobotMap.backLeft.set(ControlMode.Follower, RobotMap.frontLeft.getDeviceID());
+	RobotMap.frontRight.set(ControlMode.Position, RobotMap.frontLeft.getDeviceID());
+	RobotMap.backRight.set(ControlMode.Position, RobotMap.frontLeft.getDeviceID());
+    }
 }

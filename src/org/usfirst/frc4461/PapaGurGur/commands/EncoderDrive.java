@@ -44,27 +44,11 @@ public class EncoderDrive extends Command {
     @Override
     protected void execute() {
 	int leftEncoder = RobotMap.frontLeft.getSelectedSensorPosition(0);
-//	int rightEncoder = RobotMap.frontRight.getSelectedSensorPosition(0);
-//
-	Robot.driveBase.drive(-LEFT_SPEED, -RIGHT_SPEED);
-//
-//	if (leftEncoder > countsToMove - LEFT_SPEED * OVERSHOOT_MULTIPLIER) {
-//	    RobotMap.backLeft.set(0);
-//	    RobotMap.frontLeft.set(0);
-//	}
-//
-//	if (-rightEncoder > countsToMove - RIGHT_SPEED * OVERSHOOT_MULTIPLIER) {
-//	    RobotMap.backRight.set(0);
-//	    RobotMap.frontRight.set(0);
-//	}
-//
-//	if (leftEncoder > countsToMove - 500 && -rightEncoder > countsToMove - 500) {
-//	    Robot.driveBase.stopMotors();
-//	    isDone = true;
-//	} else {
-//	    System.out.println("right sensor: " + rightEncoder);
-//	    System.out.println("left sensor : " + leftEncoder);
-//	}
+	Robot.driveBase.EncoderMove(countsToMove);
+	if(leftEncoder >= countsToMove){
+	    Robot.driveBase.stopMotors();
+	    isDone = true;
+	}
     }
 
     @Override

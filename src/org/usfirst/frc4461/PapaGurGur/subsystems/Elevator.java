@@ -3,10 +3,6 @@ package org.usfirst.frc4461.PapaGurGur.subsystems;
 import org.usfirst.frc4461.PapaGurGur.RobotMap;
 import org.usfirst.frc4461.PapaGurGur.commands.OperateElevator;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Elevator extends Subsystem {

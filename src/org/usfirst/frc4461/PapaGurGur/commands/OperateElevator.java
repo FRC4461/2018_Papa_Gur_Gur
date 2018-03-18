@@ -9,10 +9,9 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class OperateElevator extends Command {
-    /**
-     * Command for operating the elevator. The A button brings the elevator up,
-     * the B button brings the elevator down.
-     */
+
+    private final double DEAD_ZONE = 0.1;
+
     public OperateElevator() {
 	requires(Robot.elevator);
     }
@@ -23,14 +22,14 @@ public class OperateElevator extends Command {
 
     @Override
     protected void execute() {
-	double elevateSpeed = 0.6;
+	double rightTriggerAxis = OI.rightXboxTrigger();
+	double leftTriggerAxis = OI.leftXboxTrigger();
 
-	if (OI.isAButtonPressed()) {
-	    Robot.elevator.elevatorGoUp(.6);
-	} else if (OI.isBButtonPressed()) {
-	    Robot.elevator.elevatorGoDown(.2);
-	} else {
-	    Robot.elevator.stopElevator();
+	double differenceOfAxis = rightTriggerAxis - leftTriggerAxis;
+	if (differenceOfAxis > DEAD_ZONE) {
+	    Robot.elevator.elevatorGoUp(differenceOfAxis);
+	} else if (differenceOfAxis < DEAD_ZONE) {
+	    Robot.elevator.elevatorGoDown(-differenceOfAxis);
 	}
     }
 

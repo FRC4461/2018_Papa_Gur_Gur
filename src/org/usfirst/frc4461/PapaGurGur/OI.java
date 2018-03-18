@@ -5,6 +5,7 @@ import org.usfirst.frc4461.PapaGurGur.commands.OpenGripper;
 import org.usfirst.frc4461.PapaGurGur.commands.RunIntake;
 import org.usfirst.frc4461.PapaGurGur.commands.RunOuttake;
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -27,11 +28,11 @@ public class OI {
     public static Button rButton3 = new JoystickButton(m_RJoy, 3);
 
     public OI() {
-	lButton1.toggleWhenPressed(new CloseGripper());
-	rButton1.toggleWhenPressed(new OpenGripper());
-	
-	lButton2.toggleWhenPressed(new RunIntake());
-	rButton2.toggleWhenPressed(new RunOuttake());
+	lButton1.toggleWhenPressed(new OpenGripper());
+	rButton1.toggleWhenPressed(new CloseGripper());
+
+	lButton2.toggleWhenPressed(new RunOuttake());
+	rButton2.toggleWhenPressed(new RunIntake());
     }
 
     public static double lJoyGetY() {
@@ -48,5 +49,13 @@ public class OI {
 
     public static boolean isBButtonPressed() {
 	return m_Xbox.getBButton();
+    }
+
+    public static double rightXboxTrigger() {
+	return m_Xbox.getTriggerAxis(Hand.kRight);
+    }
+
+    public static double leftXboxTrigger() {
+	return m_Xbox.getTriggerAxis(Hand.kLeft);
     }
 }

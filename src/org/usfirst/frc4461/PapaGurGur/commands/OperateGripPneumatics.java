@@ -1,5 +1,6 @@
 package org.usfirst.frc4461.PapaGurGur.commands;
 
+import org.usfirst.frc4461.PapaGurGur.OI;
 import org.usfirst.frc4461.PapaGurGur.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -7,9 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class CloseGripper extends Command {
+public class OperateGripPneumatics extends Command {
 
-    public CloseGripper() {
+    public OperateGripPneumatics() {
 	requires(Robot.gripPneumatics);
     }
 
@@ -17,11 +18,18 @@ public class CloseGripper extends Command {
     }
 
     protected void execute() {
-	Robot.gripPneumatics.closeGripper();
+	boolean getAButton = OI.isAButtonPressed();
+	boolean getBButton = OI.isBButtonPressed();
+
+	if (getAButton) {
+	    Robot.gripPneumatics.closeGripper();
+	} else if (getBButton) {
+	    Robot.gripPneumatics.openGripper();
+	}
     }
 
     protected boolean isFinished() {
-        return false;
+	return false;
     }
 
     protected void end() {

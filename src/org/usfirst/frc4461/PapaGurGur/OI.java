@@ -28,11 +28,11 @@ public class OI {
     public static Button rButton3 = new JoystickButton(m_RJoy, 3);
 
     public OI() {
-	lButton1.toggleWhenPressed(new OpenGripper());
-	rButton1.toggleWhenPressed(new CloseGripper());
-
-	lButton2.toggleWhenPressed(new RunOuttake());
-	rButton2.toggleWhenPressed(new RunIntake());
+//	lButton1.toggleWhenPressed(new OpenGripper());
+//	rButton1.toggleWhenPressed(new CloseGripper());
+//
+//	lButton2.toggleWhenPressed(new RunOuttake());
+//	rButton2.toggleWhenPressed(new RunIntake());
     }
 
     public static double lJoyGetY() {
@@ -41,6 +41,14 @@ public class OI {
 
     public static double rJoyGetY() {
 	return m_RJoy.getY();
+    }
+
+    public static boolean getRightBumper() {
+	return m_Xbox.getBumper(Hand.kRight);
+    }
+
+    public static boolean getLeftBumper() {
+	return m_Xbox.getBumper(Hand.kLeft);
     }
 
     public static boolean isAButtonPressed() {

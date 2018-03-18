@@ -1,6 +1,7 @@
 package org.usfirst.frc4461.PapaGurGur.subsystems;
 
 import org.usfirst.frc4461.PapaGurGur.RobotMap;
+import org.usfirst.frc4461.PapaGurGur.commands.OperateGripMotors;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -28,5 +29,6 @@ public class GripMotors extends Subsystem {
     }
 
     public void initDefaultCommand() {
+	setDefaultCommand(new OperateGripMotors());
     }
 }

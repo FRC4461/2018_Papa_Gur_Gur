@@ -2,41 +2,41 @@ package org.usfirst.frc4461.PapaGurGur.commands;
 
 import org.usfirst.frc4461.PapaGurGur.OI;
 import org.usfirst.frc4461.PapaGurGur.Robot;
-import org.usfirst.frc4461.PapaGurGur.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Driving extends Command {
+public class OperateGripMotors extends Command {
 
-    public Driving() {
-	requires(Robot.driveBase);
+    public OperateGripMotors() {
+	requires(Robot.gripMotors);
     }
 
-    @Override
     protected void initialize() {
     }
 
-    @Override
     protected void execute() {
-	double lSpeed = OI.lJoyGetY();
-	double rSpeed = OI.rJoyGetY();
+	boolean rightBumper = OI.getRightBumper();
+	boolean leftBumper = OI.getLeftBumper();
 	
-	Robot.driveBase.drive(lSpeed, rSpeed);
+	if(rightBumper){
+	    Robot.gripMotors.runIntake();
+	} else if (leftBumper){
+	    Robot.gripMotors.runOuttake();
+	} else {
+	    Robot.gripMotors.stopMotors();
+	}
     }
 
-    @Override
     protected boolean isFinished() {
-	return false;
+        return false;
     }
 
-    @Override
     protected void end() {
     }
 
-    @Override
     protected void interrupted() {
     }
 }

@@ -29,7 +29,7 @@ public class Robot extends IterativeRobot {
     public static Display display;
     public static Encoder encoder;
     public static Elevator elevator;
-    public static GripperPneumatics gripper;
+    public static GripperPneumatics gripPneumatics;
     public static Gyro gyro;
     public static GripMotors gripMotors;
 
@@ -57,7 +57,7 @@ public class Robot extends IterativeRobot {
 	driveBase = new DriveBase();
 	display = new Display();
 	elevator = new Elevator();
-	gripper = new GripperPneumatics();
+	gripPneumatics = new GripperPneumatics();
 	gyro = new Gyro();
 	oi = new OI();
 
@@ -77,8 +77,8 @@ public class Robot extends IterativeRobot {
 	listChoosers(LR);
 	listChoosers(RR);
 	listChoosers(RL);
-
-	RobotMap.compressor.setClosedLoopControl(true);
+	
+	Robot.gripPneumatics.turnOnCompressor();
 
 	autonomousCommand = new ScheduleCommands();
     }
@@ -94,6 +94,7 @@ public class Robot extends IterativeRobot {
 
     @Override
     public void autonomousInit() {
+	Robot.elevator.resetElevatorEncoder();
 	if (autonomousCommand != null) {
 	    autonomousCommand.start();
 	}

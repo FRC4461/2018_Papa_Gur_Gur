@@ -18,6 +18,8 @@ public class EncoderDrive extends Command {
     private final static double RAMP_SPEED = 2;
     private final static double LEFT_SPEED = -0.3;
     private final static double RIGHT_SPEED = -0.38;
+    
+    private static final int DEFAULT_TIMEOUT = 3;
 
     private int countsToMove;
 
@@ -30,9 +32,13 @@ public class EncoderDrive extends Command {
      *            The number of inches to move
      */
     public EncoderDrive(double inchesToMove) {
+	this(inchesToMove, DEFAULT_TIMEOUT);
+    }
+    
+    public EncoderDrive(double inchesToMove, int timeOutSec){
 	requires(Robot.driveBase);
 	countsToMove = (int) (COUNTS_PER_INCH * inchesToMove);
-	setTimeout(3);
+	setTimeout(timeOutSec);
     }
 
     @Override

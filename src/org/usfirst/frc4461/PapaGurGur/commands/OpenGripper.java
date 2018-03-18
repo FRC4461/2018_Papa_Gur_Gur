@@ -10,14 +10,14 @@ import edu.wpi.first.wpilibj.command.Command;
 public class OpenGripper extends Command {
 
     public OpenGripper() {
-	requires(Robot.gripper);
+	requires(Robot.gripPneumatics);
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-	Robot.gripper.openGripper();
+	Robot.gripPneumatics.openGripper();
     }
 
     protected boolean isFinished() {

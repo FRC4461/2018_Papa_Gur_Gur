@@ -11,7 +11,7 @@ public class GyroTurn extends Command {
     private double degreesToTurn;
     private boolean isDone = false;
     private static final double DEAD_ZONE = 1.5;
-    private static final double SPEED = .175;
+    private static final double SPEED = .3;
 
     private GyroTurn(double degreesToTurn) {
 	requires(Robot.gyro);

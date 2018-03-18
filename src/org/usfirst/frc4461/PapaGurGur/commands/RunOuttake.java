@@ -30,7 +30,7 @@ public class RunOuttake extends Command {
 
     @Override
     protected void end() {
-	Robot.gripMotors.stopMotors();;
+	Robot.gripMotors.stopMotors();
     }
 
     @Override

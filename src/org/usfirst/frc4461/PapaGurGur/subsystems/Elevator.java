@@ -15,8 +15,6 @@ public class Elevator extends Subsystem {
 	setDefaultCommand(new OperateElevator());
     }
 
-    // TODO: we don't want to use speed here. we need to change this to an
-    // actual position.
     public void elevatorGoUp(double elevateSpeed) {
 	RobotMap.elevatorMotor.set(elevateSpeed);
     }

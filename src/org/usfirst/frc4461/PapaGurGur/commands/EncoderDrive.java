@@ -15,9 +15,9 @@ public class EncoderDrive extends Command {
     private static final double WHEEL_CIRCUMFERENCE = 6 * Math.PI;
     private static final double COUNTS_PER_INCH = COUNTS_PER_WHEEL_REVOLUTION / WHEEL_CIRCUMFERENCE;
 
-    private static final double LEFT_SPEED = 0.3;
-    private static final double RIGHT_SPEED = 0.3;
-    private static final double OVERSHOOT_MULTIPLIER = 6000;
+    private final static double RAMP_SPEED = 2;
+    private final static double LEFT_SPEED = -0.3;
+    private final static double RIGHT_SPEED = -0.38;
 
     private int countsToMove;
 
@@ -37,15 +37,18 @@ public class EncoderDrive extends Command {
 
     @Override
     protected void initialize() {
-	isDone = false;
 	Robot.driveBase.configEncoder();
+	RobotMap.frontLeft.configClosedloopRamp(RAMP_SPEED, 0);
     }
 
     @Override
     protected void execute() {
 	int leftEncoder = RobotMap.frontLeft.getSelectedSensorPosition(0);
-	Robot.driveBase.EncoderMove(countsToMove);
-	if(leftEncoder >= countsToMove){
+	int rightEncoder = RobotMap.frontRight.getSelectedSensorPosition(0);
+	
+	System.out.println("Left: " + " " + leftEncoder + "Right: " + rightEncoder + " " + "Counts To Move: " + countsToMove);
+	Robot.driveBase.drive(LEFT_SPEED, RIGHT_SPEED);
+	if(leftEncoder >= countsToMove && -rightEncoder >= countsToMove){
 	    Robot.driveBase.stopMotors();
 	    isDone = true;
 	}
@@ -53,7 +56,7 @@ public class EncoderDrive extends Command {
 
     @Override
     protected boolean isFinished() {
-	return isDone;
+	return isDone || isTimedOut();
     }
 
     @Override

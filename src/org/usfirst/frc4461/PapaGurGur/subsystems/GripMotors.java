@@ -9,16 +9,17 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class GripMotors extends Subsystem {
 
-    private static final double MOTOR_SPEED = 0.6;
+    private static final double INTAKE_SPEED = 0.75;
+    private static final double OUTTAKE_SPEED = -1;
 
     public void runIntake() {
-	RobotMap.gripMotor1.set(MOTOR_SPEED);
-	RobotMap.gripMotor2.set(MOTOR_SPEED);
+	RobotMap.gripMotor1.set(INTAKE_SPEED);
+	RobotMap.gripMotor2.set(INTAKE_SPEED);
     }
 
     public void runOuttake() {
-	RobotMap.gripMotor1.set(-MOTOR_SPEED);
-	RobotMap.gripMotor2.set(-MOTOR_SPEED);
+	RobotMap.gripMotor1.set(OUTTAKE_SPEED);
+	RobotMap.gripMotor2.set(OUTTAKE_SPEED);
     }
 
     public void stopMotors() {
@@ -27,6 +28,5 @@ public class GripMotors extends Subsystem {
     }
 
     public void initDefaultCommand() {
-
     }
 }

@@ -33,9 +33,9 @@ public class RobotMap {
     public static void init() {
 	// Drivebase Motors
 	backRight = new WPI_TalonSRX(1);
-	backLeft = new WPI_TalonSRX(2);
+	frontLeft = new WPI_TalonSRX(2);
 	frontRight = new WPI_TalonSRX(3);
-	frontLeft = new WPI_TalonSRX(4);
+	backLeft = new WPI_TalonSRX(4);
 
 	// Elevator Motors
 	elevatorMotor = new WPI_TalonSRX(5);

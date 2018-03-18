@@ -67,16 +67,14 @@ public class DriveBase extends Subsystem {
 	RobotMap.frontLeft.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 	RobotMap.frontLeft.setSelectedSensorPosition(0, 0, 10);
 	RobotMap.frontLeft.setSensorPhase(true);
-	RobotMap.frontLeft.setSafetyEnabled(true);
-
+	RobotMap.frontLeft.setSafetyEnabled(false);
+	
 	RobotMap.frontRight.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
 	RobotMap.frontRight.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 	RobotMap.frontRight.setSelectedSensorPosition(0, 0, 10);
 	RobotMap.frontRight.setSensorPhase(true);
-	RobotMap.frontRight.setSafetyEnabled(true);
-
-	RobotMap.backLeft.setSafetyEnabled(true);
-	RobotMap.backRight.setSafetyEnabled(true);
+	RobotMap.frontRight.setSafetyEnabled(false);
+	
 
 	System.out.println("encoder initialize");
     }
@@ -123,7 +121,7 @@ public class DriveBase extends Subsystem {
      */
     public void rightEncoder(double countsToMove) {
 	RobotMap.frontRight.set(ControlMode.Position, countsToMove);
-	RobotMap.backRight.set(ControlMode.Follower, 3);
+	RobotMap.backRight.set(ControlMode.Follower, RobotMap.frontRight.getDeviceID());
     }
 
     public void leftEncoder(double countsToMove) {
@@ -134,7 +132,7 @@ public class DriveBase extends Subsystem {
     public void EncoderMove(double countsToMove) {
 	RobotMap.frontLeft.set(ControlMode.Position, -countsToMove);
 	RobotMap.backLeft.set(ControlMode.Follower, RobotMap.frontLeft.getDeviceID());
-	RobotMap.frontRight.set(ControlMode.Position, RobotMap.frontLeft.getDeviceID());
-	RobotMap.backRight.set(ControlMode.Position, RobotMap.frontLeft.getDeviceID());
+	RobotMap.frontRight.set(ControlMode.Follower, RobotMap.frontLeft.getDeviceID());
+	RobotMap.backRight.set(ControlMode.Follower, RobotMap.frontLeft.getDeviceID());
     }
 }

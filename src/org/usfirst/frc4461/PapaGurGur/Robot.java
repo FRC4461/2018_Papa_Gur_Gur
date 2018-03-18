@@ -52,6 +52,7 @@ public class Robot extends IterativeRobot {
     @Override
     public void robotInit() {
 	RobotMap.init();
+
 	gripMotors = new GripMotors();
 	driveBase = new DriveBase();
 	display = new Display();
@@ -59,21 +60,26 @@ public class Robot extends IterativeRobot {
 	gripper = new GripperPneumatics();
 	gyro = new Gyro();
 	oi = new OI();
+
 	LL = new SendableChooser<Command>();
 	LR = new SendableChooser<Command>();
 	RR = new SendableChooser<Command>();
 	RL = new SendableChooser<Command>();
 	Nothing = new SendableChooser<Command>();
+
 	SmartDashboard.putData("LL", LL);
 	SmartDashboard.putData("LR", LR);
 	SmartDashboard.putData("RR", RR);
 	SmartDashboard.putData("RL", RL);
 	SmartDashboard.putData("None", Nothing);
+
 	listChoosers(LL);
 	listChoosers(LR);
 	listChoosers(RR);
 	listChoosers(RL);
+
 	RobotMap.compressor.setClosedLoopControl(true);
+
 	autonomousCommand = new ScheduleCommands();
     }
 

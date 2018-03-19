@@ -2,8 +2,6 @@ package org.usfirst.frc4461.PapaGurGur.commands;
 
 import org.usfirst.frc4461.PapaGurGur.OI;
 import org.usfirst.frc4461.PapaGurGur.Robot;
-import org.usfirst.frc4461.PapaGurGur.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -11,6 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Driving extends Command {
 
+    private static final double ELEVATOR_HEIGHT_THRESHOLD = 50;
+    
     public Driving() {
 	requires(Robot.driveBase);
     }
@@ -23,8 +23,11 @@ public class Driving extends Command {
     protected void execute() {
 	double lSpeed = OI.lJoyGetY();
 	double rSpeed = OI.rJoyGetY();
+	double elevatorHeight = Robot.elevator.getElevatorHeightInches();
 	
 	Robot.driveBase.drive(lSpeed, rSpeed);
+	if(elevatorHeight > ELEVATOR_HEIGHT_THRESHOLD ){
+	}
     }
 
     @Override

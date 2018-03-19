@@ -3,29 +3,21 @@ package org.usfirst.frc4461.PapaGurGur.commands;
 import java.util.Optional;
 
 import org.usfirst.frc4461.PapaGurGur.Robot;
-import org.usfirst.frc4461.PapaGurGur.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * Command for driving the robot a set number of inches by using encoder counts.
  */
 public class EncoderDrive extends Command {
-    private static final int COUNTS_PER_REVOLUTION = 512;
-    private static final double GEAR_REDUCTION = (45.0 / 19.0) * (50.0 / 14.0);
-    private static final double COUNTS_PER_WHEEL_REVOLUTION = COUNTS_PER_REVOLUTION * GEAR_REDUCTION;
-    private static final double WHEEL_CIRCUMFERENCE = 6 * Math.PI;
-    private static final double COUNTS_PER_INCH = COUNTS_PER_WHEEL_REVOLUTION / WHEEL_CIRCUMFERENCE;
-
-    private final static double RAMP_SPEED = 2;
-    private final static double LEFT_SPEED = -0.3;
-    private final static double RIGHT_SPEED = -0.38;
 
     private static final int DEFAULT_TIMEOUT = 3;
 
-    private int countsToMove;
+    private double countsToMove;
 
     private boolean isDone = false;
+
+    private double leftSpeed;
+    private double rightSpeed;
 
     /**
      * Drives forward based on inches
@@ -39,7 +31,12 @@ public class EncoderDrive extends Command {
 
     public EncoderDrive(double inchesToMove, int timeOutSec) {
 	requires(Robot.driveBase);
-	countsToMove = (int) (COUNTS_PER_INCH * inchesToMove);
+
+	double countsPerInch = Robot.driveBase.getCountsPerInch();
+	countsToMove = countsPerInch * inchesToMove;
+
+	leftSpeed = Robot.driveBase.getLeftSpeed();
+	rightSpeed = Robot.driveBase.getRightSpeed();
 	setTimeout(timeOutSec);
     }
 
@@ -58,17 +55,17 @@ public class EncoderDrive extends Command {
     @Override
     protected void initialize() {
 	Robot.driveBase.configEncoder();
-	RobotMap.frontLeft.configClosedloopRamp(RAMP_SPEED, 0);
+	Robot.driveBase.setDrivingRamp();
     }
 
     @Override
     protected void execute() {
-	int leftEncoder = RobotMap.frontLeft.getSelectedSensorPosition(0);
-	int rightEncoder = RobotMap.frontRight.getSelectedSensorPosition(0);
+	int leftEncoder = Robot.driveBase.getFrontLeftEncoderValue();
+	int rightEncoder = Robot.driveBase.getFrontRightEncoderValue();
 
 	System.out.println(
 		"Left: " + " " + leftEncoder + "Right: " + rightEncoder + " " + "Counts To Move: " + countsToMove);
-	Robot.driveBase.drive(LEFT_SPEED, RIGHT_SPEED);
+	Robot.driveBase.drive(leftSpeed, rightSpeed);
 	if (leftEncoder >= countsToMove && -rightEncoder >= countsToMove) {
 	    Robot.driveBase.stopMotors();
 	    isDone = true;

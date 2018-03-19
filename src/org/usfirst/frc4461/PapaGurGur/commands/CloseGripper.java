@@ -21,11 +21,11 @@ public class CloseGripper extends Command {
     }
 
     protected boolean isFinished() {
-        return false;
+	return false;
     }
 
     protected void end() {
-    }
+    }	
 
     protected void interrupted() {
     }

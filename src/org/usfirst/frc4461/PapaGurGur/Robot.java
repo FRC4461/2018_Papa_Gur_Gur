@@ -77,7 +77,7 @@ public class Robot extends IterativeRobot {
 	listChoosers(LR);
 	listChoosers(RR);
 	listChoosers(RL);
-	
+
 	Robot.gripPneumatics.turnOnCompressor();
 
 	autonomousCommand = new ScheduleCommands();

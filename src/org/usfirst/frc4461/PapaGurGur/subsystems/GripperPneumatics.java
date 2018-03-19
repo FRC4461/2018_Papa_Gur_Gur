@@ -18,8 +18,8 @@ public class GripperPneumatics extends Subsystem {
     protected void initDefaultCommand() {
 	setDefaultCommand(new OperateGripPneumatics());
     }
-    
-    public void turnOnCompressor(){
+
+    public void turnOnCompressor() {
 	RobotMap.compressor.setClosedLoopControl(true);
     }
 

@@ -11,7 +11,18 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class DriveBase extends Subsystem {
+
     DifferentialDrive drive;
+
+    private static final int COUNTS_PER_REVOLUTION = 512;
+    private static final double GEAR_REDUCTION = (45.0 / 19.0) * (50.0 / 14.0);
+    private static final double COUNTS_PER_WHEEL_REVOLUTION = COUNTS_PER_REVOLUTION * GEAR_REDUCTION;
+    private static final double WHEEL_CIRCUMFERENCE = 6 * Math.PI;
+    private static final double COUNTS_PER_INCH = COUNTS_PER_WHEEL_REVOLUTION / WHEEL_CIRCUMFERENCE;
+
+    private final static double RAMP_SPEED = 2;
+    private final static double LEFT_SPEED = -0.3;
+    private final static double RIGHT_SPEED = -0.38;
 
     public DriveBase() {
     }
@@ -19,6 +30,25 @@ public class DriveBase extends Subsystem {
     @Override
     public void initDefaultCommand() {
 	setDefaultCommand(new Driving());
+    }
+
+    public void setDrivingRamp() {
+	RobotMap.frontLeft.configClosedloopRamp(RAMP_SPEED, 10);
+	RobotMap.backLeft.configClosedloopRamp(RAMP_SPEED, 10);
+	RobotMap.frontRight.configClosedloopRamp(RAMP_SPEED, 10);
+	RobotMap.backRight.configClosedloopRamp(RAMP_SPEED, 10);
+    }
+
+    public double getCountsPerInch() {
+	return COUNTS_PER_INCH;
+    }
+
+    public double getLeftSpeed() {
+	return LEFT_SPEED;
+    }
+
+    public double getRightSpeed() {
+	return RIGHT_SPEED;
     }
 
     /**
@@ -68,13 +98,12 @@ public class DriveBase extends Subsystem {
 	RobotMap.frontLeft.setSelectedSensorPosition(0, 0, 10);
 	RobotMap.frontLeft.setSensorPhase(true);
 	RobotMap.frontLeft.setSafetyEnabled(false);
-	
+
 	RobotMap.frontRight.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
 	RobotMap.frontRight.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 	RobotMap.frontRight.setSelectedSensorPosition(0, 0, 10);
 	RobotMap.frontRight.setSensorPhase(true);
 	RobotMap.frontRight.setSafetyEnabled(false);
-	
 
 	System.out.println("encoder initialize");
     }
@@ -129,10 +158,11 @@ public class DriveBase extends Subsystem {
 	RobotMap.backLeft.set(ControlMode.Follower, RobotMap.frontLeft.getDeviceID());
     }
 
-    public void EncoderMove(double countsToMove) {
-	RobotMap.frontLeft.set(ControlMode.Position, -countsToMove);
-	RobotMap.backLeft.set(ControlMode.Follower, RobotMap.frontLeft.getDeviceID());
-	RobotMap.frontRight.set(ControlMode.Follower, RobotMap.frontLeft.getDeviceID());
-	RobotMap.backRight.set(ControlMode.Follower, RobotMap.frontLeft.getDeviceID());
+    public int getFrontLeftEncoderValue() {
+	return RobotMap.frontLeft.getSelectedSensorPosition(0);
+    }
+
+    public int getFrontRightEncoderValue() {
+	return RobotMap.frontRight.getSelectedSensorPosition(0);
     }
 }

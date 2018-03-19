@@ -28,11 +28,6 @@ public class OI {
     public static Button rButton3 = new JoystickButton(m_RJoy, 3);
 
     public OI() {
-//	lButton1.toggleWhenPressed(new OpenGripper());
-//	rButton1.toggleWhenPressed(new CloseGripper());
-//
-//	lButton2.toggleWhenPressed(new RunOuttake());
-//	rButton2.toggleWhenPressed(new RunIntake());
     }
 
     public static double lJoyGetY() {

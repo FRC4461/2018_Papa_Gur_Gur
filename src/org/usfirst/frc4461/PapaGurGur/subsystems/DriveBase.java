@@ -23,6 +23,9 @@ public class DriveBase extends Subsystem {
     private final static double RAMP_SPEED = 2;
     private final static double LEFT_SPEED = -0.3;
     private final static double RIGHT_SPEED = -0.38;
+    private final static double DRIVING_SLOW_MULTIPLIER = 0.4;
+    private final static double TURNING_GYRO_SPEED = 0.3;
+    private final static double GYRO_DEAD_ZONE = 1.5;
 
     public DriveBase() {
     }
@@ -37,6 +40,18 @@ public class DriveBase extends Subsystem {
 	RobotMap.backLeft.configClosedloopRamp(RAMP_SPEED, 10);
 	RobotMap.frontRight.configClosedloopRamp(RAMP_SPEED, 10);
 	RobotMap.backRight.configClosedloopRamp(RAMP_SPEED, 10);
+    }
+
+    public double slowMultiplier() {
+	return DRIVING_SLOW_MULTIPLIER;
+    }
+
+    public double turnSpeed() {
+	return TURNING_GYRO_SPEED;
+    }
+
+    public double gyroDeadZone() {
+	return GYRO_DEAD_ZONE;
     }
 
     public double getCountsPerInch() {

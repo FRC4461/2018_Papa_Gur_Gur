@@ -16,6 +16,6 @@ public class CrossLine extends CommandGroup {
     public CrossLine() {
 	addSequential(EncoderDrive.GoForwardInches(20, Optional.of(3)));
 	addSequential(GyroTurn.turnLeft(90));
-	addSequential(new AutonomousElevator(70));
+	addSequential(AutonomousElevator.GoUp(40));
     }
 }

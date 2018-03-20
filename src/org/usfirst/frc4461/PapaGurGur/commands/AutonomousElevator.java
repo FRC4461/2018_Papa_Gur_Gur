@@ -11,9 +11,17 @@ public class AutonomousElevator extends Command {
 
     private double inchesToMove;
 
-    public AutonomousElevator(double inchesToMove) {
+    private AutonomousElevator(double inchesToMove) {
 	requires(Robot.elevator);
 	this.inchesToMove = inchesToMove;
+    }
+
+    public static AutonomousElevator GoUp(double inchesToMove) {
+	return new AutonomousElevator(inchesToMove);
+    }
+
+    public static AutonomousElevator GoDown(double inchesToMove) {
+	return new AutonomousElevator(-inchesToMove);
     }
 
     protected void initialize() {
@@ -22,11 +30,15 @@ public class AutonomousElevator extends Command {
     }
 
     protected void execute() {
+	double autoDeadZone = Robot.elevator.setAutoDeadZone();
 	double elevatorHeight = Robot.elevator.getElevatorHeightInches();
 	double elevateSpeed = Robot.elevator.getElevateSpeed();
-	if (elevatorHeight < inchesToMove) {
+
+	if (elevatorHeight + autoDeadZone < inchesToMove) {
 	    Robot.elevator.elevatorGoUp(elevateSpeed);
-	} else if (elevatorHeight >= inchesToMove) {
+	} else if (elevatorHeight - autoDeadZone > inchesToMove) {
+	    Robot.elevator.elevatorGoDown(elevateSpeed);
+	} else {
 	    Robot.elevator.stopElevator();
 	}
     }

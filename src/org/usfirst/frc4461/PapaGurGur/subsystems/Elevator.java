@@ -10,11 +10,17 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Elevator extends Subsystem {
 
-    private static final double COUNTS_PER_REVOLUTION = 4096;
+    private static final double COUNTS_PER_REVOLUTION = 1024;
     private static final double SPROCKET_DIAMETER = 2;
     private static final double SPROCKET_CIRCUMFERENCE = Math.PI * SPROCKET_DIAMETER;
     private static final double COUNTS_PER_INCH = COUNTS_PER_REVOLUTION / SPROCKET_CIRCUMFERENCE;
     private static final double ELEVATE_SPEED = 0.4;
+
+    private static final double DEAD_ZONE = 0.1;
+    private static final double MAX_DOWN_SPEED = 0.2;
+    private static final double ELEVATOR_HEIGHT_THRESHOLD = 50;
+
+    private static final double AUTONOMOUS_DEAD_ZONE_INCHES = 2;
 
     public Elevator() {
     }
@@ -24,10 +30,26 @@ public class Elevator extends Subsystem {
 	setDefaultCommand(new OperateElevator());
     }
 
+    public double setDeadZone() {
+	return DEAD_ZONE;
+    }
+
+    public double setAutoDeadZone() {
+	return AUTONOMOUS_DEAD_ZONE_INCHES;
+    }
+
+    public double setDownSpeed() {
+	return MAX_DOWN_SPEED;
+    }
+
+    public double setThreshold() {
+	return ELEVATOR_HEIGHT_THRESHOLD;
+    }
+
     public void elevatorGoUp(double elevateSpeed) {
 	RobotMap.elevatorMotor.set(elevateSpeed);
     }
-    
+
     public void elevatorGoDown(double elevateSpeed) {
 	RobotMap.elevatorMotor.set(-elevateSpeed);
     }

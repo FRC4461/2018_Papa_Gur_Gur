@@ -1,10 +1,5 @@
 package org.usfirst.frc4461.PapaGurGur;
 
-import org.usfirst.frc4461.PapaGurGur.commands.CloseGripper;
-import org.usfirst.frc4461.PapaGurGur.commands.OpenGripper;
-import org.usfirst.frc4461.PapaGurGur.commands.RunIntake;
-import org.usfirst.frc4461.PapaGurGur.commands.RunOuttake;
-
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;

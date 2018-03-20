@@ -8,10 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
  * Turns the robot based on gyro readings.
  */
 public class GyroTurn extends Command {
+
     private double degreesToTurn;
     private boolean isDone = false;
-    private static final double DEAD_ZONE = 1.5;
-    private static final double SPEED = .3;
 
     private GyroTurn(double degreesToTurn) {
 	requires(Robot.gyro);
@@ -47,17 +46,19 @@ public class GyroTurn extends Command {
     @Override
     protected void execute() {
 	double facing = Robot.gyro.getAngle();
+	double turnSpeed = Robot.driveBase.turnSpeed();
+	double deadZone = Robot.driveBase.gyroDeadZone();
 
-	if (Math.abs(facing) > (Math.abs(degreesToTurn) - DEAD_ZONE)
-		&& Math.abs(facing) < (Math.abs(degreesToTurn) + DEAD_ZONE)) {
+	if (Math.abs(facing) > (Math.abs(degreesToTurn) - deadZone)
+		&& Math.abs(facing) < (Math.abs(degreesToTurn) + deadZone)) {
 	    Robot.driveBase.stopMotors();
 	    isDone = true;
 	} else if (facing < degreesToTurn) {
-	    Robot.driveBase.turnRight(SPEED);
+	    Robot.driveBase.turnRight(turnSpeed);
 	    System.out.println("Facing " + facing);
 	    System.out.println("we are going to the RIGHT");
 	} else if (facing > degreesToTurn) {
-	    Robot.driveBase.turnLeft(SPEED);
+	    Robot.driveBase.turnLeft(turnSpeed);
 	    System.out.println("Facing " + facing);
 	    System.out.println("we are going to the left");
 	}

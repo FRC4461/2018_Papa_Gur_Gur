@@ -9,8 +9,12 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class RunIntakeMotors extends Command {
 
-    public RunIntakeMotors() {
+    private double timeOut;
+    
+    public RunIntakeMotors(double timeOut) {
 	requires(Robot.gripMotors);
+	this.timeOut = timeOut;
+	setTimeout(this.timeOut);
     }
 
     protected void initialize() {
@@ -21,7 +25,7 @@ public class RunIntakeMotors extends Command {
     }
 
     protected boolean isFinished() {
-	return false;
+	return isTimedOut();
     }
 
     protected void end() {

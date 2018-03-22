@@ -10,6 +10,9 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AutonomousElevator extends Command {
 
     private double inchesToMove;
+    private double autoDeadZone;
+    private double elevatorHeight;
+    private double elevateSpeed;
 
     private AutonomousElevator(double inchesToMove) {
 	requires(Robot.elevator);
@@ -27,12 +30,13 @@ public class AutonomousElevator extends Command {
     protected void initialize() {
 	Robot.elevator.configElevatorEncoder();
 	System.out.println("Elevator initialize");
+	
+	autoDeadZone = Robot.elevator.setAutoDeadZone();
+	elevatorHeight = Robot.elevator.getElevatorHeightInches();
+	elevateSpeed = Robot.elevator.getElevateSpeed();
     }
 
     protected void execute() {
-	double autoDeadZone = Robot.elevator.setAutoDeadZone();
-	double elevatorHeight = Robot.elevator.getElevatorHeightInches();
-	double elevateSpeed = Robot.elevator.getElevateSpeed();
 
 	if (elevatorHeight + autoDeadZone < inchesToMove) {
 	    Robot.elevator.elevatorGoUp(elevateSpeed);

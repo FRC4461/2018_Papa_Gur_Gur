@@ -19,6 +19,8 @@ public class EncoderDrive extends Command {
     private double leftSpeed;
     private double rightSpeed;
 
+    private double countsPerInch;
+
     /**
      * Drives forward based on inches
      *
@@ -32,11 +34,8 @@ public class EncoderDrive extends Command {
     public EncoderDrive(double inchesToMove, int timeOutSec) {
 	requires(Robot.driveBase);
 
-	double countsPerInch = Robot.driveBase.getCountsPerInch();
 	countsToMove = countsPerInch * inchesToMove;
 
-	leftSpeed = Robot.driveBase.getLeftSpeed();
-	rightSpeed = Robot.driveBase.getRightSpeed();
 	setTimeout(timeOutSec);
     }
 
@@ -54,6 +53,10 @@ public class EncoderDrive extends Command {
 
     @Override
     protected void initialize() {
+	leftSpeed = Robot.driveBase.getLeftSpeed();
+	rightSpeed = Robot.driveBase.getRightSpeed();
+	countsPerInch = Robot.driveBase.getCountsPerInch();
+
 	Robot.driveBase.configEncoder();
 	Robot.driveBase.setDrivingRamp();
     }

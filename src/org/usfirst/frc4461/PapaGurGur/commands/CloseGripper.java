@@ -9,8 +9,12 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class CloseGripper extends Command {
 
-    public CloseGripper() {
+    private double timeOut;
+
+    public CloseGripper(double timeOut) {
 	requires(Robot.gripPneumatics);
+	this.timeOut = timeOut;
+	setTimeout(this.timeOut);
     }
 
     protected void initialize() {
@@ -21,7 +25,7 @@ public class CloseGripper extends Command {
     }
 
     protected boolean isFinished() {
-	return false;
+	return isTimedOut();
     }
 
     protected void end() {

@@ -9,21 +9,26 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Driving extends Command {
 
+    private double elevatorHeight;
+    private double elevatorHeightThreshold;
+    private double slowMultiplier;
+
     public Driving() {
 	requires(Robot.driveBase);
     }
 
     @Override
     protected void initialize() {
+	elevatorHeightThreshold = Robot.elevator.setThreshold();
+	slowMultiplier = Robot.driveBase.slowMultiplier();
     }
 
     @Override
     protected void execute() {
+	elevatorHeight = Robot.elevator.getElevatorHeightInches();
+
 	double lSpeed = OI.lJoyGetY();
 	double rSpeed = OI.rJoyGetY();
-	double elevatorHeight = Robot.elevator.getElevatorHeightInches();
-	double elevatorHeightThreshold = Robot.elevator.setThreshold();
-	double slowMultiplier = Robot.driveBase.slowMultiplier();
 
 	if (elevatorHeight > elevatorHeightThreshold) {
 	    lSpeed *= slowMultiplier;

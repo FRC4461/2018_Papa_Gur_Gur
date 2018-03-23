@@ -18,12 +18,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class CrossLine extends CommandGroup {
 
     public CrossLine() {
-	addSequential(EncoderDrive.GoForwardInches(20, Optional.of(3)));
-	addSequential(GyroTurn.turnLeft(90));
-	addSequential(AutonomousElevator.GoUp(40));
-	addSequential(new RunIntakeMotors(1));
-	addSequential(new RunOuttakeMotors(1));
-	addSequential(new OpenGripper(1));
-	addSequential(new CloseGripper(1));
+	addSequential(new EncoderDrive(6 * Math.PI * 2));
     }
 }

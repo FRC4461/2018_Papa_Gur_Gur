@@ -1,5 +1,7 @@
 package org.usfirst.frc4461.PapaGurGur.commandGroups;
 
+import org.usfirst.frc4461.PapaGurGur.commands.GyroTurn;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -9,6 +11,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LeftPosLeftScale extends CommandGroup {
 
     public LeftPosLeftScale() {
-
+    	addSequential(GyroTurn.turnLeft(90));
+    	addSequential(GyroTurn.turnRight(90));
     }
 }

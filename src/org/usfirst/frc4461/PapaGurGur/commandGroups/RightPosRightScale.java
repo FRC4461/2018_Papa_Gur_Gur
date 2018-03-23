@@ -1,5 +1,8 @@
 package org.usfirst.frc4461.PapaGurGur.commandGroups;
 
+import org.usfirst.frc4461.PapaGurGur.commands.EncoderDrive;
+import org.usfirst.frc4461.PapaGurGur.commands.GyroTurn;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -8,7 +11,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class RightPosRightScale extends CommandGroup {
 
-    public RightPosRightScale() {
-
-    }
+	public RightPosRightScale() {
+		addSequential(new EncoderDrive(112));
+		addSequential(GyroTurn.turnRight(90));
+		addSequential(new EncoderDrive(112));
+		addSequential(GyroTurn.turnLeft(180));
+	}
 }

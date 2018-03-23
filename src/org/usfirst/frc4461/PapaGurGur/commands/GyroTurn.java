@@ -11,7 +11,7 @@ public class GyroTurn extends Command {
 
     private double degreesToTurn;
     private boolean isDone = false;
-    private double deadZone;
+    private static final double DEAD_ZONE = 3;
 
     private GyroTurn(double degreesToTurn) {
 	requires(Robot.gyro);
@@ -42,17 +42,15 @@ public class GyroTurn extends Command {
     protected void initialize() {
 	Robot.gyro.resetGyro();
 	System.out.println("Yes its working");
-
-	deadZone = Robot.driveBase.gyroDeadZone();
+	Robot.driveBase.setDrivingRamp();
     }
 
     @Override
     protected void execute() {
 	double facing = Robot.gyro.getAngle();
-	double turnSpeed = Robot.driveBase.turnSpeed();
 
-	if (Math.abs(facing) > (Math.abs(degreesToTurn) - deadZone)
-		&& Math.abs(facing) < (Math.abs(degreesToTurn) + deadZone)) {
+	if (Math.abs(facing) > (Math.abs(degreesToTurn) - DEAD_ZONE)
+		&& Math.abs(facing) < (Math.abs(degreesToTurn) + DEAD_ZONE)) {
 	    Robot.driveBase.stopMotors();
 	    isDone = true;
 	} else if (facing < degreesToTurn) {
@@ -74,6 +72,7 @@ public class GyroTurn extends Command {
     @Override
     protected void end() {
 	Robot.driveBase.stopMotors();
+	Robot.driveBase.turnOffDrivingRamp();
     }
 
     @Override

@@ -6,12 +6,12 @@ import org.usfirst.frc4461.PapaGurGur.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
+/***
+ * Command for controlling the drivebase. Uses joystick y-axes for speed for a
+ * "tank drive" configuration.
  */
 public class Driving extends Command {
 
-	private double elevatorHeight;
 	private double elevatorHeightThreshold;
 	private double slowMultiplier;
 
@@ -23,11 +23,13 @@ public class Driving extends Command {
 	protected void initialize() {
 		elevatorHeightThreshold = Robot.elevator.getThreshold();
 		slowMultiplier = Robot.driveBase.slowMultiplier();
+		RobotMap.frontLeft.setSelectedSensorPosition(0, 0, 1);
+		RobotMap.frontRight.setSelectedSensorPosition(0, 0, 1);
 	}
 
 	@Override
 	protected void execute() {
-		elevatorHeight = Robot.elevator.getElevatorHeightInches();
+		double elevatorHeight = Robot.elevator.getElevatorHeightInches();
 
 		double lSpeed = OI.lJoyGetY();
 		double rSpeed = OI.rJoyGetY();
@@ -37,6 +39,11 @@ public class Driving extends Command {
 			rSpeed *= slowMultiplier;
 		}
 		
+		int leftEncoder = RobotMap.frontLeft.getSelectedSensorPosition(0);
+		int rightEncoder = RobotMap.frontRight.getSelectedSensorPosition(0);
+
+		System.out.println(
+				"Left: " + " " + leftEncoder + "Right: " + rightEncoder);
 		Robot.driveBase.drive(lSpeed, rSpeed);
 	}
 

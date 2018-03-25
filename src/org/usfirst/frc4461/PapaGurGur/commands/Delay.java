@@ -2,9 +2,18 @@ package org.usfirst.frc4461.PapaGurGur.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+/***
+ * Command for setting a delay during autonomous.
+ */
 public class Delay extends Command {
+	
 	private double timeToDelay;
 
+	/***
+	 * Delays a command in autonomous.
+	 * 
+	 * @param delayTime Seconds to delay by
+	 */
 	public Delay(double delayTime) {
 		timeToDelay = delayTime;
 	}

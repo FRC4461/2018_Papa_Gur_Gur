@@ -3,6 +3,7 @@ package org.usfirst.frc4461.PapaGurGur.subsystems;
 import org.usfirst.frc4461.PapaGurGur.RobotMap;
 import org.usfirst.frc4461.PapaGurGur.commands.OperateElevator;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 
@@ -10,10 +11,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Elevator extends Subsystem {
 
-	private static final double COUNTS_PER_REVOLUTION = 1024;
+	private static final double COUNTS_PER_REVOLUTION = 512;
 	private static final double SPROCKET_DIAMETER = 2;
 	private static final double SPROCKET_CIRCUMFERENCE = Math.PI * SPROCKET_DIAMETER;
-	private static final double COUNTS_PER_INCH = COUNTS_PER_REVOLUTION / SPROCKET_CIRCUMFERENCE;
+	private static final double COUNTS_PER_INCH = 11500 / 35;
 	private static final double ELEVATE_SPEED = 0.4;
 
 	private static final double DEAD_ZONE = 0.1;
@@ -46,6 +47,11 @@ public class Elevator extends Subsystem {
 		return ELEVATOR_HEIGHT_THRESHOLD;
 	}
 
+	public void elevatorPosition(double inchesToMove) {
+		RobotMap.elevatorMotor.set(ControlMode.Position, inchesToMove * COUNTS_PER_INCH);
+		System.out.println(inchesToMove * COUNTS_PER_INCH);
+	}
+
 	public void elevatorGoUp(double elevateSpeed) {
 		RobotMap.elevatorMotor.set(elevateSpeed);
 	}
@@ -59,8 +65,8 @@ public class Elevator extends Subsystem {
 	}
 
 	public double getElevatorHeightInches() {
-		double getCurrentElevatorHeight = RobotMap.elevatorMotor.getSelectedSensorPosition(0);
-		double elevatorHeight = getCurrentElevatorHeight / COUNTS_PER_INCH;
+		double currentElevatorHeight = RobotMap.elevatorMotor.getSelectedSensorPosition(0);
+		double elevatorHeight = currentElevatorHeight / COUNTS_PER_INCH;
 		return elevatorHeight;
 	}
 
@@ -68,8 +74,9 @@ public class Elevator extends Subsystem {
 		RobotMap.elevatorMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
 		RobotMap.elevatorMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 		RobotMap.elevatorMotor.setSelectedSensorPosition(0, 0, 10);
-		RobotMap.elevatorMotor.setSensorPhase(true);
+		RobotMap.elevatorMotor.setSensorPhase(false);
 		RobotMap.elevatorMotor.setSafetyEnabled(false);
+		RobotMap.elevatorMotor.setInverted(true);
 	}
 
 	public void resetElevatorEncoder() {

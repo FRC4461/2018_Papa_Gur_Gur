@@ -6,8 +6,9 @@ import org.usfirst.frc4461.PapaGurGur.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
+/***
+ * Command for opening and closing the gripper through the pneumatics system
+ * using the Xbox controller buttons.
  */
 public class OperateGripPneumatics extends Command {
 

@@ -5,15 +5,15 @@ import org.usfirst.frc4461.PapaGurGur.Robot;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
+/***
+ * Command for picking autonomous routine.
  */
 public class ScheduleCommands extends Command {
-	/**
+	
+	/***
 	 * Gets the game data from the FMS. We only care about the 2 values to
 	 * determine our autonomous routine
 	 */
-
 	public ScheduleCommands() {
 	}
 

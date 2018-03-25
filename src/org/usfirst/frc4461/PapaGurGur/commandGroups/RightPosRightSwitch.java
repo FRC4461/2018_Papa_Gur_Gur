@@ -13,9 +13,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RightPosRightSwitch extends CommandGroup {
 
 	public RightPosRightSwitch() {
-		addSequential(AutonomousElevator.GoUp(3));
-		addSequential(new EncoderDrive(102));
-		addSequential(AutonomousElevator.GoUp(20));
-		addSequential(new OpenGripper(3));
+		addSequential(AutonomousElevator.GoUp(30));
+		addSequential(new EncoderDrive(135 - 37));
 	}
 }

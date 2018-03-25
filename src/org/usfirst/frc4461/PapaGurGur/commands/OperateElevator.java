@@ -6,8 +6,8 @@ import org.usfirst.frc4461.PapaGurGur.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
+/***
+ * Command for operating the elevator using the Xbox triggers.
  */
 public class OperateElevator extends Command {
 
@@ -29,8 +29,7 @@ public class OperateElevator extends Command {
 		double rightTriggerAxis = OI.rightXboxTrigger();
 		double leftTriggerAxis = OI.leftXboxTrigger();
 		double differenceOfAxis = rightTriggerAxis - leftTriggerAxis;
-		
-		System.out.println(RobotMap.elevatorMotor.getSelectedSensorPosition(0));
+		int elevatorPosition = RobotMap.elevatorMotor.getSelectedSensorPosition(0);
 
 		if (differenceOfAxis > deadZone) {
 			Robot.elevator.elevatorGoUp(differenceOfAxis);
@@ -39,9 +38,8 @@ public class OperateElevator extends Command {
 		} else {
 			Robot.elevator.stopElevator();
 		}
-		
-		if(RobotMap.elevatorMotor.getSelectedSensorPosition(0) > 12000 && 
-				RobotMap.elevatorMotor.getSelectedSensorPosition(0) < 23000){
+
+		if (elevatorPosition > 12000 && elevatorPosition < 23000) {
 			Robot.gripPneumatics.closeGripper();
 		}
 	}

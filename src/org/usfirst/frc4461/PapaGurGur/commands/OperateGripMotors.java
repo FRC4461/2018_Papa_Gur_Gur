@@ -5,8 +5,9 @@ import org.usfirst.frc4461.PapaGurGur.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
+/***
+ * Command for operating the gripper motors using the Xbox controller. Each side
+ * can be run independently.
  */
 public class OperateGripMotors extends Command {
 

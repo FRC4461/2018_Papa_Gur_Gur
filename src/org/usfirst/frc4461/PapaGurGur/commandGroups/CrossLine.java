@@ -17,8 +17,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class CrossLine extends CommandGroup {
 
-    public CrossLine() {
-	addSequential(new EncoderDrive(145));
-    }
-    
+	public CrossLine() {
+		addSequential(new EncoderDrive(145));
+	}
+
 }

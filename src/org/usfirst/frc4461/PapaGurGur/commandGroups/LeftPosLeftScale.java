@@ -10,8 +10,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class LeftPosLeftScale extends CommandGroup {
 
-    public LeftPosLeftScale() {
-    	addSequential(GyroTurn.turnLeft(90));
-    	addSequential(GyroTurn.turnRight(90));
-    }
+	public LeftPosLeftScale() {
+		addSequential(GyroTurn.turnLeft(90));
+		addSequential(GyroTurn.turnRight(90));
+	}
 }

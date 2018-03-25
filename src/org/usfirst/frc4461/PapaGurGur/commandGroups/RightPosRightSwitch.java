@@ -1,5 +1,9 @@
 package org.usfirst.frc4461.PapaGurGur.commandGroups;
 
+import org.usfirst.frc4461.PapaGurGur.commands.AutonomousElevator;
+import org.usfirst.frc4461.PapaGurGur.commands.EncoderDrive;
+import org.usfirst.frc4461.PapaGurGur.commands.OpenGripper;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -8,7 +12,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class RightPosRightSwitch extends CommandGroup {
 
-    public RightPosRightSwitch() {
-
-    }
+	public RightPosRightSwitch() {
+		addSequential(AutonomousElevator.GoUp(3));
+		addSequential(new EncoderDrive(102));
+		addSequential(AutonomousElevator.GoUp(20));
+		addSequential(new OpenGripper(3));
+	}
 }

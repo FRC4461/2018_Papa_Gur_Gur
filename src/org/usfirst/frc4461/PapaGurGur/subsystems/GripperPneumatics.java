@@ -11,23 +11,23 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class GripperPneumatics extends Subsystem {
 
-    public GripperPneumatics() {
-    }
+	public GripperPneumatics() {
+	}
 
-    @Override
-    protected void initDefaultCommand() {
-	setDefaultCommand(new OperateGripPneumatics());
-    }
+	@Override
+	protected void initDefaultCommand() {
+		setDefaultCommand(new OperateGripPneumatics());
+	}
 
-    public void turnOnCompressor() {
-	RobotMap.compressor.setClosedLoopControl(true);
-    }
+	public void turnOnCompressor() {
+		RobotMap.compressor.setClosedLoopControl(true);
+	}
 
-    public void openGripper() {
-	RobotMap.doubleSolenoid.set(DoubleSolenoid.Value.kForward);
-    }
+	public void openGripper() {
+		RobotMap.doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
+	}
 
-    public void closeGripper() {
-	RobotMap.doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
-    }
+	public void closeGripper() {
+		RobotMap.doubleSolenoid.set(DoubleSolenoid.Value.kForward);
+	}
 }

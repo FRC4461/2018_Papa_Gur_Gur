@@ -9,30 +9,30 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class RunIntakeMotors extends Command {
 
-    private double timeOut;
-    
-    public RunIntakeMotors(double timeOut) {
-	requires(Robot.gripMotors);
-	this.timeOut = timeOut;
-	setTimeout(this.timeOut);
-    }
+	private double timeOut;
 
-    protected void initialize() {
-    }
+	public RunIntakeMotors(double timeOut) {
+		requires(Robot.gripMotors);
+		this.timeOut = timeOut;
+		setTimeout(this.timeOut);
+	}
 
-    protected void execute() {
-	Robot.gripMotors.runIntake();
-    }
+	protected void initialize() {
+	}
 
-    protected boolean isFinished() {
-	return isTimedOut();
-    }
+	protected void execute() {
+		Robot.gripMotors.runIntake();
+	}
 
-    protected void end() {
-	Robot.gripMotors.stopMotors();
-    }
+	protected boolean isFinished() {
+		return isTimedOut();
+	}
 
-    protected void interrupted() {
-	end();
-    }
+	protected void end() {
+		Robot.gripMotors.stopMotors();
+	}
+
+	protected void interrupted() {
+		end();
+	}
 }

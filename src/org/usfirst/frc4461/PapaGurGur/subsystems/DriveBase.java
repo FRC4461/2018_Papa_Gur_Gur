@@ -31,8 +31,8 @@ public class DriveBase extends Subsystem {
 		RobotMap.frontRight.configClosedloopRamp(RAMP_SPEED, 10);
 		RobotMap.backRight.configClosedloopRamp(RAMP_SPEED, 10);
 	}
-	
-	public void turnOffDrivingRamp(){
+
+	public void turnOffDrivingRamp() {
 		RobotMap.frontLeft.configClosedloopRamp(0, 10);
 		RobotMap.backLeft.configClosedloopRamp(0, 10);
 		RobotMap.frontRight.configClosedloopRamp(0, 10);

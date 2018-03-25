@@ -7,6 +7,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class MidPosCrossline extends CommandGroup {
 
-    public MidPosCrossline() {
-    }
+	public MidPosCrossline() {
+	}
 }

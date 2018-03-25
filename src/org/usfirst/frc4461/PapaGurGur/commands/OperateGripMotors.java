@@ -10,33 +10,36 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class OperateGripMotors extends Command {
 
-    public OperateGripMotors() {
-	requires(Robot.gripMotors);
-    }
-
-    protected void initialize() {
-    }
-
-    protected void execute() {
-	boolean rightBumper = OI.getRightBumper();
-	boolean leftBumper = OI.getLeftBumper();
-	
-	if(rightBumper){
-	    Robot.gripMotors.runIntake();
-	} else if (leftBumper){
-	    Robot.gripMotors.runOuttake();
-	} else {
-	    Robot.gripMotors.stopMotors();
+	public OperateGripMotors() {
+		requires(Robot.gripMotors);
 	}
-    }
 
-    protected boolean isFinished() {
-        return false;
-    }
+	protected void initialize() {
+	}
 
-    protected void end() {
-    }
+	protected void execute() {
+		boolean rightBumper = OI.getRightBumper();
+		boolean leftBumper = OI.getLeftBumper();
 
-    protected void interrupted() {
-    }
+		if (rightBumper) {
+			Robot.gripMotors.runIntake();
+		} else if (leftBumper) {
+			Robot.gripMotors.runOuttake();
+		} else if (Math.abs(OI.rightXboxStick()) > 0.1 || Math.abs(OI.leftXboxStick()) > 0.1) {
+			Robot.gripMotors.runRightSide(OI.rightXboxStick());
+			Robot.gripMotors.runLeftSide(OI.leftXboxStick());
+		} else {
+			Robot.gripMotors.stopMotors();
+		}
+	}
+
+	protected boolean isFinished() {
+		return false;
+	}
+
+	protected void end() {
+	}
+
+	protected void interrupted() {
+	}
 }

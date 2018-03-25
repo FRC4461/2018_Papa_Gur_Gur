@@ -1,30 +1,41 @@
 package org.usfirst.frc4461.PapaGurGur.commands;
 
 import org.usfirst.frc4461.PapaGurGur.Robot;
+import org.usfirst.frc4461.PapaGurGur.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
+/***
+ * Command for using the elevator in autonomous. Position is controlled by
+ * encoders.
  */
 public class AutonomousElevator extends Command {
 
 	private final double inchesToMove;
 	private double autoDeadZone;
 	private double elevatorHeight;
-	private double elevateSpeed;
 
 	private AutonomousElevator(double inchesToMove) {
 		requires(Robot.elevator);
 		this.inchesToMove = inchesToMove;
 	}
 
+	/***
+	 * Raises the elevator by inches.
+	 * 
+	 * @param inchesToMove
+	 */
 	public static AutonomousElevator GoUp(double inchesToMove) {
-		return new AutonomousElevator(inchesToMove);
+		return new AutonomousElevator(-inchesToMove);
 	}
 
+	/***
+	 * Lowers the elevator by inches.
+	 * 
+	 * @param inchesToMove
+	 */
 	public static AutonomousElevator GoDown(double inchesToMove) {
-		return new AutonomousElevator(-inchesToMove);
+		return new AutonomousElevator(inchesToMove);
 	}
 
 	protected void initialize() {
@@ -32,19 +43,17 @@ public class AutonomousElevator extends Command {
 		System.out.println("Elevator initialize");
 
 		autoDeadZone = Robot.elevator.setAutoDeadZone();
-		elevatorHeight = Robot.elevator.getElevatorHeightInches();
-		elevateSpeed = Robot.elevator.getElevateSpeed();
 	}
 
+	// estoy confused. this doesn't even read counts when does it stop xd
+	// i can imagine the elevator flying off
 	protected void execute() {
 
-		if (elevatorHeight + autoDeadZone < inchesToMove) {
-			Robot.elevator.elevatorGoUp(elevateSpeed);
-		} else if (elevatorHeight - autoDeadZone > inchesToMove) {
-			Robot.elevator.elevatorGoDown(elevateSpeed);
-		} else {
-			Robot.elevator.stopElevator();
-		}
+		elevatorHeight = Robot.elevator.getElevatorHeightInches();
+		System.out.println("Elevator height: " + RobotMap.elevatorMotor.getSelectedSensorPosition(0) / (328));
+		System.out.println("Inches to move: " + inchesToMove);
+		
+		Robot.elevator.elevatorPosition(inchesToMove);
 	}
 
 	protected boolean isFinished() {
@@ -52,7 +61,6 @@ public class AutonomousElevator extends Command {
 	}
 
 	protected void end() {
-		Robot.elevator.stopElevator();
 	}
 
 	protected void interrupted() {

@@ -77,6 +77,7 @@ public class Elevator extends Subsystem {
 		RobotMap.elevatorMotor.setSensorPhase(false);
 		RobotMap.elevatorMotor.setSafetyEnabled(false);
 		RobotMap.elevatorMotor.setInverted(true);
+//		RobotMap.elevatorMotor.configClosedloopRamp(2, 10);
 	}
 
 	public void resetElevatorEncoder() {

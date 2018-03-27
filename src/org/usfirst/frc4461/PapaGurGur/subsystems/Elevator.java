@@ -43,7 +43,7 @@ public class Elevator extends Subsystem {
 		return MAX_DOWN_SPEED;
 	}
 
-	public double getThreshold() {
+	public double getSetThreshold() {
 		return ELEVATOR_HEIGHT_THRESHOLD;
 	}
 

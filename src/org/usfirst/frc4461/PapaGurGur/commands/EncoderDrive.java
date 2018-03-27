@@ -15,7 +15,6 @@ public class EncoderDrive extends Command {
 	private static final double COUNTS_PER_WHEEL_REVOLUTION = COUNTS_PER_REVOLUTION * GEAR_REDUCTION;
 	private static final double WHEEL_CIRCUMFERENCE = 6 * Math.PI;
 	private static final double COUNTS_PER_INCH = 190; // COUNTS_PER_WHEEL_REVOLUTION
-														// /
 														// WHEEL_CIRCUMFERENCE;
 
 	private final static double RAMP_SPEED = 2;
@@ -37,14 +36,18 @@ public class EncoderDrive extends Command {
 	 *            The number of inches to move. Setting a negative value will
 	 *            drive backwards.
 	 */
-	public EncoderDrive(double inchesToMove) {
-		this(inchesToMove, DEFAULT_TIMEOUT);
-	}
 
-	public EncoderDrive(double inchesToMove, int timeOutSec) {
+	private EncoderDrive(double inchesToMove) {
 		requires(Robot.driveBase);
 		countsToMove = (int) (COUNTS_PER_INCH * inchesToMove);
-		// setTimeout(timeOutSec);
+	}
+
+	public static EncoderDrive GoForward(double inchesToMove) {
+		return new EncoderDrive(inchesToMove);
+	}
+
+	public static EncoderDrive GoBackward(double inchesToMove) {
+		return new EncoderDrive(-inchesToMove);
 	}
 
 	@Override

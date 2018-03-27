@@ -2,6 +2,14 @@ package org.usfirst.frc4461.PapaGurGur;
 
 import org.usfirst.frc4461.PapaGurGur.commandGroups.CrossLine;
 import org.usfirst.frc4461.PapaGurGur.commandGroups.DoNothing;
+import org.usfirst.frc4461.PapaGurGur.commandGroups.LeftPosLeftScale;
+import org.usfirst.frc4461.PapaGurGur.commandGroups.LeftPosLeftSwitch;
+import org.usfirst.frc4461.PapaGurGur.commandGroups.LeftPosRightSwitch;
+import org.usfirst.frc4461.PapaGurGur.commandGroups.MiddlePosCrossLeft;
+import org.usfirst.frc4461.PapaGurGur.commandGroups.MiddlePosCrossRight;
+import org.usfirst.frc4461.PapaGurGur.commandGroups.MiddlePosLeftSwitch;
+import org.usfirst.frc4461.PapaGurGur.commandGroups.MiddlePosRightSwitch;
+import org.usfirst.frc4461.PapaGurGur.commandGroups.RightPosLeftSwitch;
 import org.usfirst.frc4461.PapaGurGur.commandGroups.RightPosRightScale;
 import org.usfirst.frc4461.PapaGurGur.commandGroups.RightPosRightSwitch;
 import org.usfirst.frc4461.PapaGurGur.commands.ScheduleCommands;
@@ -42,10 +50,26 @@ public class Robot extends IterativeRobot {
 	public static SendableChooser<Command> Nothing;
 
 	public void listChoosers(SendableChooser<Command> sendableChooser) {
+		// Right side auto routines
 		sendableChooser.addObject("RightPosRightScale", new RightPosRightScale());
 		sendableChooser.addObject("RightPosRightSwitch", new RightPosRightSwitch());
+		sendableChooser.addObject("RightPosLeftSwitch", new RightPosLeftSwitch());
+
+		// Left side auto routines
+		sendableChooser.addObject("LeftPosLeftScale", new LeftPosLeftScale());
+		sendableChooser.addObject("LeftPosLeftSwitch", new LeftPosLeftSwitch());
+		sendableChooser.addObject("LeftPosRightSwitch", new LeftPosRightSwitch());
+
+		// Middle position auto routines
+		sendableChooser.addObject("MiddlePosCrossLeft", new MiddlePosCrossLeft());
+		sendableChooser.addObject("MiddlePosCrossRight", new MiddlePosCrossRight());
+		sendableChooser.addObject("MiddlePosLeftSwitch", new MiddlePosLeftSwitch());
+		sendableChooser.addObject("MiddlePosRightSwitch", new MiddlePosRightSwitch());
+
+		// default and nothingness
 		sendableChooser.addObject("CrossLine", new CrossLine());
 		sendableChooser.addObject("None", new DoNothing());
+
 		sendableChooser.addDefault("None", new DoNothing());
 	}
 
@@ -79,7 +103,7 @@ public class Robot extends IterativeRobot {
 		listChoosers(RL);
 
 		Robot.gripPneumatics.turnOnCompressor();
-		RobotMap.elevatorMotor.setSelectedSensorPosition(0, 0, 1);
+		Robot.elevator.resetElevatorEncoder();
 
 		autonomousCommand = new ScheduleCommands();
 	}
@@ -95,7 +119,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousInit() {
-		Robot.elevator.resetElevatorEncoder();
+		Robot.gyro.resetGyro();
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
 		}

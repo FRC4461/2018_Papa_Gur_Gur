@@ -21,7 +21,7 @@ public class Driving extends Command {
 
 	@Override
 	protected void initialize() {
-		elevatorHeightThreshold = Robot.elevator.getThreshold();
+		elevatorHeightThreshold = Robot.elevator.getSetThreshold();
 		slowMultiplier = Robot.driveBase.slowMultiplier();
 		RobotMap.frontLeft.setSelectedSensorPosition(0, 0, 1);
 		RobotMap.frontRight.setSelectedSensorPosition(0, 0, 1);
@@ -38,12 +38,11 @@ public class Driving extends Command {
 			lSpeed *= slowMultiplier;
 			rSpeed *= slowMultiplier;
 		}
-		
+
 		int leftEncoder = RobotMap.frontLeft.getSelectedSensorPosition(0);
 		int rightEncoder = RobotMap.frontRight.getSelectedSensorPosition(0);
 
-		System.out.println(
-				"Left: " + " " + leftEncoder + "Right: " + rightEncoder);
+		System.out.println("Left: " + " " + leftEncoder + "Right: " + rightEncoder);
 		Robot.driveBase.drive(lSpeed, rSpeed);
 	}
 

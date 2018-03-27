@@ -1,6 +1,11 @@
 package org.usfirst.frc4461.PapaGurGur.commandGroups;
 
+import org.usfirst.frc4461.PapaGurGur.commands.AutonomousElevator;
+import org.usfirst.frc4461.PapaGurGur.commands.CloseGripper;
+import org.usfirst.frc4461.PapaGurGur.commands.Delay;
+import org.usfirst.frc4461.PapaGurGur.commands.EncoderDrive;
 import org.usfirst.frc4461.PapaGurGur.commands.GyroTurn;
+import org.usfirst.frc4461.PapaGurGur.commands.OpenGripper;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -11,7 +16,14 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LeftPosLeftScale extends CommandGroup {
 
 	public LeftPosLeftScale() {
-		addSequential(GyroTurn.turnLeft(90));
-		addSequential(GyroTurn.turnRight(90));
+		addSequential(EncoderDrive.GoForward(264));
+		addParallel(AutonomousElevator.GoUp(101));
+		addSequential(GyroTurn.turnRight(45));
+		addSequential(EncoderDrive.GoBackward(58));
+		addSequential(new Delay(1.5));
+		addSequential(new OpenGripper(2));
+		addSequential(EncoderDrive.GoBackward(40));
+		addParallel(AutonomousElevator.GoDown(0));
+		addParallel(new CloseGripper(2));
 	}
 }

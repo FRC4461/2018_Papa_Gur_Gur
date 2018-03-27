@@ -9,21 +9,24 @@ import org.usfirst.frc4461.PapaGurGur.commands.OpenGripper;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- * This Command group will allow for you to go to the RIGHT_SWITCH when your
- * robot is positioned on the right.
+ *
  */
-public class RightPosRightSwitch extends CommandGroup {
+public class MiddlePosLeftSwitch extends CommandGroup {
 
-	public RightPosRightSwitch() {
-		addParallel(AutonomousElevator.GoUp(45));
-		addSequential(EncoderDrive.GoForward(135 - 37 + 6 + 5));
-		addSequential(new OpenGripper(2));
-		addSequential(EncoderDrive.GoBackward(30));
-		addParallel(new CloseGripper(2));
-		addParallel(AutonomousElevator.GoDown(0));
-		addSequential(GyroTurn.turnRight(90));
-		addSequential(EncoderDrive.GoForward(40));
+	public MiddlePosLeftSwitch() {
+		addSequential(EncoderDrive.GoForward(30));
 		addSequential(GyroTurn.turnLeft(90));
+		addSequential(EncoderDrive.GoForward(50));
+		addSequential(GyroTurn.turnRight(90));
+		addParallel(AutonomousElevator.GoUp(45));
+		addSequential(EncoderDrive.GoForward(150));
+		addSequential(new OpenGripper(1));
+		addParallel(AutonomousElevator.GoDown(0));
+		addParallel(new CloseGripper(1));
+		addSequential(EncoderDrive.GoBackward(30));
+		addSequential(GyroTurn.turnLeft(90));
+		addSequential(EncoderDrive.GoForward(60));
+		addSequential(GyroTurn.turnRight(90));
 		addSequential(EncoderDrive.GoForward(60));
 	}
 }

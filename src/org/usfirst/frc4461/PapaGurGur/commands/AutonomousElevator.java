@@ -12,8 +12,6 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AutonomousElevator extends Command {
 
 	private final double inchesToMove;
-	private double autoDeadZone;
-	private double elevatorHeight;
 
 	private AutonomousElevator(double inchesToMove) {
 		requires(Robot.elevator);
@@ -41,18 +39,17 @@ public class AutonomousElevator extends Command {
 	protected void initialize() {
 		Robot.elevator.configElevatorEncoder();
 		System.out.println("Elevator initialize");
-
-		autoDeadZone = Robot.elevator.setAutoDeadZone();
 	}
 
-	// estoy confused. this doesn't even read counts when does it stop xd
-	// i can imagine the elevator flying off
+	/*
+	 * Robot uses setPosition to go to a specific count Works great with current
+	 * PID settings also we want this to be always runnning in autonomous
+	 * because we want the elevator to always be up
+	 */
 	protected void execute() {
-
-		elevatorHeight = Robot.elevator.getElevatorHeightInches();
 		System.out.println("Elevator height: " + RobotMap.elevatorMotor.getSelectedSensorPosition(0) / (328));
 		System.out.println("Inches to move: " + inchesToMove);
-		
+
 		Robot.elevator.elevatorPosition(inchesToMove);
 	}
 

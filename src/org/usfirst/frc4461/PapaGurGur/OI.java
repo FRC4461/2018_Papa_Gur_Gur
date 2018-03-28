@@ -1,5 +1,8 @@
 package org.usfirst.frc4461.PapaGurGur;
 
+import org.usfirst.frc4461.PapaGurGur.commands.TeleopCloseGripper;
+import org.usfirst.frc4461.PapaGurGur.commands.TeleopOpenGripper;
+
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -23,6 +26,8 @@ public class OI {
 	public static Button rButton3 = new JoystickButton(m_RJoy, 3);
 
 	public OI() {
+		rButton1.toggleWhenPressed(new TeleopCloseGripper());
+		lButton1.toggleWhenPressed(new TeleopOpenGripper());
 	}
 
 	public static double lJoyGetY() {

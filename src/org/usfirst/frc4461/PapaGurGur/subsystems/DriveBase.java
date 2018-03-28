@@ -14,7 +14,7 @@ public class DriveBase extends Subsystem {
 
 	DifferentialDrive drive;
 
-	private final static double RAMP_SPEED = 2;
+	private final static double RAMP_SPEED = 10;
 	private final static double DRIVING_SLOW_MULTIPLIER = 0.4;
 
 	public DriveBase() {
@@ -26,10 +26,10 @@ public class DriveBase extends Subsystem {
 	}
 
 	public void setDrivingRamp() {
-		RobotMap.frontLeft.configClosedloopRamp(RAMP_SPEED, 10);
-		RobotMap.backLeft.configClosedloopRamp(RAMP_SPEED, 10);
-		RobotMap.frontRight.configClosedloopRamp(RAMP_SPEED, 10);
-		RobotMap.backRight.configClosedloopRamp(RAMP_SPEED, 10);
+		RobotMap.frontLeft.configOpenloopRamp(RAMP_SPEED, 10);
+		RobotMap.backLeft.configOpenloopRamp(RAMP_SPEED, 10);
+		RobotMap.frontRight.configOpenloopRamp(RAMP_SPEED, 10);
+		RobotMap.backRight.configOpenloopRamp(RAMP_SPEED, 10);
 	}
 
 	public void turnOffDrivingRamp() {

@@ -28,7 +28,7 @@ public class OperateElevator extends Command {
 	protected void execute() {
 		double rightTriggerAxis = OI.rightXboxTrigger();
 		double leftTriggerAxis = OI.leftXboxTrigger();
-		double differenceOfAxis = rightTriggerAxis - leftTriggerAxis;
+		double differenceOfAxis = leftTriggerAxis - rightTriggerAxis;
 		int elevatorPosition = RobotMap.elevatorMotor.getSelectedSensorPosition(0);
 
 		if (differenceOfAxis > deadZone) {

@@ -23,12 +23,22 @@ public class Elevator extends Subsystem {
 
 	private static final double AUTONOMOUS_DEAD_ZONE_INCHES = 2;
 
+	private static final double ELEVATOR_RAMP = 1;
+
 	public Elevator() {
 	}
 
 	@Override
 	protected void initDefaultCommand() {
 		setDefaultCommand(new OperateElevator());
+	}
+
+	public void setElevatorRamp() {
+		RobotMap.elevatorMotor.configOpenloopRamp(ELEVATOR_RAMP, 5);
+	}
+
+	public void turnOffElevatorRamp() {
+		RobotMap.elevatorMotor.configOpenloopRamp(0, 1);
 	}
 
 	public double setDeadZone() {
@@ -77,7 +87,7 @@ public class Elevator extends Subsystem {
 		RobotMap.elevatorMotor.setSensorPhase(false);
 		RobotMap.elevatorMotor.setSafetyEnabled(false);
 		RobotMap.elevatorMotor.setInverted(true);
-//		RobotMap.elevatorMotor.configClosedloopRamp(2, 10);
+		// RobotMap.elevatorMotor.configClosedloopRamp(2, 10);
 	}
 
 	public void resetElevatorEncoder() {

@@ -18,8 +18,8 @@ public class EncoderDrive extends Command {
 														// WHEEL_CIRCUMFERENCE;
 
 	private final static double RAMP_SPEED = 2;
-	private final static double LEFT_SPEED = -0.25;
-	private final static double RIGHT_SPEED = -0.30;
+	private final static double LEFT_SPEED = -0.5;
+	private final static double RIGHT_SPEED = -0.55;
 
 	private static final int DEFAULT_TIMEOUT = 3;
 
@@ -53,7 +53,7 @@ public class EncoderDrive extends Command {
 	@Override
 	protected void initialize() {
 		Robot.driveBase.configEncoder();
-		RobotMap.frontLeft.configClosedloopRamp(RAMP_SPEED, 0);
+		// Robot.driveBase.setDrivingRamp();
 		Robot.gyro.resetGyro();
 	}
 
@@ -77,11 +77,12 @@ public class EncoderDrive extends Command {
 			System.out.println("Go right FASTER");
 			Robot.driveBase.drive(LEFT_SPEED, RIGHT_SPEED * DRIVING_MULTIPLIER);
 		}
-		if (leftEncoder >= countsToMove && -rightEncoder >= countsToMove) {
+		if (leftEncoder >= countsToMove) {
 			Robot.driveBase.stopMotors();
 			isDone = true;
 			System.out.println("STOP");
 		}
+		// && -rightEncoder >= countsToMove
 	}
 
 	@Override
@@ -93,6 +94,7 @@ public class EncoderDrive extends Command {
 	protected void end() {
 		Robot.driveBase.resetMotors();
 		Robot.driveBase.stopMotors();
+		Robot.driveBase.turnOffDrivingRamp();
 	}
 
 	@Override

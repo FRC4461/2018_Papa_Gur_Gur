@@ -4,14 +4,17 @@ import org.usfirst.frc4461.PapaGurGur.commandGroups.CrossLine;
 import org.usfirst.frc4461.PapaGurGur.commandGroups.DoNothing;
 import org.usfirst.frc4461.PapaGurGur.commandGroups.LeftPosLeftScale;
 import org.usfirst.frc4461.PapaGurGur.commandGroups.LeftPosLeftSwitch;
+import org.usfirst.frc4461.PapaGurGur.commandGroups.LeftPosLongLeftSwitch;
 import org.usfirst.frc4461.PapaGurGur.commandGroups.LeftPosRightSwitch;
 import org.usfirst.frc4461.PapaGurGur.commandGroups.MiddlePosCrossLeft;
 import org.usfirst.frc4461.PapaGurGur.commandGroups.MiddlePosCrossRight;
 import org.usfirst.frc4461.PapaGurGur.commandGroups.MiddlePosLeftSwitch;
 import org.usfirst.frc4461.PapaGurGur.commandGroups.MiddlePosRightSwitch;
 import org.usfirst.frc4461.PapaGurGur.commandGroups.RightPosLeftSwitch;
+import org.usfirst.frc4461.PapaGurGur.commandGroups.RightPosLongRightSwitch;
 import org.usfirst.frc4461.PapaGurGur.commandGroups.RightPosRightScale;
 import org.usfirst.frc4461.PapaGurGur.commandGroups.RightPosRightSwitch;
+import org.usfirst.frc4461.PapaGurGur.commandGroups.TestAuto;
 import org.usfirst.frc4461.PapaGurGur.commands.ScheduleCommands;
 import org.usfirst.frc4461.PapaGurGur.subsystems.Display;
 import org.usfirst.frc4461.PapaGurGur.subsystems.DriveBase;
@@ -54,11 +57,13 @@ public class Robot extends IterativeRobot {
 		sendableChooser.addObject("RightPosRightScale", new RightPosRightScale());
 		sendableChooser.addObject("RightPosRightSwitch", new RightPosRightSwitch());
 		sendableChooser.addObject("RightPosLeftSwitch", new RightPosLeftSwitch());
+		sendableChooser.addObject("RightPosLongRightSwitch", new RightPosLongRightSwitch());
 
 		// Left side auto routines
 		sendableChooser.addObject("LeftPosLeftScale", new LeftPosLeftScale());
 		sendableChooser.addObject("LeftPosLeftSwitch", new LeftPosLeftSwitch());
 		sendableChooser.addObject("LeftPosRightSwitch", new LeftPosRightSwitch());
+		sendableChooser.addObject("LeftPosLongLeftSwitch", new LeftPosLongLeftSwitch());
 
 		// Middle position auto routines
 		sendableChooser.addObject("MiddlePosCrossLeft", new MiddlePosCrossLeft());
@@ -71,6 +76,7 @@ public class Robot extends IterativeRobot {
 		sendableChooser.addObject("None", new DoNothing());
 
 		sendableChooser.addDefault("None", new DoNothing());
+		sendableChooser.addObject("Test Auto", new TestAuto());
 	}
 
 	@Override

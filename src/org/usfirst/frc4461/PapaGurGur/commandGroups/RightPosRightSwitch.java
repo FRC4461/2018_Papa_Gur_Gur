@@ -17,7 +17,7 @@ public class RightPosRightSwitch extends CommandGroup {
 	public RightPosRightSwitch() {
 		addParallel(AutonomousElevator.GoUp(45));
 		addSequential(EncoderDrive.GoForward(135 - 37 + 6 + 5));
-		addSequential(new OpenGripper(2));
+		addSequential(new OpenGripper(1));
 		addSequential(EncoderDrive.GoBackward(30));
 		addParallel(new CloseGripper(2));
 		addParallel(AutonomousElevator.GoDown(0));

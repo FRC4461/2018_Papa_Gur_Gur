@@ -38,6 +38,7 @@ public class AutonomousElevator extends Command {
 
 	protected void initialize() {
 		Robot.elevator.configElevatorEncoder();
+		Robot.elevator.setElevatorRamp();
 		System.out.println("Elevator initialize");
 	}
 
@@ -58,6 +59,7 @@ public class AutonomousElevator extends Command {
 	}
 
 	protected void end() {
+		Robot.elevator.turnOffElevatorRamp();
 	}
 
 	protected void interrupted() {

@@ -12,6 +12,6 @@ public class TestAuto extends CommandGroup {
 
 	public TestAuto() {
 		addSequential(EncoderDrive.GoForward(40));
-		addSequential(GyroTurn.turnRight(90));
+		addSequential(EncoderDrive.GoBackward(40));
 	}
 }

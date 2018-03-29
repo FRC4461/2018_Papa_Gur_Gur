@@ -53,8 +53,8 @@ public class EncoderDrive extends Command {
 	@Override
 	protected void initialize() {
 		Robot.driveBase.configEncoder();
-		// Robot.driveBase.setDrivingRamp();
 		Robot.gyro.resetGyro();
+		System.out.println("am start");
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class EncoderDrive extends Command {
 
 		System.out.println(
 				"Left: " + " " + leftEncoder + "Right: " + rightEncoder + " " + "Counts To Move: " + countsToMove);
-
+		
 		// Gyro ANgle
 		System.out.println(gyroAngle);
 		if (gyroAngle > -1 && gyroAngle < 1) {
@@ -94,7 +94,6 @@ public class EncoderDrive extends Command {
 	protected void end() {
 		Robot.driveBase.resetMotors();
 		Robot.driveBase.stopMotors();
-		Robot.driveBase.turnOffDrivingRamp();
 	}
 
 	@Override

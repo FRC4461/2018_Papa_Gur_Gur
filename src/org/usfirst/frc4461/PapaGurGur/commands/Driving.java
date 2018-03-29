@@ -25,6 +25,7 @@ public class Driving extends Command {
 		slowMultiplier = Robot.driveBase.slowMultiplier();
 		RobotMap.frontLeft.setSelectedSensorPosition(0, 0, 1);
 		RobotMap.frontRight.setSelectedSensorPosition(0, 0, 1);
+		Robot.driveBase.turnOffDrivingRamp();
 	}
 
 	@Override

@@ -33,10 +33,10 @@ public class DriveBase extends Subsystem {
 	}
 
 	public void turnOffDrivingRamp() {
-		RobotMap.frontLeft.configClosedloopRamp(0, 10);
-		RobotMap.backLeft.configClosedloopRamp(0, 10);
-		RobotMap.frontRight.configClosedloopRamp(0, 10);
-		RobotMap.backRight.configClosedloopRamp(0, 10);
+		RobotMap.frontLeft.configOpenloopRamp(0, 1);
+		RobotMap.backLeft.configOpenloopRamp(0, 1);
+		RobotMap.frontRight.configOpenloopRamp(0, 1);
+		RobotMap.backRight.configOpenloopRamp(0, 1);
 	}
 
 	public double slowMultiplier() {

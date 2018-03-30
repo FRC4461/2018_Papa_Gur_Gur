@@ -9,20 +9,14 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class OpenGripper extends Command {
 
-    private double timeOut;
-
-    private boolean isDone = false;
-
     /***
      * Opens the gripper.
      * 
      * @param timeOut
      *            Seconds to end command
      */
-    public OpenGripper(double timeOut) {
+    public OpenGripper() {
         requires(Robot.gripPneumatics);
-        this.timeOut = timeOut;
-        setTimeout(this.timeOut);
     }
 
     protected void initialize() {
@@ -30,7 +24,6 @@ public class OpenGripper extends Command {
     }
 
     protected void execute() {
-        isDone = true;
     }
 
     protected boolean isFinished() {

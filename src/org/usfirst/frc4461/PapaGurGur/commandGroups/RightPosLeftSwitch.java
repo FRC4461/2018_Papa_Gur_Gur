@@ -20,9 +20,9 @@ public class RightPosLeftSwitch extends CommandGroup {
         addSequential(GyroTurn.turnRight(90));
         addParallel(AutonomousElevator.GoUp(45));
         addSequential(EncoderDrive.GoForward(53));
-        addSequential(new OpenGripper(2));
+        addSequential(new OpenGripper());
         addSequential(EncoderDrive.GoBackward(50));
-        addParallel(new CloseGripper(2));
+        addParallel(new CloseGripper());
         addParallel(AutonomousElevator.GoDown(0));
         addSequential(GyroTurn.turnLeft(90));
         addSequential(EncoderDrive.GoForward(50));

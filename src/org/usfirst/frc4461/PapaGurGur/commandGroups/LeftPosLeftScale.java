@@ -21,9 +21,9 @@ public class LeftPosLeftScale extends CommandGroup {
         addSequential(GyroTurn.turnRight(45));
         addSequential(EncoderDrive.GoBackward(58));
         addSequential(new Delay(1.5));
-        addSequential(new OpenGripper(2));
+        addSequential(new OpenGripper());
         addSequential(EncoderDrive.GoBackward(40));
-        addParallel(new CloseGripper(2));
+        addParallel(new CloseGripper());
         addSequential(AutonomousElevator.GoDown(0));
     }
 }

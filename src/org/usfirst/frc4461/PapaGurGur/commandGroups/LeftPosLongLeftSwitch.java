@@ -18,6 +18,6 @@ public class LeftPosLongLeftSwitch extends CommandGroup {
         addSequential(GyroTurn.turnRight(90));
         // please check this xd
         addSequential(EncoderDrive.GoForward(15));
-        addSequential(new OpenGripper(1));
+        addSequential(new OpenGripper());
     }
 }

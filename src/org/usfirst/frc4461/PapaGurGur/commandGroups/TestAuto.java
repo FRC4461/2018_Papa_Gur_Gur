@@ -20,10 +20,10 @@ public class TestAuto extends CommandGroup {
         addSequential(EncoderDrive.GoBackward(40));
         addParallel(AutonomousElevator.GoUp(50));
         addSequential(new Delay(2));
-        addSequential(new OpenGripper(1));
+        addSequential(new OpenGripper());
         addSequential(new Delay(0.5));
         addParallel(AutonomousElevator.GoDown(0));
-        addParallel(new CloseGripper(1));
+        addParallel(new CloseGripper());
         addSequential(EncoderDrive.GoBackward(40));
     }
 }

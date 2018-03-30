@@ -9,29 +9,25 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class CloseGripper extends Command {
 
-    private double timeOut;
-
     /***
      * Closes the gripper.
      * 
      * @param timeOut
      *            Seconds to end command
      */
-    public CloseGripper(double timeOut) {
+    public CloseGripper() {
         requires(Robot.gripPneumatics);
-        this.timeOut = timeOut;
-        setTimeout(this.timeOut);
     }
 
     protected void initialize() {
-    }
-
-    protected void execute() {
         Robot.gripPneumatics.closeGripper();
     }
 
+    protected void execute() {
+    }
+
     protected boolean isFinished() {
-        return isTimedOut();
+        return true;
     }
 
     protected void end() {

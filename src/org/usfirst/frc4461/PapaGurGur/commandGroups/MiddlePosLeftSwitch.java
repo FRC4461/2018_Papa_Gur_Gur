@@ -20,9 +20,9 @@ public class MiddlePosLeftSwitch extends CommandGroup {
         addSequential(GyroTurn.turnRight(90));
         addParallel(AutonomousElevator.GoUp(45));
         addSequential(EncoderDrive.GoForward(150));
-        addSequential(new OpenGripper(1));
+        addSequential(new OpenGripper());
         addParallel(AutonomousElevator.GoDown(0));
-        addParallel(new CloseGripper(1));
+        addParallel(new CloseGripper());
         addSequential(EncoderDrive.GoBackward(30));
         addSequential(GyroTurn.turnLeft(90));
         addSequential(EncoderDrive.GoForward(60));

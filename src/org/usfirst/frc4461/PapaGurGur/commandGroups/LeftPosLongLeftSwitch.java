@@ -13,11 +13,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LeftPosLongLeftSwitch extends CommandGroup {
 
     public LeftPosLongLeftSwitch() {
-    	addSequential(EncoderDrive.GoForward(130));
-    	addParallel(AutonomousElevator.GoUp(45));
-    	addSequential(GyroTurn.turnRight(90));
-    	// please check this xd
-    	addSequential(EncoderDrive.GoForward(15));
-    	addSequential(new OpenGripper(1));
+        addSequential(EncoderDrive.GoForward(130));
+        addParallel(AutonomousElevator.GoUp(45));
+        addSequential(GyroTurn.turnRight(90));
+        // please check this xd
+        addSequential(EncoderDrive.GoForward(15));
+        addSequential(new OpenGripper(1));
     }
 }

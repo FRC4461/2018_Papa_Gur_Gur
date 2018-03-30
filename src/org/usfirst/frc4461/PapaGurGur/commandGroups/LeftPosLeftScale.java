@@ -15,15 +15,15 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class LeftPosLeftScale extends CommandGroup {
 
-	public LeftPosLeftScale() {
-		addSequential(EncoderDrive.GoForward(264));
-		addParallel(AutonomousElevator.GoUp(101));
-		addSequential(GyroTurn.turnRight(45));
-		addSequential(EncoderDrive.GoBackward(58));
-		addSequential(new Delay(1.5));
-		addSequential(new OpenGripper(2));
-		addSequential(EncoderDrive.GoBackward(40));
-		addParallel(AutonomousElevator.GoDown(0));
-		addParallel(new CloseGripper(2));
-	}
+    public LeftPosLeftScale() {
+        addSequential(EncoderDrive.GoForward(264));
+        addParallel(AutonomousElevator.GoUp(101));
+        addSequential(GyroTurn.turnRight(45));
+        addSequential(EncoderDrive.GoBackward(58));
+        addSequential(new Delay(1.5));
+        addSequential(new OpenGripper(2));
+        addSequential(EncoderDrive.GoBackward(40));
+        addParallel(AutonomousElevator.GoDown(0));
+        addParallel(new CloseGripper(2));
+    }
 }

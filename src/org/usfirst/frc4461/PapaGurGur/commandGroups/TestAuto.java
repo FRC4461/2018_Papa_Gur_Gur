@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class TestAuto extends CommandGroup {
 
-	public TestAuto() {
-		addSequential(EncoderDrive.GoForward(40));
-		addSequential(new Delay(1));
-		addSequential(EncoderDrive.GoBackward(40));
-	}
+    public TestAuto() {
+        addSequential(EncoderDrive.GoForward(40));
+        addSequential(new Delay(1));
+        addSequential(EncoderDrive.GoBackward(40));
+    }
 }

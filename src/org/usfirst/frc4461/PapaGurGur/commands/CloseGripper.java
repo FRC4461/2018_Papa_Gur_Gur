@@ -8,34 +8,35 @@ import edu.wpi.first.wpilibj.command.Command;
  * Command for closing the gripper in autonomous.
  */
 public class CloseGripper extends Command {
-	
-	private double timeOut;
 
-	/***
-	 * Closes the gripper.
-	 * 
-	 * @param timeOut Seconds to end command
-	 */
-	public CloseGripper(double timeOut) {
-		requires(Robot.gripPneumatics);
-		this.timeOut = timeOut;
-		setTimeout(this.timeOut);
-	}
+    private double timeOut;
 
-	protected void initialize() {
-	}
+    /***
+     * Closes the gripper.
+     * 
+     * @param timeOut
+     *            Seconds to end command
+     */
+    public CloseGripper(double timeOut) {
+        requires(Robot.gripPneumatics);
+        this.timeOut = timeOut;
+        setTimeout(this.timeOut);
+    }
 
-	protected void execute() {
-		Robot.gripPneumatics.closeGripper();
-	}
+    protected void initialize() {
+    }
 
-	protected boolean isFinished() {
-		return isTimedOut();
-	}
+    protected void execute() {
+        Robot.gripPneumatics.closeGripper();
+    }
 
-	protected void end() {
-	}
+    protected boolean isFinished() {
+        return isTimedOut();
+    }
 
-	protected void interrupted() {
-	}
+    protected void end() {
+    }
+
+    protected void interrupted() {
+    }
 }

@@ -12,12 +12,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class RightPosLongRightSwitch extends CommandGroup {
 
-	public RightPosLongRightSwitch() {
-		addSequential(EncoderDrive.GoForward(130));
-		addParallel(AutonomousElevator.GoUp(45));
-		addSequential(GyroTurn.turnLeft(90));
-		// please check this xd
-		addSequential(EncoderDrive.GoForward(15));
-		addSequential(new OpenGripper(1));
-	}
+    public RightPosLongRightSwitch() {
+        addSequential(EncoderDrive.GoForward(130));
+        addParallel(AutonomousElevator.GoUp(45));
+        addSequential(GyroTurn.turnLeft(90));
+        // please check this xd
+        addSequential(EncoderDrive.GoForward(15));
+        addSequential(new OpenGripper(1));
+    }
 }

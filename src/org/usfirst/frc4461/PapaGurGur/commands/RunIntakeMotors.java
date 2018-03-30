@@ -9,35 +9,36 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class RunIntakeMotors extends Command {
 
-	private double timeOut;
+    private double timeOut;
 
-	/***
-	 * Runs the motors to intake a cube.
-	 * 
-	 * @param timeOut Seconds to end command
-	 */
-	public RunIntakeMotors(double timeOut) {
-		requires(Robot.gripMotors);
-		this.timeOut = timeOut;
-		setTimeout(this.timeOut);
-	}
+    /***
+     * Runs the motors to intake a cube.
+     * 
+     * @param timeOut
+     *            Seconds to end command
+     */
+    public RunIntakeMotors(double timeOut) {
+        requires(Robot.gripMotors);
+        this.timeOut = timeOut;
+        setTimeout(this.timeOut);
+    }
 
-	protected void initialize() {
-	}
+    protected void initialize() {
+    }
 
-	protected void execute() {
-		Robot.gripMotors.runIntake();
-	}
+    protected void execute() {
+        Robot.gripMotors.runIntake();
+    }
 
-	protected boolean isFinished() {
-		return isTimedOut();
-	}
+    protected boolean isFinished() {
+        return isTimedOut();
+    }
 
-	protected void end() {
-		Robot.gripMotors.stopMotors();
-	}
+    protected void end() {
+        Robot.gripMotors.stopMotors();
+    }
 
-	protected void interrupted() {
-		end();
-	}
+    protected void interrupted() {
+        end();
+    }
 }

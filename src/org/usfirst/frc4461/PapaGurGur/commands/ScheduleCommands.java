@@ -9,54 +9,54 @@ import edu.wpi.first.wpilibj.command.Command;
  * Command for picking autonomous routine.
  */
 public class ScheduleCommands extends Command {
-	
-	/***
-	 * Gets the game data from the FMS. We only care about the 2 values to
-	 * determine our autonomous routine
-	 */
-	public ScheduleCommands() {
-	}
 
-	@Override
-	protected void initialize() {
-		System.out.println("Call Scheduler");
-		String gameData = "";
-		while (gameData.length() < 2) {
-			gameData = DriverStation.getInstance().getGameSpecificMessage();
-			if (gameData == null) {
-				gameData = "";
-			}
-		}
+    /***
+     * Gets the game data from the FMS. We only care about the 2 values to determine
+     * our autonomous routine
+     */
+    public ScheduleCommands() {
+    }
 
-		if (gameData.charAt(0) == 'L') {
-			if (gameData.charAt(1) == 'L') {
-				Robot.LL.getSelected().start();
-			} else if (gameData.charAt(1) == 'R') {
-				Robot.LR.getSelected().start();
-			}
-		} else if (gameData.charAt(0) == 'R') {
-			if (gameData.charAt(1) == 'R') {
-				Robot.RR.getSelected().start();
-			} else if (gameData.charAt(1) == 'L') {
-				Robot.RL.getSelected().start();
-			}
-		}
-	}
+    @Override
+    protected void initialize() {
+        System.out.println("Call Scheduler");
+        String gameData = "";
+        while (gameData.length() < 2) {
+            gameData = DriverStation.getInstance().getGameSpecificMessage();
+            if (gameData == null) {
+                gameData = "";
+            }
+        }
 
-	@Override
-	protected void execute() {
-	}
+        if (gameData.charAt(0) == 'L') {
+            if (gameData.charAt(1) == 'L') {
+                Robot.LL.getSelected().start();
+            } else if (gameData.charAt(1) == 'R') {
+                Robot.LR.getSelected().start();
+            }
+        } else if (gameData.charAt(0) == 'R') {
+            if (gameData.charAt(1) == 'R') {
+                Robot.RR.getSelected().start();
+            } else if (gameData.charAt(1) == 'L') {
+                Robot.RL.getSelected().start();
+            }
+        }
+    }
 
-	@Override
-	protected boolean isFinished() {
-		return false;
-	}
+    @Override
+    protected void execute() {
+    }
 
-	@Override
-	protected void end() {
-	}
+    @Override
+    protected boolean isFinished() {
+        return false;
+    }
 
-	@Override
-	protected void interrupted() {
-	}
+    @Override
+    protected void end() {
+    }
+
+    @Override
+    protected void interrupted() {
+    }
 }

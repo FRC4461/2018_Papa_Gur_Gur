@@ -13,20 +13,20 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class RightPosLeftSwitch extends CommandGroup {
 
-	public RightPosLeftSwitch() {
-		addSequential(EncoderDrive.GoForward(40));
-		addSequential(GyroTurn.turnLeft(90));
-		addSequential(EncoderDrive.GoForward(140));
-		addSequential(GyroTurn.turnRight(90));
-		addParallel(AutonomousElevator.GoUp(45));
-		addSequential(EncoderDrive.GoForward(53));
-		addSequential(new OpenGripper(2));
-		addSequential(EncoderDrive.GoBackward(50));
-		addParallel(new CloseGripper(2));
-		addParallel(AutonomousElevator.GoDown(0));
-		addSequential(GyroTurn.turnLeft(90));
-		addSequential(EncoderDrive.GoForward(50));
-		addSequential(GyroTurn.turnRight(90));
-		addSequential(EncoderDrive.GoForward(50));
-	}
+    public RightPosLeftSwitch() {
+        addSequential(EncoderDrive.GoForward(40));
+        addSequential(GyroTurn.turnLeft(90));
+        addSequential(EncoderDrive.GoForward(140));
+        addSequential(GyroTurn.turnRight(90));
+        addParallel(AutonomousElevator.GoUp(45));
+        addSequential(EncoderDrive.GoForward(53));
+        addSequential(new OpenGripper(2));
+        addSequential(EncoderDrive.GoBackward(50));
+        addParallel(new CloseGripper(2));
+        addParallel(AutonomousElevator.GoDown(0));
+        addSequential(GyroTurn.turnLeft(90));
+        addSequential(EncoderDrive.GoForward(50));
+        addSequential(GyroTurn.turnRight(90));
+        addSequential(EncoderDrive.GoForward(50));
+    }
 }

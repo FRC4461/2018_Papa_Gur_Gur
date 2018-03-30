@@ -10,11 +10,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class MiddlePosCrossLeft extends CommandGroup {
 
-	public MiddlePosCrossLeft() {
-		addSequential(EncoderDrive.GoForward(50));
-		addSequential(GyroTurn.turnLeft(90));
-		addSequential(EncoderDrive.GoForward(90));
-		addSequential(GyroTurn.turnRight(90));
-		addSequential(EncoderDrive.GoForward(60));
-	}
+    public MiddlePosCrossLeft() {
+        addSequential(EncoderDrive.GoForward(50));
+        addSequential(GyroTurn.turnLeft(90));
+        addSequential(EncoderDrive.GoForward(90));
+        addSequential(GyroTurn.turnRight(90));
+        addSequential(EncoderDrive.GoForward(60));
+    }
 }

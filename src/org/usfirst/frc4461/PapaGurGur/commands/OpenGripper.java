@@ -8,34 +8,35 @@ import edu.wpi.first.wpilibj.command.Command;
  * Command for opening the gripper in autonomous.
  */
 public class OpenGripper extends Command {
-	
-	private double timeOut;
 
-	/***
-	 * Opens the gripper.
-	 * 
-	 * @param timeOut Seconds to end command
-	 */
-	public OpenGripper(double timeOut) {
-		requires(Robot.gripPneumatics);
-		this.timeOut = timeOut;
-		setTimeout(this.timeOut);
-	}
+    private double timeOut;
 
-	protected void initialize() {
-	}
+    /***
+     * Opens the gripper.
+     * 
+     * @param timeOut
+     *            Seconds to end command
+     */
+    public OpenGripper(double timeOut) {
+        requires(Robot.gripPneumatics);
+        this.timeOut = timeOut;
+        setTimeout(this.timeOut);
+    }
 
-	protected void execute() {
-		Robot.gripPneumatics.openGripper();
-	}
+    protected void initialize() {
+    }
 
-	protected boolean isFinished() {
-		return false;
-	}
+    protected void execute() {
+        Robot.gripPneumatics.openGripper();
+    }
 
-	protected void end() {
-	}
+    protected boolean isFinished() {
+        return false;
+    }
 
-	protected void interrupted() {
-	}
+    protected void end() {
+    }
+
+    protected void interrupted() {
+    }
 }

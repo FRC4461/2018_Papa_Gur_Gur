@@ -18,8 +18,9 @@ public class EncoderDrive extends Command {
 														// WHEEL_CIRCUMFERENCE;
 
 	private final static double RAMP_SPEED = 2;
-	private final static double LEFT_SPEED = -0.5;
-	private final static double RIGHT_SPEED = -0.55;
+	private final static double MOTOR_SPEED = 0.5;
+
+	private static double directionMultiplier;
 
 	private static final int DEFAULT_TIMEOUT = 3;
 
@@ -43,10 +44,14 @@ public class EncoderDrive extends Command {
 	}
 
 	public static EncoderDrive GoForward(double inchesToMove) {
+		System.out.println("Go Forward");
+		directionMultiplier = 1;
 		return new EncoderDrive(inchesToMove);
 	}
 
 	public static EncoderDrive GoBackward(double inchesToMove) {
+		System.out.println("Go Backward");
+		directionMultiplier = -1;
 		return new EncoderDrive(-inchesToMove);
 	}
 
@@ -64,25 +69,28 @@ public class EncoderDrive extends Command {
 		double gyroAngle = Robot.gyro.getAngle();
 
 		System.out.println(
-				"Left: " + " " + leftEncoder + "Right: " + rightEncoder + " " + "Counts To Move: " + countsToMove);
-		
-		// Gyro ANgle
+		"Left: " + " " + leftEncoder + "Right: " + rightEncoder + " " + "Counts To Move: " + countsToMove);
+
+		// Gyro Angle
 		System.out.println(gyroAngle);
 		if (gyroAngle > -1 && gyroAngle < 1) {
-			Robot.driveBase.drive(LEFT_SPEED, RIGHT_SPEED);
+			Robot.driveBase.drive(MOTOR_SPEED * directionMultiplier, 
+								  MOTOR_SPEED * directionMultiplier);
 		} else if (gyroAngle < -1) {
 			System.out.println("Go left FASTER");
-			Robot.driveBase.drive(LEFT_SPEED * DRIVING_MULTIPLIER, RIGHT_SPEED);
+			Robot.driveBase.drive(MOTOR_SPEED * directionMultiplier * DRIVING_MULTIPLIER,
+								  MOTOR_SPEED * directionMultiplier);
 		} else if (gyroAngle > 1) {
 			System.out.println("Go right FASTER");
-			Robot.driveBase.drive(LEFT_SPEED, RIGHT_SPEED * DRIVING_MULTIPLIER);
+			Robot.driveBase.drive(MOTOR_SPEED * directionMultiplier,
+								  MOTOR_SPEED * directionMultiplier * DRIVING_MULTIPLIER);
 		}
-		if (leftEncoder >= countsToMove) {
+		if (leftEncoder * directionMultiplier >= countsToMove &&
+			-rightEncoder * directionMultiplier >= countsToMove) {
 			Robot.driveBase.stopMotors();
 			isDone = true;
 			System.out.println("STOP");
 		}
-		// && -rightEncoder >= countsToMove
 	}
 
 	@Override
@@ -93,7 +101,6 @@ public class EncoderDrive extends Command {
 	@Override
 	protected void end() {
 		Robot.driveBase.resetMotors();
-		Robot.driveBase.stopMotors();
 	}
 
 	@Override

@@ -146,7 +146,6 @@ public class Robot extends IterativeRobot {
     @Override
     public void teleopInit() {
         RobotMap.elevatorMotor.setInverted(false);
-        Robot.driveBase.resetMotors();
     }
 
     @Override

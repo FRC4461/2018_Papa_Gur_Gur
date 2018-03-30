@@ -18,7 +18,7 @@ public class EncoderDrive extends Command {
 
     private final static double MOTOR_SPEED = 0.5;
 
-    private static double directionMultiplier;
+    private double directionMultiplier;
 
     private final int countsToMove;
 
@@ -34,21 +34,20 @@ public class EncoderDrive extends Command {
      *            backwards.
      */
 
-    private EncoderDrive(double inchesToMove) {
+    private EncoderDrive(double inchesToMove, int dir) {
         requires(Robot.driveBase);
         countsToMove = (int)(COUNTS_PER_INCH * inchesToMove);
+        directionMultiplier = dir;
     }
 
     public static EncoderDrive GoForward(double inchesToMove) {
         System.out.println("Go Forward");
-        directionMultiplier = 1;
-        return new EncoderDrive(inchesToMove);
+        return new EncoderDrive(inchesToMove, -1);
     }
 
     public static EncoderDrive GoBackward(double inchesToMove) {
         System.out.println("Go Backward");
-        directionMultiplier = -1;
-        return new EncoderDrive(inchesToMove);
+        return new EncoderDrive(inchesToMove, 1);
     }
 
     @Override

@@ -10,37 +10,33 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class EncoderDrive extends Command {
 
-    private static final int    COUNTS_PER_REVOLUTION       = 512;
-    private static final double GEAR_REDUCTION              = (45.0 / 19.0) * (50.0 / 14.0);
+    private static final int COUNTS_PER_REVOLUTION = 512;
+    private static final double GEAR_REDUCTION = (45.0 / 19.0) * (50.0 / 14.0);
     private static final double COUNTS_PER_WHEEL_REVOLUTION = COUNTS_PER_REVOLUTION * GEAR_REDUCTION;
-    private static final double WHEEL_CIRCUMFERENCE         = 6 * Math.PI;
-    private static final double COUNTS_PER_INCH             = 190;                                   // COUNTS_PER_WHEEL_REVOLUTION
-                                                                                                     // WHEEL_CIRCUMFERENCE;
+    private static final double WHEEL_CIRCUMFERENCE = 6 * Math.PI;
+    private static final double COUNTS_PER_INCH = 190; // COUNTS_PER_WHEEL_REVOLUTION / WHEEL_CIRCUMFERENCE;
 
-    private final static double RAMP_SPEED                  = 2;
-    private final static double MOTOR_SPEED                 = 0.5;
+    private final static double MOTOR_SPEED = 0.5;
 
-    private static double       directionMultiplier;
+    private static double directionMultiplier;
 
-    private static final int    DEFAULT_TIMEOUT             = 3;
+    private final int countsToMove;
 
-    private final int           countsToMove;
+    private boolean isDone = false;
 
-    private boolean             isDone                      = false;
-
-    private static final double DRIVING_MULTIPLIER          = 1.3;
+    private static final double DRIVING_MULTIPLIER = 1.3;
 
     /**
      * Drives forward based on inches.
      *
      * @param inchesToMove
-     *            The number of inches to move. Setting a negative value will
-     *            drive backwards.
+     *            The number of inches to move. Setting a negative value will drive
+     *            backwards.
      */
 
     private EncoderDrive(double inchesToMove) {
         requires(Robot.driveBase);
-        countsToMove = (int) (COUNTS_PER_INCH * inchesToMove);
+        countsToMove = (int)(COUNTS_PER_INCH * inchesToMove);
     }
 
     public static EncoderDrive GoForward(double inchesToMove) {
@@ -64,8 +60,8 @@ public class EncoderDrive extends Command {
 
     @Override
     protected void execute() {
-        int leftEncoder = RobotMap.frontLeft.getSelectedSensorPosition(0);
-        int rightEncoder = RobotMap.frontRight.getSelectedSensorPosition(0);
+        int leftEncoder = Math.abs(RobotMap.frontLeft.getSelectedSensorPosition(0));
+        int rightEncoder = Math.abs(RobotMap.frontRight.getSelectedSensorPosition(0));
         double gyroAngle = Robot.gyro.getAngle();
 
         System.out.println(
@@ -84,7 +80,7 @@ public class EncoderDrive extends Command {
             Robot.driveBase.drive(MOTOR_SPEED * directionMultiplier,
                     MOTOR_SPEED * directionMultiplier * DRIVING_MULTIPLIER);
         }
-        if (Math.abs(leftEncoder) >= countsToMove && Math.abs(rightEncoder) >= countsToMove) {
+        if (leftEncoder >= countsToMove && rightEncoder >= countsToMove) {
             Robot.driveBase.stopMotors();
             isDone = true;
             System.out.println("STOP");

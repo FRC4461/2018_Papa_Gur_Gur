@@ -88,13 +88,13 @@ public class DriveBase extends Subsystem {
         RobotMap.frontLeft.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
         RobotMap.frontLeft.setSelectedSensorPosition(0, 0, 10);
         RobotMap.frontLeft.setSensorPhase(true);
-        RobotMap.frontLeft.setSafetyEnabled(false);
+        RobotMap.frontLeft.setSafetyEnabled(true);
 
         RobotMap.frontRight.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
         RobotMap.frontRight.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
         RobotMap.frontRight.setSelectedSensorPosition(0, 0, 10);
         RobotMap.frontRight.setSensorPhase(true);
-        RobotMap.frontRight.setSafetyEnabled(false);
+        RobotMap.frontRight.setSafetyEnabled(true);
 
         System.out.println("encoder initialize");
     }
@@ -103,10 +103,10 @@ public class DriveBase extends Subsystem {
      * After autonomous routines, set the configuration back to normal for driving
      */
     public void resetMotors() {
-        RobotMap.frontLeft.setSafetyEnabled(false);
-        RobotMap.backLeft.setSafetyEnabled(false);
-        RobotMap.frontRight.setSafetyEnabled(false);
-        RobotMap.backLeft.setSafetyEnabled(false);
+        RobotMap.frontLeft.setSafetyEnabled(true);
+        RobotMap.backLeft.setSafetyEnabled(true);
+        RobotMap.frontRight.setSafetyEnabled(true);
+        RobotMap.backLeft.setSafetyEnabled(true);
 
         RobotMap.frontRight.setInverted(false);
         RobotMap.backRight.setInverted(false);
@@ -115,7 +115,8 @@ public class DriveBase extends Subsystem {
 
         RobotMap.frontRight.setSelectedSensorPosition(0, 0, 10);
         RobotMap.frontLeft.setSelectedSensorPosition(0, 0, 10);
-
+        
+        
     }
 
     /**

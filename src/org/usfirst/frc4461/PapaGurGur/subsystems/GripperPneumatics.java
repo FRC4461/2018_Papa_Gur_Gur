@@ -16,6 +16,7 @@ public class GripperPneumatics extends Subsystem {
 
     @Override
     protected void initDefaultCommand() {
+        setDefaultCommand(new OperateGripPneumatics());
     }
 
     public void turnOnCompressor() {

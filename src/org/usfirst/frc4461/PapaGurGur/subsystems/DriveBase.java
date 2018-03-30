@@ -14,8 +14,8 @@ public class DriveBase extends Subsystem {
 
     DifferentialDrive drive;
 
-    private final static double DRIVING_SLOW_MULTIPLIER = 0.4;
     private final static double RAMP_SPEED = 1;
+    private final static double DRIVING_SLOW_MULTIPLIER = 0.6;
 
     public DriveBase() {
     }

@@ -11,7 +11,7 @@ public class GyroTurn extends Command {
 
     private double degreesToTurn;
     private boolean isDone = false;
-    private static final double TURN_SPEED = 0.6;
+    private static final double TURN_SPEED = 0.25;
     private static final double DEAD_ZONE = 1.5;
 
     private GyroTurn(double degreesToTurn) {
@@ -42,8 +42,8 @@ public class GyroTurn extends Command {
     @Override
     protected void initialize() {
         Robot.gyro.resetGyro();
-        System.out.println("Yes its working");
         Robot.driveBase.setDrivingRamp();
+        System.out.println("Yes its working");
     }
 
     @Override

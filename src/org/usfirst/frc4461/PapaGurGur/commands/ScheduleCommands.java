@@ -4,6 +4,7 @@ import org.usfirst.frc4461.PapaGurGur.Robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /***
  * Command for picking autonomous routine.
@@ -11,8 +12,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ScheduleCommands extends Command {
 
     /***
-     * Gets the game data from the FMS. We only care about the 2 values to determine
-     * our autonomous routine
+     * Gets the game data from the FMS. We only care about the 2 values to
+     * determine our autonomous routine
      */
     public ScheduleCommands() {
     }
@@ -27,7 +28,7 @@ public class ScheduleCommands extends Command {
                 gameData = "";
             }
         }
-
+        
         if (gameData.charAt(0) == 'L') {
             if (gameData.charAt(1) == 'L') {
                 Robot.LL.getSelected().start();

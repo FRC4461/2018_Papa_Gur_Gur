@@ -1,5 +1,6 @@
 package org.usfirst.frc4461.PapaGurGur.commandGroups;
 
+import org.usfirst.frc4461.PapaGurGur.commands.Delay;
 import org.usfirst.frc4461.PapaGurGur.commands.EncoderDrive;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -9,6 +10,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class CrossLine extends CommandGroup {
 
     public CrossLine() {
+        addSequential(new Delay(5));
         addSequential(EncoderDrive.GoForward(140));
     }
 }

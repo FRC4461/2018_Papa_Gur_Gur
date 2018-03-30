@@ -14,8 +14,8 @@ public class DriveBase extends Subsystem {
 
     DifferentialDrive drive;
 
-    private final static double RAMP_SPEED = 10;
     private final static double DRIVING_SLOW_MULTIPLIER = 0.4;
+    private final static double RAMP_SPEED = 1;
 
     public DriveBase() {
     }
@@ -55,7 +55,8 @@ public class DriveBase extends Subsystem {
     }
 
     /**
-     * Turns right The speeds are set the same because 2 of the motors are backwards
+     * Turns right The speeds are set the same because 2 of the motors are
+     * backwards
      * 
      * @param speed
      *            Percent speed to set the motors.
@@ -100,7 +101,8 @@ public class DriveBase extends Subsystem {
     }
 
     /**
-     * After autonomous routines, set the configuration back to normal for driving
+     * After autonomous routines, set the configuration back to normal for
+     * driving
      */
     public void resetMotors() {
         RobotMap.frontLeft.setSafetyEnabled(true);
@@ -115,12 +117,12 @@ public class DriveBase extends Subsystem {
 
         RobotMap.frontRight.setSelectedSensorPosition(0, 0, 10);
         RobotMap.frontLeft.setSelectedSensorPosition(0, 0, 10);
-        
-        
+
     }
 
     /**
-     * The command takes in the joystick axis value and then sets the motor speed
+     * The command takes in the joystick axis value and then sets the motor
+     * speed
      * 
      * @param lSpeed
      * @param rSpeed
@@ -133,8 +135,8 @@ public class DriveBase extends Subsystem {
     }
 
     /**
-     * Use encoder ticks to move the robot autonomously. Set inverted because of the
-     * way the motors are setup
+     * Use encoder ticks to move the robot autonomously. Set inverted because of
+     * the way the motors are setup
      * 
      * @param countsToMove
      */

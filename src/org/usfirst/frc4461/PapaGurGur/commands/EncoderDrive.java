@@ -14,9 +14,10 @@ public class EncoderDrive extends Command {
     private static final double GEAR_REDUCTION = (45.0 / 19.0) * (50.0 / 14.0);
     private static final double COUNTS_PER_WHEEL_REVOLUTION = COUNTS_PER_REVOLUTION * GEAR_REDUCTION;
     private static final double WHEEL_CIRCUMFERENCE = 6 * Math.PI;
-    private static final double COUNTS_PER_INCH = 190; // COUNTS_PER_WHEEL_REVOLUTION / WHEEL_CIRCUMFERENCE;
+    private static final double COUNTS_PER_INCH = 190; // COUNTS_PER_WHEEL_REVOLUTION
+                                                       // / WHEEL_CIRCUMFERENCE;
 
-    private final static double MOTOR_SPEED = 0.5;
+    private final static double MOTOR_SPEED = 0.3;
 
     private double directionMultiplier;
 
@@ -30,13 +31,13 @@ public class EncoderDrive extends Command {
      * Drives forward based on inches.
      *
      * @param inchesToMove
-     *            The number of inches to move. Setting a negative value will drive
-     *            backwards.
+     *            The number of inches to move. Setting a negative value will
+     *            drive backwards.
      */
 
     private EncoderDrive(double inchesToMove, int dir) {
         requires(Robot.driveBase);
-        countsToMove = (int)(COUNTS_PER_INCH * inchesToMove);
+        countsToMove = (int) (COUNTS_PER_INCH * inchesToMove);
         directionMultiplier = dir;
     }
 
@@ -52,6 +53,7 @@ public class EncoderDrive extends Command {
     protected void initialize() {
         Robot.driveBase.configEncoder();
         Robot.gyro.resetGyro();
+        Robot.driveBase.turnOffDrivingRamp();
         System.out.println("am start");
     }
 
@@ -92,6 +94,7 @@ public class EncoderDrive extends Command {
     @Override
     protected void end() {
         Robot.driveBase.resetMotors();
+        Robot.driveBase.turnOffDrivingRamp();
     }
 
     @Override

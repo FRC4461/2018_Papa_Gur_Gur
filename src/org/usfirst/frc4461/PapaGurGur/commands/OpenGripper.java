@@ -11,6 +11,8 @@ public class OpenGripper extends Command {
 
     private double timeOut;
 
+    private boolean isDone = false;
+
     /***
      * Opens the gripper.
      * 
@@ -24,14 +26,15 @@ public class OpenGripper extends Command {
     }
 
     protected void initialize() {
-    }
-
-    protected void execute() {
         Robot.gripPneumatics.openGripper();
     }
 
+    protected void execute() {
+        isDone = true;
+    }
+
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     protected void end() {

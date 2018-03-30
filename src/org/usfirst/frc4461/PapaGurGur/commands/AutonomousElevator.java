@@ -15,6 +15,7 @@ public class AutonomousElevator extends Command {
 
     private AutonomousElevator(double inchesToMove) {
         requires(Robot.elevator);
+        setTimeout(3);
         this.inchesToMove = inchesToMove;
     }
 
@@ -37,15 +38,14 @@ public class AutonomousElevator extends Command {
     }
 
     protected void initialize() {
-        Robot.elevator.configElevatorEncoder();
         Robot.elevator.setElevatorRamp();
         System.out.println("Elevator initialize");
     }
 
     /*
-     * Robot uses setPosition to go to a specific count Works great with current PID
-     * settings also we want this to be always runnning in autonomous because we
-     * want the elevator to always be up
+     * Robot uses setPosition to go to a specific count Works great with current
+     * PID settings also we want this to be always runnning in autonomous
+     * because we want the elevator to always be up
      */
     protected void execute() {
         System.out.println("Elevator height: " + RobotMap.elevatorMotor.getSelectedSensorPosition(0) / (328));
@@ -55,7 +55,7 @@ public class AutonomousElevator extends Command {
     }
 
     protected boolean isFinished() {
-        return false;
+        return isTimedOut();
     }
 
     protected void end() {

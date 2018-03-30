@@ -24,7 +24,7 @@ public class RightPosRightScale extends CommandGroup {
         addSequential(new Delay(1));
         addSequential(new OpenGripper(1));
         addSequential(EncoderDrive.GoBackward(40));
-        addParallel(new CloseGripper(1f));
-        addParallel(AutonomousElevator.GoDown(0));
+        addParallel(new CloseGripper(1));
+        addSequential(AutonomousElevator.GoDown(0));
     }
 }

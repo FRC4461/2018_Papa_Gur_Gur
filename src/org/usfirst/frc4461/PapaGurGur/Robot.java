@@ -132,6 +132,7 @@ public class Robot extends IterativeRobot {
     @Override
     public void autonomousInit() {
         Robot.gyro.resetGyro();
+        Robot.elevator.configElevatorEncoder();
         if (autonomousCommand != null) {
             autonomousCommand.start();
         }

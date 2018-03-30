@@ -23,7 +23,7 @@ public class LeftPosLeftScale extends CommandGroup {
         addSequential(new Delay(1.5));
         addSequential(new OpenGripper(2));
         addSequential(EncoderDrive.GoBackward(40));
-        addParallel(AutonomousElevator.GoDown(0));
         addParallel(new CloseGripper(2));
+        addSequential(AutonomousElevator.GoDown(0));
     }
 }

@@ -41,12 +41,10 @@ public class EncoderDrive extends Command {
     }
 
     public static EncoderDrive GoForward(double inchesToMove) {
-        System.out.println("Go Forward");
         return new EncoderDrive(inchesToMove, -1);
     }
 
     public static EncoderDrive GoBackward(double inchesToMove) {
-        System.out.println("Go Backward");
         return new EncoderDrive(inchesToMove, 1);
     }
 

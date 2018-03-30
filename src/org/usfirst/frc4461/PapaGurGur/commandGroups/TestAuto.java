@@ -4,7 +4,6 @@ import org.usfirst.frc4461.PapaGurGur.commands.AutonomousElevator;
 import org.usfirst.frc4461.PapaGurGur.commands.CloseGripper;
 import org.usfirst.frc4461.PapaGurGur.commands.Delay;
 import org.usfirst.frc4461.PapaGurGur.commands.EncoderDrive;
-import org.usfirst.frc4461.PapaGurGur.commands.GyroTurn;
 import org.usfirst.frc4461.PapaGurGur.commands.OpenGripper;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;

@@ -34,11 +34,11 @@ public class Elevator extends Subsystem {
     }
 
     public void setElevatorRamp() {
-        RobotMap.elevatorMotor.configOpenloopRamp(ELEVATOR_RAMP, 5);
+        RobotMap.elevatorMotor.configClosedloopRamp(ELEVATOR_RAMP, 5);
     }
 
     public void turnOffElevatorRamp() {
-        RobotMap.elevatorMotor.configOpenloopRamp(0, 1);
+        RobotMap.elevatorMotor.configClosedloopRamp(0, 1);
     }
 
     public double setDeadZone() {

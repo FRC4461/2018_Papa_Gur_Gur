@@ -41,8 +41,8 @@ public class RobotMap {
         elevatorMotor = new WPI_TalonSRX(5);
 
         // Gripper Motors
-        gripMotor1 = new WPI_TalonSRX(6);
-        gripMotor2 = new WPI_TalonSRX(7);
+        gripMotor1 = new WPI_TalonSRX(7);
+        gripMotor2 = new WPI_TalonSRX(6);
 
         // Gyro
         gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);

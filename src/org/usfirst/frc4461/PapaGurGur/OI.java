@@ -26,8 +26,8 @@ public class OI {
     public static Button rButton3 = new JoystickButton(m_RJoy, 3);
 
     public OI() {
-        rButton1.toggleWhenPressed(new TeleopCloseGripper());
-        lButton1.toggleWhenPressed(new TeleopOpenGripper());
+        rButton1.whileActive(new TeleopCloseGripper());
+        lButton1.whileActive(new TeleopOpenGripper());
     }
 
     public static double lJoyGetY() {

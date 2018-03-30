@@ -39,6 +39,7 @@ public class OperateElevator extends Command {
             Robot.elevator.stopElevator();
         }
 
+        System.out.println("Elevator counts: " + RobotMap.elevatorMotor.getSelectedSensorPosition(0));
         if (elevatorPosition > 12000 && elevatorPosition < 23000) {
             Robot.gripPneumatics.closeGripper();
         }

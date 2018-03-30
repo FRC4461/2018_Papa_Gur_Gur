@@ -23,6 +23,8 @@ import org.usfirst.frc4461.PapaGurGur.subsystems.GripMotors;
 import org.usfirst.frc4461.PapaGurGur.subsystems.GripperPneumatics;
 import org.usfirst.frc4461.PapaGurGur.subsystems.Gyro;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.SPI;
@@ -43,6 +45,8 @@ public class Robot extends IterativeRobot {
     public static GripperPneumatics gripPneumatics;
     public static Gyro gyro;
     public static GripMotors gripMotors;
+
+    public static UsbCamera cam;
 
     public static SPI.Port gyroAnalogInput = SPI.Port.kOnboardCS0;
 
@@ -90,6 +94,7 @@ public class Robot extends IterativeRobot {
         gripPneumatics = new GripperPneumatics();
         gyro = new Gyro();
         oi = new OI();
+        cam = CameraServer.getInstance().startAutomaticCapture();
 
         LL = new SendableChooser<Command>();
         LR = new SendableChooser<Command>();
@@ -112,6 +117,7 @@ public class Robot extends IterativeRobot {
         Robot.elevator.resetElevatorEncoder();
 
         autonomousCommand = new ScheduleCommands();
+
     }
 
     @Override
